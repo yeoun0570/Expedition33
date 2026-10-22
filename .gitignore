@@ -1,0 +1,35 @@
+# Visual Studio local settings and caches
+.vs/
+*.vcxproj.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+
+# Build intermediates (Debug / Release, x64 / Win32)
+[Dd]ebug/
+[Rr]elease/
+/x64/
+/Win32/
+/Client/x64/
+/Client/Win32/
+/Engine/x64/
+/Engine/Win32/
+/Client/Bin/Resource/FBX/
+/CharacterSelector_CPP_DX11_Test/
+/ThirdParty/FBXSDK/
+
+# Generated binaries only: keep room for runtime assets in Bin
+/Client/Bin/*.exe
+/Client/Bin/*.dll
+/Client/Bin/*.lib
+/Client/Bin/*.exp
+/Client/Bin/*.pdb
+/Client/Bin/*.ilk
+/Engine/Bin/*.exe
+/Engine/Bin/*.dll
+/Engine/Bin/*.lib
+/Engine/Bin/*.exp
+/Engine/Bin/*.pdb
+/Engine/Bin/*.ilk

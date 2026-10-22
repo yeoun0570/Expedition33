@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99.Defines">
+      <UniqueIdentifier>{f4850f4b-3b62-4d05-bc5c-75fd9fae72c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System">
+      <UniqueIdentifier>{d111cd45-61bb-44d3-9b91-faf701286956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility">
+      <UniqueIdentifier>{51a49e3a-3e8b-4e92-9c84-9cddec26946b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\00.Timers">
+      <UniqueIdentifier>{cc8672d6-e177-4e20-a47c-3b4b28e30b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\00.Timers\Manager">
+      <UniqueIdentifier>{4868c37f-4f55-495e-ac25-83c327b90e0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\99. Fbx">
+      <UniqueIdentifier>{c9f1eb6f-a2fe-4444-9d8d-c66d1d89fe29}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Public\Engine_Defines.h">
+      <Filter>99.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Engine_Function.h">
+      <Filter>99.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Engine_Macro.h">
+      <Filter>99.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Engine_Struct.h">
+      <Filter>99.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Engine_Typedef.h">
+      <Filter>99.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Engine_Enum.h">
+      <Filter>99.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Timer.h">
+      <Filter>00.System\00.Timers</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Timer_Manager.h">
+      <Filter>00.System\00.Timers\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="private\FbxLoader.h">
+      <Filter>01.Utility\99. Fbx</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Private\Timer_Manager.cpp">
+      <Filter>00.System\00.Timers\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Timer.cpp">
+      <Filter>00.System\00.Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="public\FbxLoader.cpp">
+      <Filter>01.Utility\99. Fbx</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
