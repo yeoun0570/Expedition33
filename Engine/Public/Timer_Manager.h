@@ -4,30 +4,26 @@
 
 NS_BEGIN(Engine)
 
-class ENGINE_DLL CTimer_Manager final 
+class ENGINE_DLL CTimer_Manager final
 {
 	DECLARE_SINGLETON(CTimer_Manager)
+
 private:
 	CTimer_Manager();
 public:
 	~CTimer_Manager() = default;
 
-public:	
-	f32_t Compute_TimeDelta(const _tchar* pTimerTag);
+public:
+	f32_t Compute_TimeDelta(const wstring_t& strTimerTag);
 
 public:
-	HRESULT		Ready_Timer(const _tchar* pTimerTag);
+	HRESULT	Add_Timer(const wstring_t& strTimerTag);
 
 private:
-	CTimer* Find_Timer(const _tchar* pTimerTag);
+	map<const wstring_t, shared_ptr<class CTimer>>		m_Timers;
 
 private:
-	map<const _tchar*, CTimer*>								m_mapTimer;
-	map<const wstring_t, shared_ptr<class CTimer>>			m_mapTimer;
-
-private:
-	virtual void Free();
-
+	shared_ptr<class CTimer> Find_Timer(const wstring_t& strTimerTag);
 };
 
 NS_END

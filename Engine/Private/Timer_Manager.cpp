@@ -1,65 +1,40 @@
-#include "CTimerMgr.h"
-
-IMPLEMENT_SINGLETON(CTimer_Manager)
-
+#include "Timer_Manager.h"
+#include "Timer.h"
 
 CTimer_Manager::CTimer_Manager()
 {
 }
 
-CTimer_Manager::~CTimer_Manager()
+f32_t CTimer_Manager::Compute_TimeDelta(const wstring_t& strTimerTag)
 {
-	Free();
-}
-
-_float CTimer_Manager::Get_TimeDelta(const _tchar* pTimerTag)
-{
-	CTimer* pTimer = Find_Timer(pTimerTag);
-
-	if (pTimer == nullptr)
+	auto	pTimer = Find_Timer(strTimerTag);
+	if (nullptr == pTimer)
 		return 0.f;
 
-	return pTimer->Get_TimeDelta();
+	return pTimer->Compute_Timer();	
 }
 
-void CTimer_Manager::Set_TimeDelta(const _tchar* pTimerTag)
+HRESULT CTimer_Manager::Add_Timer(const wstring_t& strTimerTag)
 {
-	CTimer* pTimer = Find_Timer(pTimerTag);
-
-	if (pTimer == nullptr)
-		return;
-
-	pTimer->Update_Timer();
-}
-
-HRESULT CTimer_Manager::Ready_Timer(const _tchar* pTimerTag)
-{
-	CTimer* pTimer = Find_Timer(pTimerTag);
-
-	if (nullptr != pTimer)
+	if (nullptr != Find_Timer(strTimerTag))
 		return E_FAIL;
 
-	pTimer = CTimer::Create();
+	auto		pTimer = CTimer::Create();
 	if (nullptr == pTimer)
 		return E_FAIL;
 
-	m_mapTimer.insert({ pTimerTag, pTimer });
+	m_Timers.emplace(strTimerTag, pTimer);
 
 	return S_OK;
 }
 
-CTimer* CTimer_Manager::Find_Timer(const _tchar* pTimerTag)
+shared_ptr<class CTimer> CTimer_Manager::Find_Timer(const wstring_t& strTimerTag)
 {
-	auto		iter = find_if(m_mapTimer.begin(), m_mapTimer.end(), CTag_Finder(pTimerTag));
+	auto	iter = m_Timers.find(strTimerTag);
 
-	if (iter == m_mapTimer.end())
+	if (iter == m_Timers.end())
 		return nullptr;
-	
+
 	return iter->second;
 }
 
-void CTimer_Manager::Free()
-{
-	for_each(m_mapTimer.begin(), m_mapTimer.end(), CDeleteMap());
-	m_mapTimer.clear();
-}

@@ -6,6 +6,8 @@
 
 #include "MainApp.h"
 
+#include "Timer_Manager.h"
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -44,6 +46,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     pMainApp = CMainApp::Create();
     if (nullptr == pMainApp)
+        return FALSE;
+
+    if (FAILED(CTimer_Manager::Get().Add_Timer(TEXT("Timer_Default"))))
+        return FALSE;
+
+    if (FAILED(CTimer_Manager::Get().Add_Timer(TEXT("Timer_60"))))
         return FALSE;
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));

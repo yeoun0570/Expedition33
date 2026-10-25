@@ -15,6 +15,8 @@ using namespace DirectX;
 #include <unordered_map>
 #include <ctime>
 
+using namespace std;
+
 #include "Engine_Enum.h"
 #include "Engine_Macro.h"
 #include "Engine_Struct.h"
@@ -40,6 +42,5 @@ using namespace DirectX;
 #endif
 #endif
 
-using namespace std;
 using namespace Engine;
 

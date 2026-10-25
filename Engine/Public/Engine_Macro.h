@@ -52,9 +52,9 @@
 	#define DECLARE_SINGLETON(CLASSNAME)							\
 			NO_COPY(CLASSNAME)										\
 			public:													\
-			static const CLASSNAME	Get(void)						\
+			static CLASSNAME&	Get(void)							\
 			{														\
-				static const CLASSNAME Instance = {};				\
+				static CLASSNAME Instance = {};						\
 				return Instance;									\
 			}
 			
