@@ -5,6 +5,7 @@ namespace Engine
 {
 	typedef		bool						bool_t;
 	typedef		char						char_t;	
+	typedef		wstring						wstring_t;
 
 	typedef		float						f32_t;
 	typedef		double						f64_t;

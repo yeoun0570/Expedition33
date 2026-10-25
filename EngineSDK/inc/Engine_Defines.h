@@ -14,6 +14,9 @@ using namespace DirectX;
 #include <string>
 #include <unordered_map>
 #include <ctime>
+#include <fbxsdk.h>
+
+using namespace std;
 
 #include "Engine_Enum.h"
 #include "Engine_Macro.h"
@@ -40,6 +43,5 @@ using namespace DirectX;
 #endif
 #endif
 
-using namespace std;
 using namespace Engine;
 

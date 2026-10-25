@@ -3,7 +3,7 @@
 
 
 	#ifndef			MSG_BOX
-	#define			MSG_BOX(_message)			MessageBox(NULL, TEXT(_message), L"System Message", MB_OK)
+	#define			MSG_BOX(_message)			MessageBox(nullptr, TEXT(_message), L"System Message", MB_OK)
 	#endif
 
 	#define			NS_BEGIN(_namespace)		namespace _namespace {
@@ -52,9 +52,9 @@
 	#define DECLARE_SINGLETON(CLASSNAME)							\
 			NO_COPY(CLASSNAME)										\
 			public:													\
-			static const CLASSNAME	Get(void)						\
+			static CLASSNAME&	Get(void)							\
 			{														\
-				static const CLASSNAME Instance = {};				\
+				static CLASSNAME Instance = {};						\
 				return Instance;									\
 			}
 			
