@@ -14,6 +14,7 @@ using namespace DirectX;
 #include <string>
 #include <unordered_map>
 #include <ctime>
+#include <fbxsdk.h>
 
 using namespace std;
 

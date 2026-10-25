@@ -139,6 +139,29 @@
 - 예시 코드는 실제 프로젝트 파일에 적용하지 않는다.
 
 
+## 코드 규칙
+
+
+
+- enum 의 경우에는 enum class 를 사용한다.
+
+- 정수 자료형의 경우에는 stdint.h 에 적힌 형식을 사용한다. 그 외에는 typedef로 따로 작성한 형식을 이용한다.(예 : bool_t)
+
+- 클래스의 생성자는 protected나 private을 사용한다.
+
+- 클래스의 소멸자는 public을 사용한다.
+
+- 클래스는 소멸자 아래부터는 public, protected, private 순서를 맞추며, 멤버 변수 다음에 함수를 작성한다.
+
+- 기본 자료형(typedef로 정의한 것 포함) 중에서 8byte 이하의 크기 자료형들은 call by value 형식으로 파라미터에 넣는다.
+
+- 파라미터에 void 포인터 형식을 띄울 수 밖에 없는 경우, 부모 타입을 파라미터에 넣는 경우에는 call by address 형식으로 파라미터에 넣는다.
+
+- call by value, call by address를 파라미터로 넣어야 하는 경우를 제외하고선 전부 call by reference 형식으로 파라미터에 넣는다.
+
+- 명시적 형변환을 하는 경우에는 C코드가 아니라 C++ 코드의 규칙을 따른다.(예 : static_cast)
+
+
 
 ## 커밋 메시지
 

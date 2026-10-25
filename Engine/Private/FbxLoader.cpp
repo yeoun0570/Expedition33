@@ -10,17 +10,17 @@ CFbxLoader::~CFbxLoader()
 	if (m_pManager != nullptr)
 	{
 		m_pManager->Destroy();
-
 		m_pManager = nullptr;
-		m_pScene = nullptr;
 	}
+
+	m_pScenes.clear();
 }
 
 HRESULT CFbxLoader::Initialize()
 {
 	// FbxManager : SDK 객체의 생성과 메모리를 관리하는 관리자
+		// SDK 객체 : FBX 파일의 내용을 C++ 코드에서 다룰 수 있도록 SDK가 제공하는 객체
 	// FbxIOSettings : 파일을 읽고 저장할 때 사용할 설정
-	// FbxScene : 파일에서 읽어 온 모델·뼈대 등을 담는 공간
 
 	if (m_pManager)
 		return E_FAIL;
@@ -44,15 +44,54 @@ HRESULT CFbxLoader::Initialize()
 
 	m_pManager->SetIOSettings(pIOSettings);
 
-	// 3. 모델 데이터를 담을 공간 생성
-	m_pScene = FbxScene::Create(m_pManager, "ModelScene");
+	return S_OK;
+}
 
-	if (m_pScene == nullptr)
+HRESULT CFbxLoader::Load_Model(const char* pFilePath) 
+{
+	// FbxImporter : 파일의 데이터를 SDK 객체로 가져오는 도구
+	// FbxScene : 파일에서 읽어 온 모델·뼈대 등을 담는 공간
+
+	if (m_pManager == nullptr)
+		return E_FAIL;
+
+	if (pFilePath == nullptr || pFilePath[0] == '\0')
+		return E_INVALIDARG;
+
+	FbxImporter* pImporter = FbxImporter::Create(m_pManager, "");
+
+	if (pImporter == nullptr)
+		return E_FAIL;
+
+	// 파일을 읽을 준비
+	if (!pImporter->Initialize(pFilePath, -1, m_pManager->GetIOSettings()))
 	{
-		m_pManager->Destroy();
-		m_pManager = nullptr;
+		pImporter->Destroy();
 		return E_FAIL;
 	}
+
+	// 모델 데이터를 담을 공간 생성
+	FbxScene* pScene = FbxScene::Create(m_pManager, pFilePath);
+
+	if (pScene == nullptr)
+	{
+		pImporter->Destroy();
+		return E_FAIL;
+	}
+
+
+	// FBX파일을 해당 공간(FbxScene)에다가 저장해둠(몸통.fbx → 몸통용 FbxScene, 머리.fbx → 머리용 FbxScene)
+	if (!pImporter->Import(pScene))
+	{
+		pImporter->Destroy();
+		pScene->Destroy();
+		return E_FAIL;
+	}
+
+	// 읽은 데이터는 Scene에 남으므로 Importer는 정리
+	pImporter->Destroy();
+
+	m_pScenes.push_back(pScene);
 
 	return S_OK;
 }
