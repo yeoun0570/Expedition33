@@ -4,10 +4,8 @@
 
 NS_BEGIN(Engine)
 
-class ENGINE_DLL CTimer_Manager final
+class CTimer_Manager final
 {
-	DECLARE_SINGLETON(CTimer_Manager)
-
 private:
 	CTimer_Manager();
 public:
@@ -24,6 +22,8 @@ private:
 
 private:
 	shared_ptr<class CTimer> Find_Timer(const wstring_t& strTimerTag);
+public:
+	static unique_ptr<CTimer_Manager> Create();
 };
 
 NS_END

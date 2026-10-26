@@ -38,3 +38,8 @@ shared_ptr<class CTimer> CTimer_Manager::Find_Timer(const wstring_t& strTimerTag
 	return iter->second;
 }
 
+unique_ptr<CTimer_Manager> CTimer_Manager::Create()
+{
+	return unique_ptr<CTimer_Manager>(new CTimer_Manager);
+}
+

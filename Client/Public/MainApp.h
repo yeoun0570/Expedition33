@@ -10,12 +10,16 @@ class CMainApp final
 private:
 	CMainApp();
 public:
-	~CMainApp() = default;
+	~CMainApp();
 
 public:
 	HRESULT Initialize();
 	void Update(f32_t fTimeDelta);
 	HRESULT Render();
+
+private:
+	ComPtr<ID3D11Device>			m_pDevice = { nullptr };
+	ComPtr<ID3D11DeviceContext>		m_pContext = { nullptr };
 
 public:
 	static unique_ptr<CMainApp> Create();

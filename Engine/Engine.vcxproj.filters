@@ -16,8 +16,23 @@
     <Filter Include="00.System\00.Timers\Manager">
       <UniqueIdentifier>{4868c37f-4f55-495e-ac25-83c327b90e0e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\99. Fbx">
+    <Filter Include="00.System\01. Device">
+      <UniqueIdentifier>{98fd1e78-d5a0-4395-8181-7f752d82afc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\01. Device\Graphic">
+      <UniqueIdentifier>{2ddc9487-495c-4573-acd3-59a3f7f99055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\01. Device\Fbx">
       <UniqueIdentifier>{c9f1eb6f-a2fe-4444-9d8d-c66d1d89fe29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\01. Device\Sound">
+      <UniqueIdentifier>{89aa198a-a395-4d81-9fa6-9507a373993f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\01. Device\Input">
+      <UniqueIdentifier>{cfd0867a-262e-438a-96ed-b38755ce495a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\00. GameInstance">
+      <UniqueIdentifier>{e9020994-06ba-465e-8ec1-bc62168b37e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +61,13 @@
       <Filter>00.System\00.Timers\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Public\FbxLoader.h">
-      <Filter>01.Utility\99. Fbx</Filter>
+      <Filter>00.System\01. Device\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Graphic_Device.h">
+      <Filter>00.System\01. Device\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\GameInstance.h">
+      <Filter>01.Utility\00. GameInstance</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +78,13 @@
       <Filter>00.System\00.Timers</Filter>
     </ClCompile>
     <ClCompile Include="Private\FbxLoader.cpp">
-      <Filter>01.Utility\99. Fbx</Filter>
+      <Filter>00.System\01. Device\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphic_Device.cpp">
+      <Filter>00.System\01. Device\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\GameInstance.cpp">
+      <Filter>01.Utility\00. GameInstance</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
