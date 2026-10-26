@@ -34,6 +34,27 @@
     <Filter Include="01.Utility\00. GameInstance">
       <UniqueIdentifier>{e9020994-06ba-465e-8ec1-bc62168b37e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Graphics">
+      <UniqueIdentifier>{6d21e2b3-8816-4ed9-86d9-80d5007752ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\00. VIBuffer">
+      <UniqueIdentifier>{6b1163ea-5fc0-4483-80b3-4c9a8b398b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\01. Shader">
+      <UniqueIdentifier>{34130b05-9b6c-4ca1-a426-7e938c3aed9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\02. Model">
+      <UniqueIdentifier>{9b9c84ac-9cde-46ef-b1b0-8cf36bbad316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\03. Material">
+      <UniqueIdentifier>{8899dc4f-38cb-4b69-a541-0e8ff2782be5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\04. Animation">
+      <UniqueIdentifier>{4272a2e0-50b2-48a9-ab3a-b65032d132d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\00. VIBuffer\TriCol">
+      <UniqueIdentifier>{0b14f79b-263d-4bdc-a112-20651e6a1a71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -69,6 +90,12 @@
     <ClInclude Include="Public\GameInstance.h">
       <Filter>01.Utility\00. GameInstance</Filter>
     </ClInclude>
+    <ClInclude Include="public\VIBuffer.h">
+      <Filter>02. Graphics\00. VIBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="public\TriCol.h">
+      <Filter>02. Graphics\00. VIBuffer\TriCol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -85,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="Private\GameInstance.cpp">
       <Filter>01.Utility\00. GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="private\VIBuffer.cpp">
+      <Filter>02. Graphics\00. VIBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="private\TriCol.cpp">
+      <Filter>02. Graphics\00. VIBuffer\TriCol</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

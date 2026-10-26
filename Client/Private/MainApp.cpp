@@ -24,6 +24,24 @@ HRESULT CMainApp::Initialize()
     if (FAILED(CGameInstance::Get().Initialize_Engine(EngineDesc, m_pDevice, m_pContext)))
         return E_FAIL;
 
+
+
+#pragma region FBX 테스트
+
+    // FBX 테스트
+    const char* pFilePath = "./Bin/Resource/FBX/Characters_FBX/Verso/Outfits/Default.fbx";
+
+    if (FAILED(CGameInstance::Get().Load_Model(pFilePath)))
+    {
+        MSG_BOX("Failed to Load FBX");
+        return E_FAIL;
+    }
+
+    MSG_BOX("FBX Load Succeeded");
+
+#pragma endregion
+
+
     return S_OK;
 }
 

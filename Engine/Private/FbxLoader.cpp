@@ -93,12 +93,40 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 
 	m_pScenes.push_back(pScene);
 
+	// 메시 정보 확인용 코드
+	const int iMeshCount = pScene->GetSrcObjectCount<FbxMesh>();
+
+	if (iMeshCount == 0)
+	{
+		MSG_BOX("FBX 파일에 메시가 없습니다.");
+	}
+
+	for (int i = 0; i < iMeshCount; ++i)
+	{
+		FbxMesh* pMesh = pScene->GetSrcObject<FbxMesh>(i);
+
+		char szMessage[512] = {};
+
+		sprintf_s(
+			szMessage,
+			"Mesh: %s\nControl points: %d\nPolygons: %d",
+			pMesh->GetName(),
+			pMesh->GetControlPointsCount(),
+			pMesh->GetPolygonCount());
+
+		MessageBoxA(
+			nullptr,
+			szMessage,
+			"FBX 메시 정보",
+			MB_OK);
+	}
+
 	return S_OK;
 }
 
-shared_ptr<CFbxLoader> CFbxLoader::Create()
+unique_ptr<CFbxLoader> CFbxLoader::Create()
 {
-	auto pInstance = shared_ptr<CFbxLoader>(new CFbxLoader);
+	auto pInstance = unique_ptr<CFbxLoader>(new CFbxLoader);
 
 	if (FAILED(pInstance->Initialize()))
 	{

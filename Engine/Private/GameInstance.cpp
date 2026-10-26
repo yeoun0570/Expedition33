@@ -14,6 +14,10 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     if (nullptr == m_pTimer_Manager)
         return E_FAIL;
 
+    m_pFbx_Loader = CFbxLoader::Create();
+    if (nullptr == m_pFbx_Loader)
+        return E_FAIL;
+
     return S_OK;
 }
 
@@ -50,18 +54,33 @@ HRESULT CGameInstance::Draw_End()
 
 f32_t CGameInstance::Compute_TimeDelta(const wstring_t& strTimerTag)
 {
+    if (m_pTimer_Manager == nullptr)
+        return 0.f;
+
     return m_pTimer_Manager->Compute_TimeDelta(strTimerTag);    
 }
 
 HRESULT CGameInstance::Add_Timer(const wstring_t& strTimerTag)
 {
+    if (m_pTimer_Manager == nullptr)
+        return E_FAIL;
+
     return m_pTimer_Manager->Add_Timer(strTimerTag);
 }
 
+
+HRESULT CGameInstance::Load_Model(const char* pFilePath)
+{
+    if (m_pFbx_Loader == nullptr)
+        return E_FAIL;
+
+    return m_pFbx_Loader->Load_Model(pFilePath);
+}
+
+
 void CGameInstance::Release_Engine()
 {
-    
     m_pTimer_Manager.reset();
-
     m_pGraphic_Device.reset();
+    m_pFbx_Loader.reset();
 }

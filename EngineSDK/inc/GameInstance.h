@@ -2,6 +2,7 @@
 
 #include "Timer_Manager.h"
 #include "Graphic_Device.h"
+#include "FbxLoader.h"
 
 NS_BEGIN(Engine)
 
@@ -23,12 +24,17 @@ public:
 
 
 public:
+	// Timer
 	f32_t Compute_TimeDelta(const wstring_t& strTimerTag);
 	HRESULT	Add_Timer(const wstring_t& strTimerTag);
+
+	// Fbx Loader
+	HRESULT Load_Model(const char* pFilePath);
 
 private:
 	unique_ptr<CTimer_Manager>				m_pTimer_Manager = { nullptr };
 	unique_ptr<CGraphic_Device>				m_pGraphic_Device = { nullptr };
+	unique_ptr<CFbxLoader>					m_pFbx_Loader = { nullptr };
 
 public:
 	void Release_Engine();

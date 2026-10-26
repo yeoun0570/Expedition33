@@ -5,7 +5,7 @@
 NS_BEGIN(Engine)
 
 // 클라이언트에서도 사용해야하니까 ENGINE_DLL 붙임
-class ENGINE_DLL CFbxLoader final
+class CFbxLoader final
 {
 private:
 	CFbxLoader();
@@ -27,7 +27,7 @@ private:
 	vector<FbxScene*>		m_pScenes;
 
 public:
-	static shared_ptr<CFbxLoader> Create();
+	static unique_ptr<CFbxLoader> Create();
 };
 
 NS_END
