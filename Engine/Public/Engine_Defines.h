@@ -14,6 +14,7 @@ using namespace DirectX;
 #include <string>
 #include <unordered_map>
 #include <ctime>
+#include <d3dcompiler.h>
 #include <fbxsdk.h>
 
 #include <wrl/client.h>

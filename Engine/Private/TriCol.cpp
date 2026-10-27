@@ -11,8 +11,8 @@ HRESULT CTriCol::Initialize_Buffer()
     m_iVtxCnt = 3;
     m_iIdxCnt = 3;
 
-	m_eIndexFormat = DXGI_FORMAT_R32_UINT;
-	m_eTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
+	m_eIndexFormat  = DXGI_FORMAT_R32_UINT;
+	m_eTopology     = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
 	// 1. 부모 클래스에서 GPU 버퍼 공간 생성
 	if (FAILED(CVIBuffer::Initialize_Buffer()))

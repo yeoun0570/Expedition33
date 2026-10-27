@@ -123,6 +123,10 @@
       <AdditionalDependencies>d3d11.lib;dxguid.lib;d3dcompiler.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\FBXSDK\lib\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>cd /d "$(SolutionDir)"
+call "$(SolutionDir)UpdateLib.bat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -145,6 +149,10 @@
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\FBXSDK\lib\x64\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>cd /d "$(SolutionDir)"
+call "$(SolutionDir)UpdateLib.bat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h" />
@@ -156,6 +164,7 @@
     <ClInclude Include="Public\FbxLoader.h" />
     <ClInclude Include="Public\GameInstance.h" />
     <ClInclude Include="Public\Graphic_Device.h" />
+    <ClInclude Include="public\Shader.h" />
     <ClInclude Include="Public\Timer.h" />
     <ClInclude Include="Public\Timer_Manager.h" />
     <ClInclude Include="public\TriCol.h" />
@@ -165,10 +174,16 @@
     <ClCompile Include="Private\FbxLoader.cpp" />
     <ClCompile Include="Private\GameInstance.cpp" />
     <ClCompile Include="Private\Graphic_Device.cpp" />
+    <ClCompile Include="private\Shader.cpp" />
     <ClCompile Include="Private\Timer.cpp" />
     <ClCompile Include="Private\Timer_Manager.cpp" />
     <ClCompile Include="private\TriCol.cpp" />
     <ClCompile Include="private\VIBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shader\Shader_VtxCol.hlsl">
+      <FileType>Document</FileType>
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

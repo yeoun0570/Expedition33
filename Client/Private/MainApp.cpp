@@ -21,7 +21,9 @@ HRESULT CMainApp::Initialize()
         .iWinSizeY = g_iWinSizeY, 
     };
 
-    if (FAILED(CGameInstance::Get().Initialize_Engine(EngineDesc, m_pDevice, m_pContext)))
+    const wstring_t strShaderPath = L"../Engine/Shader/Shader_VtxCol.hlsl";
+
+    if (FAILED(CGameInstance::Get().Initialize_Engine(EngineDesc, m_pDevice, m_pContext, strShaderPath)))
         return E_FAIL;
 
 

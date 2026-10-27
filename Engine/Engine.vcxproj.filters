@@ -96,6 +96,9 @@
     <ClInclude Include="public\TriCol.h">
       <Filter>02. Graphics\00. VIBuffer\TriCol</Filter>
     </ClInclude>
+    <ClInclude Include="public\Shader.h">
+      <Filter>02. Graphics\01. Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -119,5 +122,13 @@
     <ClCompile Include="private\TriCol.cpp">
       <Filter>02. Graphics\00. VIBuffer\TriCol</Filter>
     </ClCompile>
+    <ClCompile Include="private\Shader.cpp">
+      <Filter>02. Graphics\01. Shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shader\Shader_VtxCol.hlsl">
+      <Filter>02. Graphics\01. Shader</Filter>
+    </Text>
   </ItemGroup>
 </Project>
