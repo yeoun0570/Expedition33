@@ -12,6 +12,12 @@ namespace Engine
 	}ENGINE_DESC;
 
 
+	typedef struct tagVertexColor
+	{
+		float3_t vPosition;
+		float4_t vColor;
+	} VTXCOL;
+
 }
 
 

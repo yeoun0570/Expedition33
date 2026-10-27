@@ -14,6 +14,7 @@ using namespace DirectX;
 #include <string>
 #include <unordered_map>
 #include <ctime>
+#include <d3dcompiler.h>
 #include <fbxsdk.h>
 
 #include <wrl/client.h>
@@ -22,8 +23,8 @@ using namespace std;
 
 #include "Engine_Enum.h"
 #include "Engine_Macro.h"
-#include "Engine_Struct.h"
 #include "Engine_Typedef.h"
+#include "Engine_Struct.h"
 #include "Engine_Function.h"
 
 #define DIRECTINPUT_VERSION	0x0800
