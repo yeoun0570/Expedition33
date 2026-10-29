@@ -55,6 +55,9 @@
     <Filter Include="02. Graphics\00. VIBuffer\TriCol">
       <UniqueIdentifier>{0b14f79b-263d-4bdc-a112-20651e6a1a71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Graphics\00. VIBuffer\MeshCol">
+      <UniqueIdentifier>{a7a378fa-b0c2-42ae-973e-ff8bfd334c05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -99,6 +102,9 @@
     <ClInclude Include="public\Shader.h">
       <Filter>02. Graphics\01. Shader</Filter>
     </ClInclude>
+    <ClInclude Include="public\MeshCol.h">
+      <Filter>02. Graphics\00. VIBuffer\MeshCol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -124,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="private\Shader.cpp">
       <Filter>02. Graphics\01. Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="private\MeshCol.cpp">
+      <Filter>02. Graphics\00. VIBuffer\MeshCol</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

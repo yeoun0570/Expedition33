@@ -22,9 +22,12 @@ public:
 public:
 	HRESULT Load_Model(const char* pFilePath);
 
+	const vector<MESH_DATA>& Get_MeshDatas() const { return m_vecMeshDatas; }
+
 private:
-	FbxManager*		m_pManager	= nullptr;
-	vector<FbxScene*>		m_pScenes;
+	FbxManager*				m_pManager	= nullptr;
+	vector<FbxScene*>		m_vecScenes;
+	vector<MESH_DATA>		m_vecMeshDatas;
 
 public:
 	static unique_ptr<CFbxLoader> Create();

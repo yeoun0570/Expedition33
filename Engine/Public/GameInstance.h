@@ -5,6 +5,7 @@
 #include "FbxLoader.h"
 #include "Shader.h"
 #include "TriCol.h"
+#include "MeshCol.h"
 
 NS_BEGIN(Engine)
 
@@ -19,7 +20,7 @@ public:
 
 public:
 	/* 엔진을 사용하기 위해 초기화과정을 수행한다. */
-	HRESULT Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ ComPtr<ID3D11Device>& pDevice, _Out_ ComPtr<ID3D11DeviceContext>& pContext, const wstring_t& strFilePath);
+	HRESULT Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ ComPtr<ID3D11Device>& pDevice, _Out_ ComPtr<ID3D11DeviceContext>& pContext, const wstring_t& strFilePath, const MESH_DATA& MeshData);
 	HRESULT Draw_Begin(const float4_t* pClearColor);
 	HRESULT Draw(const float4_t* pClearColor);
 	HRESULT Draw_End();
@@ -39,6 +40,7 @@ private:
 	unique_ptr<CFbxLoader>					m_pFbx_Loader = { nullptr };
 	unique_ptr<CShader>						m_pShader = { nullptr };
 	unique_ptr<CTriCol>						m_pTriCol = { nullptr };
+	unique_ptr<CMeshCol>					m_pMeshCol = { nullptr };
 
 public:
 	void Release_Engine();

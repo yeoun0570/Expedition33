@@ -8,6 +8,9 @@ class CVIBuffer
 {
 protected:
 	CVIBuffer(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
+	CVIBuffer(const CVIBuffer&) = delete;
+	CVIBuffer& operator=(const CVIBuffer&) = delete;
+
 public:
 	virtual ~CVIBuffer() = default;
 

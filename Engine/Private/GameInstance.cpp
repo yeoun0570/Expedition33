@@ -50,6 +50,7 @@ HRESULT CGameInstance::Draw(const float4_t* pClearColor)
 
     // 3. 정점·인덱스 버퍼 연결 후 그리기
     m_pTriCol->Render_Buffer();
+    //m_pMeshCol->Render_Buffer();
 
     // 4. 완성한 화면 표시
     if (FAILED(Draw_End()))
@@ -99,4 +100,5 @@ void CGameInstance::Release_Engine()
     m_pFbx_Loader.reset();
     m_pShader.reset();
     m_pTriCol.reset();
+    m_pMeshCol.reset();
 }
