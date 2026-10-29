@@ -18,6 +18,11 @@ namespace Engine
 		float4_t vColor;
 	} VTXCOL;
 
+	typedef struct tagMeshData
+	{
+		vector<VTXCOL>		vecVerticles;
+		vector<uint32_t>	vecIndices;
+	}MESH_DATA;
 }
 
 

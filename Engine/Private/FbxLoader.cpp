@@ -13,7 +13,7 @@ CFbxLoader::~CFbxLoader()
 		m_pManager = nullptr;
 	}
 
-	m_pScenes.clear();
+	m_vecScenes.clear();
 }
 
 HRESULT CFbxLoader::Initialize()
@@ -91,9 +91,25 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 	// 읽은 데이터는 Scene에 남으므로 Importer는 정리
 	pImporter->Destroy();
 
-	m_pScenes.push_back(pScene);
+	m_vecScenes.push_back(pScene);
 
-	// 메시 정보 확인용 코드
+	// Scene의 면을 삼각형으로 변환
+	FbxGeometryConverter Converter(m_pManager);
+
+	if (!Converter.Triangulate(pScene, true))
+	{
+		MSG_BOX("FBX의 삼각형 변환에 실패했습니다.");
+		return E_FAIL;
+	}
+
+	// ===============================================================================//
+	// ===============================================================================//
+	// ===============================================================================//
+
+	// Fbx에서메시 정보 추출해서 저장하기
+	
+
+	// 변환된 메시를 대상으로 개수 확인과 데이터 추출
 	const int iMeshCount = pScene->GetSrcObjectCount<FbxMesh>();
 
 	if (iMeshCount == 0)
@@ -101,18 +117,92 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 		MSG_BOX("FBX 파일에 메시가 없습니다.");
 	}
 
+	// Fbx의 메시 정점, 인덱스 정보 저장
 	for (int i = 0; i < iMeshCount; ++i)
 	{
 		FbxMesh* pMesh = pScene->GetSrcObject<FbxMesh>(i);
+
+		// 정점 정보 저장
+
+		MESH_DATA MeshData{};
+
+		// FBX에 저장된 점 개수와 좌표 배열
+		const int32_t iPointCount = pMesh->GetControlPointsCount();
+		const FbxVector4* pPoints = pMesh->GetControlPoints();
+
+		if (iPointCount <= 0 || pPoints == nullptr)
+			return E_FAIL;
+
+		// 점 개수만큼 정점 공간 확보
+		MeshData.vecVerticles.resize(static_cast<size_t>(iPointCount));
+
+		for (int32_t iPoint = 0; iPoint < iPointCount; ++iPoint)
+		{
+			const FbxVector4& Position = pPoints[iPoint];
+
+			MeshData.vecVerticles[iPoint].vPosition =
+			{
+				static_cast<f32_t>(Position[0]),
+				static_cast<f32_t>(Position[1]),
+				static_cast<f32_t>(Position[2])
+			};
+
+			// 첫 표시는 텍스처 없이 초록색으로 확인
+			MeshData.vecVerticles[iPoint].vColor =
+			{
+				0.f, 1.f, 0.f, 1.f
+			};
+		}
+
+
+		// ===============================================================================//
+
+		// 인덱스 정보 저장
+
+		const int32_t iPolygonCount = pMesh->GetPolygonCount();
+
+		// 삼각형 하나당 인덱스 3개
+		MeshData.vecIndices.reserve(static_cast<size_t>(iPolygonCount) * 3);
+
+		for (int32_t iPolygon = 0; iPolygon < iPolygonCount; ++iPolygon)
+		{
+			if (pMesh->GetPolygonSize(iPolygon) != 3)
+			{
+				MSG_BOX("삼각형이 아닌 면이 있습니다.");
+				return E_FAIL;
+			}
+
+			for (int32_t iCorner = 0; iCorner < 3; ++iCorner)
+			{
+				const int32_t iPointIndex = pMesh->GetPolygonVertex(iPolygon, iCorner);
+
+				if (iPointIndex < 0 || iPointIndex >= iPointCount)
+				{
+					MSG_BOX("잘못된 정점 번호가 있습니다.");
+					return E_FAIL;
+				}
+
+				MeshData.vecIndices.push_back(static_cast<uint32_t>(iPointIndex));
+			}
+		}
+
+		// 정점과 인덱스를 모두 채운 뒤 보관
+		m_vecMeshDatas.push_back(MeshData);
+
+
+		// ===============================================================================//
+
+		// 처리 메시지
 
 		char szMessage[512] = {};
 
 		sprintf_s(
 			szMessage,
-			"Mesh: %s\nControl points: %d\nPolygons: %d",
+			"Mesh: %s\nVertices: %zu\nIndices: %zu\nTriangles: %d",
 			pMesh->GetName(),
-			pMesh->GetControlPointsCount(),
-			pMesh->GetPolygonCount());
+			MeshData.vecVerticles.size(),
+			MeshData.vecIndices.size(),
+			iPolygonCount);
 
 		MessageBoxA(
 			nullptr,

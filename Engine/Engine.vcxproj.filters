@@ -55,6 +55,18 @@
     <Filter Include="02. Graphics\00. VIBuffer\TriCol">
       <UniqueIdentifier>{0b14f79b-263d-4bdc-a112-20651e6a1a71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Graphics\00. VIBuffer\MeshCol">
+      <UniqueIdentifier>{a7a378fa-b0c2-42ae-973e-ff8bfd334c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\01. Level">
+      <UniqueIdentifier>{4d75859c-f699-4711-b69b-b47b13a60e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\01. Level\Manager">
+      <UniqueIdentifier>{09650ae7-a6b9-4e23-b5e0-6f3f4838b57a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Graphics\02. Model\Manager">
+      <UniqueIdentifier>{57b25bac-4eb6-40d9-b9a1-d0291ba6c290}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -99,6 +111,19 @@
     <ClInclude Include="public\Shader.h">
       <Filter>02. Graphics\01. Shader</Filter>
     </ClInclude>
+    <ClInclude Include="public\MeshCol.h">
+      <Filter>02. Graphics\00. VIBuffer\MeshCol</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Level_Manager.h">
+      <Filter>01.Utility\01. Level\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Level.h">
+      <Filter>01.Utility\01. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Model.h">
+      <Filter>02. Graphics\02. Model</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Model_Manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -125,6 +150,19 @@
     <ClCompile Include="private\Shader.cpp">
       <Filter>02. Graphics\01. Shader</Filter>
     </ClCompile>
+    <ClCompile Include="private\MeshCol.cpp">
+      <Filter>02. Graphics\00. VIBuffer\MeshCol</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Level_Manager.cpp">
+      <Filter>01.Utility\01. Level\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Level.cpp">
+      <Filter>01.Utility\01. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Model.cpp">
+      <Filter>02. Graphics\02. Model</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Model_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shader\Shader_VtxCol.hlsl">

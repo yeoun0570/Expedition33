@@ -164,6 +164,11 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="Public\FbxLoader.h" />
     <ClInclude Include="Public\GameInstance.h" />
     <ClInclude Include="Public\Graphic_Device.h" />
+    <ClInclude Include="public\Level.h" />
+    <ClInclude Include="public\Level_Manager.h" />
+    <ClInclude Include="public\MeshCol.h" />
+    <ClInclude Include="public\Model.h" />
+    <ClInclude Include="public\Model_Manager.h" />
     <ClInclude Include="public\Shader.h" />
     <ClInclude Include="Public\Timer.h" />
     <ClInclude Include="Public\Timer_Manager.h" />
@@ -174,6 +179,11 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="Private\FbxLoader.cpp" />
     <ClCompile Include="Private\GameInstance.cpp" />
     <ClCompile Include="Private\Graphic_Device.cpp" />
+    <ClCompile Include="private\Level.cpp" />
+    <ClCompile Include="private\Level_Manager.cpp" />
+    <ClCompile Include="private\MeshCol.cpp" />
+    <ClCompile Include="private\Model.cpp" />
+    <ClCompile Include="private\Model_Manager.cpp" />
     <ClCompile Include="private\Shader.cpp" />
     <ClCompile Include="Private\Timer.cpp" />
     <ClCompile Include="Private\Timer_Manager.cpp" />
