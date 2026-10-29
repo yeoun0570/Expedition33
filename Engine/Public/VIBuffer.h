@@ -4,7 +4,7 @@
 
 NS_BEGIN(Engine)
 
-class CVIBuffer
+class ENGINE_DLL CVIBuffer
 {
 protected:
 	CVIBuffer(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);

@@ -11,6 +11,9 @@
 	
 	#define			NS_USING(_namespace)		using namespace _namespace;
 	
+	#define			ETOI(_enum) static_cast<signed int>(_enum)
+	#define			ETOUI(_enum) static_cast<unsigned int>(_enum)
+
 	#ifdef	ENGINE_EXPORTS
 	#define ENGINE_DLL		_declspec(dllexport)
 	#else

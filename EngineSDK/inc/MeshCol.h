@@ -6,7 +6,7 @@ NS_BEGIN(Engine)
 class CMeshCol : public CVIBuffer
 {
 private:
-	CMeshCol(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext);
+	CMeshCol(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 	CMeshCol(const CMeshCol&) = delete;
 	CMeshCol& operator=(const CMeshCol&) = delete;
 

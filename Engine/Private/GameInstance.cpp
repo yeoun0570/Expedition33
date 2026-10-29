@@ -14,8 +14,8 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     if (nullptr == m_pTimer_Manager)
         return E_FAIL;
 
-    m_pFbx_Loader = CFbxLoader::Create();
-    if (nullptr == m_pFbx_Loader)
+    m_pLevel_Manager = CLevel_Manager::Create();
+    if (nullptr == m_pLevel_Manager)
         return E_FAIL;
 
     m_pShader = CShader::Create(pDevice, pContext, strFilePath);
@@ -26,8 +26,24 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     if (nullptr == m_pTriCol)
         return E_FAIL;
 
+    m_pModel_Manager = CModel_Manager::Create(pDevice, pContext);
+    if (m_pModel_Manager == nullptr)
+        return E_FAIL;
+
     return S_OK;
 }
+
+void CGameInstance::Update_Engine(f32_t fTimeDelta)
+{
+    m_pLevel_Manager->Update(fTimeDelta);
+}
+
+HRESULT CGameInstance::Clear_Resources(uint32_t iClearLevelIndex)
+{
+    return S_OK;
+}
+
+#pragma region DRAW
 
 HRESULT CGameInstance::Draw_Begin(const float4_t* pClearColor)
 {
@@ -39,18 +55,21 @@ HRESULT CGameInstance::Draw_Begin(const float4_t* pClearColor)
     return S_OK;
 }
 
-HRESULT CGameInstance::Draw(const float4_t* pClearColor)
+HRESULT CGameInstance::Draw(const float4_t* pClearColor, const wstring_t& strModelTag)
 {
     // 1. 화면 지우기
     if (FAILED(Draw_Begin(pClearColor)))
+        return E_FAIL;
+
+    if (FAILED(m_pLevel_Manager->Render()))
         return E_FAIL;
 
     // 2. 셰이더와 입력 레이아웃 연결
     m_pShader->Bind_Shader();
 
     // 3. 정점·인덱스 버퍼 연결 후 그리기
-    m_pTriCol->Render_Buffer();
-    //m_pMeshCol->Render_Buffer();
+    //m_pTriCol->Render_Buffer();
+    m_pModel_Manager->Render_Model(strModelTag);
 
     // 4. 완성한 화면 표시
     if (FAILED(Draw_End()))
@@ -67,12 +86,16 @@ HRESULT CGameInstance::Draw_End()
     return S_OK;
 }
 
+#pragma endregion
+
+#pragma region Timer_Manager
+
 f32_t CGameInstance::Compute_TimeDelta(const wstring_t& strTimerTag)
 {
     if (m_pTimer_Manager == nullptr)
         return 0.f;
 
-    return m_pTimer_Manager->Compute_TimeDelta(strTimerTag);    
+    return m_pTimer_Manager->Compute_TimeDelta(strTimerTag);
 }
 
 HRESULT CGameInstance::Add_Timer(const wstring_t& strTimerTag)
@@ -83,22 +106,44 @@ HRESULT CGameInstance::Add_Timer(const wstring_t& strTimerTag)
     return m_pTimer_Manager->Add_Timer(strTimerTag);
 }
 
+#pragma endregion
 
-HRESULT CGameInstance::Load_Model(const char* pFilePath)
+#pragma region Level_Manager
+
+HRESULT CGameInstance::Change_Level(uint32_t iLevelIndex, shared_ptr<class CLevel> pNewLevel)
 {
-    if (m_pFbx_Loader == nullptr)
+    return m_pLevel_Manager->Change_Level(iLevelIndex, pNewLevel);
+}
+
+#pragma endregion
+
+#pragma region Model_Manager
+HRESULT CGameInstance::Add_Model(const wstring_t& strModelTag, const char* pFilePath)
+{
+    if (nullptr == m_pModel_Manager)
         return E_FAIL;
 
-    return m_pFbx_Loader->Load_Model(pFilePath);
+    return m_pModel_Manager->Add_Model(strModelTag, pFilePath);
 }
+
+HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag)
+{
+    if (nullptr == m_pModel_Manager)
+        return E_FAIL;
+
+    return m_pModel_Manager->Render_Model(strModelTag);
+}
+#pragma endregion
 
 
 void CGameInstance::Release_Engine()
 {
     m_pTimer_Manager.reset();
-    m_pGraphic_Device.reset();
-    m_pFbx_Loader.reset();
+    m_pLevel_Manager.reset();
+    m_pModel_Manager.reset();
+    
     m_pShader.reset();
     m_pTriCol.reset();
-    m_pMeshCol.reset();
+
+    m_pGraphic_Device.reset();
 }
