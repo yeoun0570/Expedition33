@@ -19,7 +19,8 @@ HRESULT CMainApp::Initialize()
         .hWnd = g_hWnd, 
         .eWinMode = WINMODE::WIN, 
         .iWinSizeX = g_iWinSizeX, 
-        .iWinSizeY = g_iWinSizeY, 
+        .iWinSizeY = g_iWinSizeY,
+        .iNumLevels = ETOUI(LEVEL::END),
     };
 
     const wstring_t strShaderPath = L"../Engine/Shader/Shader_VtxCol.hlsl";
