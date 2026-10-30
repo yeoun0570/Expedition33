@@ -1,6 +1,8 @@
 #pragma once
 
 #include <windows.h>
+#include <process.h>
+
 using namespace std;
 
 namespace Client

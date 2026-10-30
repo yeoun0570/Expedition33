@@ -67,6 +67,12 @@
     <Filter Include="02. Graphics\02. Model\Manager">
       <UniqueIdentifier>{57b25bac-4eb6-40d9-b9a1-d0291ba6c290}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Utility\02. Prototype">
+      <UniqueIdentifier>{e4a91387-02dd-4a01-9e16-c4ceccc74fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\02. Prototype\Manager">
+      <UniqueIdentifier>{00afbbe7-de56-4200-af19-eecd147a45d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -124,6 +130,12 @@
       <Filter>02. Graphics\02. Model</Filter>
     </ClInclude>
     <ClInclude Include="public\Model_Manager.h" />
+    <ClInclude Include="public\Prototype_Manager.h">
+      <Filter>01.Utility\02. Prototype\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Prototype.h">
+      <Filter>01.Utility\02. Prototype</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -163,6 +175,12 @@
       <Filter>02. Graphics\02. Model</Filter>
     </ClCompile>
     <ClCompile Include="private\Model_Manager.cpp" />
+    <ClCompile Include="private\Prototype_Manager.cpp">
+      <Filter>01.Utility\02. Prototype\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Prototype.cpp">
+      <Filter>01.Utility\02. Prototype</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shader\Shader_VtxCol.hlsl">

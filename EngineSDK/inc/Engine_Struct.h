@@ -9,6 +9,7 @@ namespace Engine
 		WINMODE			eWinMode;
 		uint32_t		iWinSizeX;
 		uint32_t		iWinSizeY;
+		uint32_t		iNumLevels;
 	}ENGINE_DESC;
 
 
