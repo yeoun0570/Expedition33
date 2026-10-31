@@ -73,6 +73,15 @@
     <Filter Include="01.Utility\02. Prototype\Manager">
       <UniqueIdentifier>{00afbbe7-de56-4200-af19-eecd147a45d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Utility\03. Component">
+      <UniqueIdentifier>{a751cc72-5320-4361-a441-78c5fc5ab09e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\04. Object">
+      <UniqueIdentifier>{4c0af947-5e46-4c51-8de8-d4670c8d8dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\04. Object\Manager">
+      <UniqueIdentifier>{1fd23811-6666-4b9c-8fee-2aceeb7cf85f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -129,13 +138,22 @@
     <ClInclude Include="public\Model.h">
       <Filter>02. Graphics\02. Model</Filter>
     </ClInclude>
-    <ClInclude Include="public\Model_Manager.h" />
     <ClInclude Include="public\Prototype_Manager.h">
       <Filter>01.Utility\02. Prototype\Manager</Filter>
     </ClInclude>
     <ClInclude Include="public\Prototype.h">
       <Filter>01.Utility\02. Prototype</Filter>
     </ClInclude>
+    <ClInclude Include="public\Model_Manager.h">
+      <Filter>02. Graphics\02. Model\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Component.h">
+      <Filter>01.Utility\03. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="public\GameObject.h">
+      <Filter>01.Utility\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="public\GameObject_Manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -174,13 +192,22 @@
     <ClCompile Include="private\Model.cpp">
       <Filter>02. Graphics\02. Model</Filter>
     </ClCompile>
-    <ClCompile Include="private\Model_Manager.cpp" />
     <ClCompile Include="private\Prototype_Manager.cpp">
       <Filter>01.Utility\02. Prototype\Manager</Filter>
     </ClCompile>
     <ClCompile Include="private\Prototype.cpp">
       <Filter>01.Utility\02. Prototype</Filter>
     </ClCompile>
+    <ClCompile Include="private\Model_Manager.cpp">
+      <Filter>02. Graphics\02. Model\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Component.cpp">
+      <Filter>01.Utility\03. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="private\GameObject.cpp">
+      <Filter>01.Utility\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="private\GameObject_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shader\Shader_VtxCol.hlsl">
