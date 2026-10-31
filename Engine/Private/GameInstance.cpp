@@ -69,7 +69,8 @@ HRESULT CGameInstance::Draw(const float4_t* pClearColor, const wstring_t& strMod
 
     // 3. 정점·인덱스 버퍼 연결 후 그리기
     //m_pTriCol->Render_Buffer();
-    m_pModel_Manager->Render_Model(strModelTag);
+    if(FAILED(m_pModel_Manager->Render_Model(strModelTag)))
+        return E_FAIL;
 
     // 4. 완성한 화면 표시
     if (FAILED(Draw_End()))
@@ -132,6 +133,16 @@ HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag)
         return E_FAIL;
 
     return m_pModel_Manager->Render_Model(strModelTag);
+}
+#pragma endregion
+
+#pragma region Shader
+HRESULT CGameInstance::Update_Transform(const TRANSFORM& Transform)
+{
+    if (nullptr == m_pShader)
+        return E_FAIL;
+
+    return m_pShader->Update_Transform(Transform);
 }
 #pragma endregion
 

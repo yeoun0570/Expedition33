@@ -153,7 +153,9 @@
     <ClInclude Include="public\GameObject.h">
       <Filter>01.Utility\04. Object</Filter>
     </ClInclude>
-    <ClInclude Include="public\GameObject_Manager.h" />
+    <ClInclude Include="public\GameObject_Manager.h">
+      <Filter>01.Utility\04. Object\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -207,7 +209,9 @@
     <ClCompile Include="private\GameObject.cpp">
       <Filter>01.Utility\04. Object</Filter>
     </ClCompile>
-    <ClCompile Include="private\GameObject_Manager.cpp" />
+    <ClCompile Include="private\GameObject_Manager.cpp">
+      <Filter>01.Utility\04. Object\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shader\Shader_VtxCol.hlsl">

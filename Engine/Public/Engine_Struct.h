@@ -24,6 +24,14 @@ namespace Engine
 		vector<VTXCOL>		vecVerticles;
 		vector<uint32_t>	vecIndices;
 	}MESH_DATA;
+
+	typedef struct tagTransform
+	{
+		// float4x4_t : 4x4 행렬 자료형
+		float4x4_t	matWorld;
+		float4x4_t	matView;
+		float4x4_t	matProj;
+	}TRANSFORM;
 }
 
 

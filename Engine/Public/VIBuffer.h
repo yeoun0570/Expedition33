@@ -5,7 +5,7 @@
 
 NS_BEGIN(Engine)
 
-class ENGINE_DLL CVIBuffer : public CComponent
+class ENGINE_DLL CVIBuffer //: public CComponent
 {
 protected:
 	CVIBuffer(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);

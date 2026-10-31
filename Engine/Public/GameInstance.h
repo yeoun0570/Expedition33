@@ -48,6 +48,9 @@ public:
 	HRESULT	Render_Model(const wstring_t& strModelTag);
 #pragma endregion
 
+#pragma region Shader
+	HRESULT		Update_Transform(const TRANSFORM& Transform);
+#pragma endregion
 
 
 private:

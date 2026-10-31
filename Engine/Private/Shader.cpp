@@ -36,15 +36,15 @@ HRESULT CShader::Initialize_Shader(const wstring_t& strFilePath)
 
     // D3DCompileFromFile() : HLSL 파일 컴파일 하는 함수
     HRESULT hr = D3DCompileFromFile(
-        strFilePath.c_str(),                // 읽을 HLSL 파일 경로
-        nullptr,                            //
-        D3D_COMPILE_STANDARD_FILE_INCLUDE,  //
-        "VS_MAIN",                          // 실행 시작점으로 컴파일할 함수 이름
-        "vs_5_0",                           // 정점 셰이더, 셰이더 모델 5.0
-        iFlags,                             // 엄격한 검사·디버깅 등의 컴파일 옵션
-        0,                                  //
-        pVSCode.ReleaseAndGetAddressOf(),   // 컴파일 결과 코드를 받을 주소
-        pError.ReleaseAndGetAddressOf());   // 컴파일 오류 메시지를 받을 주소
+                                    strFilePath.c_str(),                // 읽을 HLSL 파일 경로
+                                    nullptr,                            //
+                                    D3D_COMPILE_STANDARD_FILE_INCLUDE,  //
+                                    "VS_MAIN",                          // 실행 시작점으로 컴파일할 함수 이름
+                                    "vs_5_0",                           // 정점 셰이더, 셰이더 모델 5.0
+                                    iFlags,                             // 엄격한 검사·디버깅 등의 컴파일 옵션
+                                    0,                                  //
+                                    pVSCode.ReleaseAndGetAddressOf(),   // 컴파일 결과 코드를 받을 주소
+                                    pError.ReleaseAndGetAddressOf());   // 컴파일 오류 메시지를 받을 주소
 
     // 오류났을 경우
     if (FAILED(hr))
@@ -171,15 +171,38 @@ HRESULT CShader::Initialize_Shader(const wstring_t& strFilePath)
     if (FAILED(hr))
         return hr;
 
+    // ===============================================================================//
+    // ===============================================================================//
+    // ===============================================================================//
+
+    // 월드·뷰·투영 행렬을 담을 상수 버퍼 생성
+
+    D3D11_BUFFER_DESC BufferDesc{};
+
+    BufferDesc.ByteWidth =  static_cast<uint32_t>(sizeof(TRANSFORM));
+    BufferDesc.Usage =      D3D11_USAGE_DEFAULT;
+    BufferDesc.BindFlags =  D3D11_BIND_CONSTANT_BUFFER; // 상수 버퍼로 설정
+
+    hr = m_pDevice->CreateBuffer(
+                                &BufferDesc,
+                                nullptr,
+                                m_pTransformBuffer.ReleaseAndGetAddressOf());
+
+    if (FAILED(hr))
+        return hr;
+
     return S_OK;
 }
 
 void CShader::Bind_Shader()
 {
+    // 셰이더(HLSL)에 연결하는 함수
+
     if (m_pContext == nullptr ||
         m_pInputLayout == nullptr ||
         m_pVertexShader == nullptr ||
-        m_pPixelShader == nullptr)
+        m_pPixelShader == nullptr ||
+        m_pTransformBuffer == nullptr)
         return;
 
     // 정점 버퍼를 읽는 방법 연결
@@ -198,6 +221,31 @@ void CShader::Bind_Shader()
         m_pPixelShader.Get(),
         nullptr,
         0);
+
+    // 만든 상수 버퍼를 셰이더의 상수 버퍼에 연결
+    ID3D11Buffer* pTransformBuffer = m_pTransformBuffer.Get();
+
+    m_pContext->VSSetConstantBuffers(
+                                    0,                  // 0번 상수 버퍼에 연결
+                                    1,                  // 연결할 상수 버퍼 개수
+                                    &pTransformBuffer); // 연결할 상수 버퍼
+}
+
+HRESULT CShader::Update_Transform(const TRANSFORM& Transform)
+{
+    if (nullptr == m_pContext || nullptr == m_pTransformBuffer)
+        return E_FAIL;
+
+    // 매개변수로 전달 받은 행렬을 상수 버퍼에 복사
+    m_pContext->UpdateSubresource(
+                                m_pTransformBuffer.Get(),
+                                0,
+                                nullptr,
+                                &Transform,
+                                0,
+                                0);
+
+    return S_OK;
 }
 
 unique_ptr<CShader> CShader::Create(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext, const wstring_t& strFilePath)

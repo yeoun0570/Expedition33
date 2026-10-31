@@ -1,3 +1,20 @@
+// cbuffer : 상수 버퍼의 데이터 구성을 선언
+
+// register(b0) : 이 데이터를 상수 버퍼 슬롯 0번에서 읽겠다는 지정
+// Shader.cpp의 Bind_Shader()에서 0번 상수 버퍼 번호에 연결했으니 0번을 뜻하는 b0을 사용
+
+
+// 하나의 상수 버퍼만 사용할거니까 0번만 둘거임
+// 예를 들어, 베르소의 몸체와 얼굴 메시가 똑같은 월드,뷰,투영 행렬 속에서 있을 거니까 굳이 상수 버퍼가 여러 개 있을 이유가 없음
+cbuffer TransformBuffer : register(b0)
+{
+    // row_major : 행렬을 행 순서로 저장한다는 뜻
+    
+    row_major float4x4 g_matWorld;
+    row_major float4x4 g_matView;
+    row_major float4x4 g_matProj;
+};
+
 // 정점 셰이더가 받는 데이터
 // VS_INPUT : 내가 정한 구조체 이름, VS는 Vertex Shader의 약자
 struct VS_INPUT
@@ -27,7 +44,15 @@ VS_OUTPUT VS_MAIN(VS_INPUT Input)
 {
     VS_OUTPUT Output;
     
-    Output.vPosition = float4(Input.vPosition, 1.f);
+    float4 vPosition = float4(Input.vPosition, 1.f);
+
+    // mul : HLSL에서 벡터와 행렬 등을 곱하는 함수
+    // vPosition에 월드, 뷰, 투영 행렬을 곱해서 해당 스페이스 만들기
+    vPosition = mul(vPosition, g_matWorld);
+    vPosition = mul(vPosition, g_matView);
+    vPosition = mul(vPosition, g_matProj);
+
+    Output.vPosition = vPosition;
     Output.vColor = Input.vColor;
     
     return Output;
