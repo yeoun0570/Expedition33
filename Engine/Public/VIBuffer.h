@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Engine_Defines.h"
+#include "Component.h"
 
 NS_BEGIN(Engine)
 
-class ENGINE_DLL CVIBuffer
+class ENGINE_DLL CVIBuffer : public CComponent
 {
 protected:
 	CVIBuffer(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
