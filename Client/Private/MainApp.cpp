@@ -32,7 +32,7 @@ HRESULT CMainApp::Initialize()
         return E_FAIL;
 
 
-#pragma region 모델 테스트
+#pragma region 모델 테스트(모델 등록)
 
     const char* pFilePath = "./Bin/Resource/FBX/Characters_FBX/Verso/Outfits/Default.fbx";
 
@@ -58,6 +58,41 @@ void CMainApp::Update(f32_t fTimeDelta)
 HRESULT CMainApp::Render()
 {
     float4_t        vClearColor = float4_t(0.f, 0.f, 1.f, 1.f);
+
+#pragma region 모델 테스트(월드, 뷰, 투영 행렬 적용)
+    TRANSFORM Transform{};
+
+    // 1. 월드 행렬: 원본 크기와 위치 유지
+    // XMMatrixIdentity : 단위 행렬 만들기
+    XMStoreFloat4x4(
+        &Transform.matWorld,
+        XMMatrixIdentity());
+
+    // 2. 뷰 행렬: 카메라에서 모델 바라보기
+    // XMMatrixLookAtLH : 뷰 행렬 만들기
+    XMStoreFloat4x4(
+        &Transform.matView,
+        XMMatrixLookAtLH(
+            XMVectorSet(0.f, -3.f, 1.f, 1.f),   // 카메라 Eye
+            XMVectorSet(0.f, 0.f, 1.f, 1.f),    // 카메라 At
+            XMVectorSet(0.f, 0.f, 1.f, 0.f)));  // 카메라 Up: +Z
+
+    // 3. 투영 행렬: 원근감 적용
+    // XMMatrixPerspectiveFovLH : 투영 행렬 만들기
+    XMStoreFloat4x4(
+        &Transform.matProj,
+        XMMatrixPerspectiveFovLH(
+            XMConvertToRadians(60.f),
+            static_cast<f32_t>(g_iWinSizeX) /
+            static_cast<f32_t>(g_iWinSizeY),
+            0.1f,
+            10000.f));
+
+    // 4. GPU 상수 버퍼에 전달
+    if (FAILED(CGameInstance::Get().Update_Transform(Transform)))
+        return E_FAIL;
+#pragma endregion
+
 
     if (FAILED(CGameInstance::Get().Draw(&vClearColor, L"Verso_Body")))
         return E_FAIL;

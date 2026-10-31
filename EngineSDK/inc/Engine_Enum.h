@@ -6,7 +6,7 @@ namespace Engine
 	enum class WINMODE { FULL, WIN, END };
 
 	
-	//enum COMPONENTID { ID_DYNAMIC, ID_STATIC, ID_END };
+	enum class COMPONENTID { DYNAMIC, STATIC, END };
 
 	//enum INFO {	INFO_RIGHT, INFO_UP, INFO_LOOK, INFO_POS, INFO_END };
 

@@ -9,7 +9,7 @@ class ENGINE_DLL CPrototype abstract
 protected:
 	CPrototype(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 public:
-	~CPrototype() = default;
+	virtual ~CPrototype() = default;
 
 public:
 	virtual HRESULT Initialize_Prototype();
