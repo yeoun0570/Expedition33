@@ -6,7 +6,8 @@ NS_BEGIN(Engine)
 
 class ENGINE_DLL CUIObject abstract : public CGameObject
 {
-	typedef struct tagUIObjectDesc
+public:
+	typedef struct tagUIObjectDesc : public CGameObject::GAMEOBJECT_DESC
 	{
 		f32_t fX, fY, fSizeX, fSizeY;
 	}UIOBJECT_DESC;

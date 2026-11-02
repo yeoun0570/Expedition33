@@ -18,8 +18,8 @@ HRESULT CPrototype_Manager::Add_Prototype(uint32_t iPrototypeLevelIndex, const w
 {
     if (nullptr == m_pPrototypes ||
         iPrototypeLevelIndex >= m_iNumLevels ||
-        nullptr != Find_Prototype(iPrototypeLevelIndex, strPrototypeTag)
-        )
+        nullptr != Find_Prototype(iPrototypeLevelIndex, strPrototypeTag) ||
+        nullptr == pPrototype)
         return E_FAIL;
 
     m_pPrototypes[iPrototypeLevelIndex].emplace(strPrototypeTag, pPrototype);

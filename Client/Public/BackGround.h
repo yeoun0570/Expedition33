@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Client_Defines.h"
+
 #include "UIObject.h"
 
 NS_BEGIN(Client)
@@ -7,7 +9,7 @@ NS_BEGIN(Client)
 class CBackGround final : public CUIObject
 {
 public:
-	typedef struct tagBackGroundDesc
+	typedef struct tagBackGroundDesc : public CUIObject::UIOBJECT_DESC
 	{
 
 	}BACKGROUND_DESC;

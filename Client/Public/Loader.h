@@ -31,6 +31,7 @@ private:
 	CRITICAL_SECTION					m_CrticalSection = {};
 
 private:
+	// 로딩할 때 원본 생성
 	HRESULT		Loading_For_LogoLV();
 	HRESULT		Loading_For_GamePlayLV();
 

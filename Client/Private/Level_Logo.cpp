@@ -2,6 +2,7 @@
 
 #include "GameInstance.h"
 #include "BackGround.h"
+#include "Level_Loading.h"
 
 CLevel_Logo::CLevel_Logo(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
     : CLevel { pDevice, pContext }
@@ -10,11 +11,20 @@ CLevel_Logo::CLevel_Logo(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceConte
 
 HRESULT CLevel_Logo::Initialize()
 {
+    if (FAILED(Ready_Layer_BackGround(TEXT("Layer_BackGround"))))
+        return E_FAIL;
+
 	return S_OK;
 }
 
 void CLevel_Logo::Update(f32_t)
 {
+    if (GetKeyState(VK_RETURN) & 0x8000)
+    {
+        if (FAILED(CGameInstance::Get().Change_Level(ETOUI(LEVEL::LOADING),
+            CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL::GAMEPLAY))))
+            return;
+    }          
 }
 
 HRESULT CLevel_Logo::Render()
@@ -37,7 +47,8 @@ HRESULT CLevel_Logo::Ready_Layer_BackGround(const wstring_t& strLayerTag)
     //Desc.fSizeY = ;
     //Desc.iData = ;
 
-    CGameInstance::Get().Add_GameObject(ETOUI(LEVEL::LOGO), TEXT("Prototype_GameObject_BackGround"), ETOUI(LEVEL::LOGO), strLayerTag, &Desc);
+    if (FAILED(CGameInstance::Get().Add_GameObject(ETOUI(LEVEL::LOGO), TEXT("Prototype_GameObject_BackGround"), ETOUI(LEVEL::LOGO), strLayerTag, &Desc)))
+        return E_FAIL;
 
     return S_OK;
 }

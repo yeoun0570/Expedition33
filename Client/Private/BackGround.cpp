@@ -44,12 +44,7 @@ HRESULT CBackGround::Render()
     return S_OK;
 }
 
-shared_ptr<CPrototype> CBackGround::Clone(void* pArg)
-{
-    return shared_ptr<CPrototype>();
-}
-
-shared_ptr<CBackGround> CBackGround::Create(ComPtr<ID3D11Device> pDevice, ComPtr<ID3D11DeviceContext> pContext)
+shared_ptr<CBackGround> CBackGround::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
 {
 	auto    pInstance = shared_ptr<CBackGround>(new CBackGround(pDevice, pContext));
 

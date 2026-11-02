@@ -26,7 +26,6 @@ public:
 
 private:
 	FbxManager*				m_pManager = { nullptr };
-	vector<FbxScene*>		m_vecScenes;
 	vector<MESH_DATA>		m_vecMeshDatas;
 
 public:
