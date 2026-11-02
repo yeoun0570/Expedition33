@@ -1,5 +1,7 @@
 #include "Loader.h"
 
+#include "GameInstance.h"
+
 CLoader::CLoader(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
 	: m_pDevice { pDevice },
 	m_pContext { pContext }
@@ -73,6 +75,8 @@ HRESULT CLoader::Loading()
 
 HRESULT CLoader::Loading_For_LogoLV()
 {
+    //CGameInstance::Get().Add_GameObject()
+
     return S_OK;
 }
 

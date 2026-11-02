@@ -155,6 +155,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object_Manager.h" />
     <ClInclude Include="public\Component.h" />
     <ClInclude Include="Public\Engine_Defines.h" />
     <ClInclude Include="Public\Engine_Enum.h" />
@@ -165,8 +166,8 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="Public\FbxLoader.h" />
     <ClInclude Include="Public\GameInstance.h" />
     <ClInclude Include="public\GameObject.h" />
-    <ClInclude Include="public\GameObject_Manager.h" />
     <ClInclude Include="Public\Graphic_Device.h" />
+    <ClInclude Include="public\Layer.h" />
     <ClInclude Include="public\Level.h" />
     <ClInclude Include="public\Level_Manager.h" />
     <ClInclude Include="public\MeshCol.h" />
@@ -178,6 +179,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="Public\Timer.h" />
     <ClInclude Include="Public\Timer_Manager.h" />
     <ClInclude Include="public\TriCol.h" />
+    <ClInclude Include="public\UIObject.h" />
     <ClInclude Include="public\VIBuffer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -185,19 +187,21 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="Private\FbxLoader.cpp" />
     <ClCompile Include="Private\GameInstance.cpp" />
     <ClCompile Include="private\GameObject.cpp" />
-    <ClCompile Include="private\GameObject_Manager.cpp" />
     <ClCompile Include="Private\Graphic_Device.cpp" />
+    <ClCompile Include="private\Layer.cpp" />
     <ClCompile Include="private\Level.cpp" />
     <ClCompile Include="private\Level_Manager.cpp" />
     <ClCompile Include="private\MeshCol.cpp" />
     <ClCompile Include="private\Model.cpp" />
     <ClCompile Include="private\Model_Manager.cpp" />
+    <ClCompile Include="private\Object_Manager.cpp" />
     <ClCompile Include="private\Prototype.cpp" />
     <ClCompile Include="private\Prototype_Manager.cpp" />
     <ClCompile Include="private\Shader.cpp" />
     <ClCompile Include="Private\Timer.cpp" />
     <ClCompile Include="Private\Timer_Manager.cpp" />
     <ClCompile Include="private\TriCol.cpp" />
+    <ClCompile Include="private\UIObject.cpp" />
     <ClCompile Include="private\VIBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>

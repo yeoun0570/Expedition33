@@ -1,8 +1,7 @@
 #include "VIBuffer.h"
 
 CVIBuffer::CVIBuffer(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
-	: //CComponent { pDevice, pContext }
-    m_pDevice(pDevice)
+	: m_pDevice(pDevice)
 	, m_pContext(pContext)
 {
 }

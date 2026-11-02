@@ -25,6 +25,12 @@
     <Filter Include="01. Level\Loading\Loader">
       <UniqueIdentifier>{7b61c287-c5cf-4518-90d4-0f15c63b8aee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. GameObjects">
+      <UniqueIdentifier>{3085b29c-4c2f-4b76-983e-8c4166067f9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObjects\BackGround">
+      <UniqueIdentifier>{c73dc169-9415-4831-be3f-8ae31a981734}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\MainApp.h">
@@ -57,6 +63,9 @@
     <ClInclude Include="public\Loader.h">
       <Filter>01. Level\Loading\Loader</Filter>
     </ClInclude>
+    <ClInclude Include="public\BackGround.h">
+      <Filter>02. GameObjects\BackGround</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\MainApp.cpp">
@@ -76,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="private\Loader.cpp">
       <Filter>01. Level\Loading\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="private\BackGround.cpp">
+      <Filter>02. GameObjects\BackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
