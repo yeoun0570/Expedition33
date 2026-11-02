@@ -6,6 +6,7 @@ NS_BEGIN(Client)
 
 class CBackGround final : public CUIObject
 {
+public:
 	typedef struct tagBackGroundDesc
 	{
 

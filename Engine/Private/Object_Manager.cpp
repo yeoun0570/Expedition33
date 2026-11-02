@@ -9,7 +9,11 @@ CObject_Manager::CObject_Manager()
 
 HRESULT CObject_Manager::Initialize(uint32_t iNumLevels)
 {
+    m_iNumLevels = iNumLevels;
 
+    m_pLayers = make_shared<LAYERS[]>(iNumLevels);
+
+    return S_OK;
 }
 
 HRESULT CObject_Manager::Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg)

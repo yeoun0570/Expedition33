@@ -18,7 +18,7 @@ public:
 	HRESULT Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg);
 
 private:
-	uint32_t		m_iNumLeves = {};
+	uint32_t		m_iNumLevels = {};
 	shared_ptr<map<wstring_t, shared_ptr<class CLayer>>[]>			m_pLayers = { nullptr };
 	typedef map<wstring_t, shared_ptr<class CLayer>>				LAYERS;
 

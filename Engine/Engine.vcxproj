@@ -155,7 +155,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Object_Manager.h" />
+    <ClInclude Include="Public\Object_Manager.h" />
     <ClInclude Include="public\Component.h" />
     <ClInclude Include="Public\Engine_Defines.h" />
     <ClInclude Include="Public\Engine_Enum.h" />
