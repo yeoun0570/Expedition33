@@ -12,8 +12,6 @@ CFbxLoader::~CFbxLoader()
 		m_pManager->Destroy();
 		m_pManager = nullptr;
 	}
-
-	m_vecScenes.clear();
 }
 
 HRESULT CFbxLoader::Initialize()
@@ -91,8 +89,6 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 	// 읽은 데이터는 Scene에 남으므로 Importer는 정리
 	pImporter->Destroy();
 
-	m_vecScenes.push_back(pScene);
-
 	// Scene의 면을 삼각형으로 변환
 	FbxGeometryConverter Converter(m_pManager);
 
@@ -106,7 +102,7 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 	// ===============================================================================//
 	// ===============================================================================//
 
-	// Fbx에서메시 정보 추출해서 저장하기
+	// Fbx에서 메시 정보 추출해서 저장하기
 	
 
 	// 변환된 메시를 대상으로 개수 확인과 데이터 추출

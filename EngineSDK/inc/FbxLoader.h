@@ -25,7 +25,7 @@ public:
 	const vector<MESH_DATA>& Get_MeshDatas() const { return m_vecMeshDatas; }
 
 private:
-	FbxManager*				m_pManager	= nullptr;
+	FbxManager*				m_pManager = { nullptr };
 	vector<FbxScene*>		m_vecScenes;
 	vector<MESH_DATA>		m_vecMeshDatas;
 
