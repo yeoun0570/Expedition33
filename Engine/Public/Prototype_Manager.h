@@ -14,10 +14,16 @@ public:
 public:
 	HRESULT Initialize(uint32_t iNumLevels);
 
+	HRESULT Add_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, shared_ptr<class CPrototype> pPrototype);
+	shared_ptr<CPrototype> Clone_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, void* pArg);
+
+private:
+	shared_ptr<class CPrototype> Find_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag);
+
 private:
 	uint32_t			m_iNumLevels = {};
 
-	shared_ptr<map<const wstring_t, shared_ptr<class CPrototype>>[]>		m_Prototypes;
+	shared_ptr<map<const wstring_t, shared_ptr<class CPrototype>>[]>		m_pPrototypes;
 	typedef map<const wstring_t, shared_ptr<class CPrototype>>				PROTOTYPES;
 
 public:
