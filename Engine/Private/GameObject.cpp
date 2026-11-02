@@ -15,6 +15,12 @@ HRESULT CGameObject::Initialize_Prototype()
 
 HRESULT CGameObject::Initialize(void* pArg)
 {
+    if (nullptr != pArg)
+    {
+        auto		pDesc = static_cast<GAMEOBJECT_DESC*>(pArg);
+        m_iData = pDesc->iData;
+    }
+
     if (FAILED(__super::Initialize(pArg)))
         return E_FAIL;
 

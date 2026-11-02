@@ -23,16 +23,22 @@ HRESULT CLevel_Loading::Initialize(LEVEL eNextLevelID)
 void CLevel_Loading::Update(f32_t)
 {
     if (m_pLoader->IsFinished()
-        && GetKeyState(VK_SPACE))
+        && GetKeyState(VK_SPACE) & 0x8000)
     {
         shared_ptr<CLevel> pNewLevel = nullptr;
 
         switch (m_eNextLevelID)
         {
         case LEVEL::LOGO:
+#ifdef _DEBUG
+            MSG_BOX("로고 레벨 전환");
+#endif
             pNewLevel = CLevel_Logo::Create(m_pDevice, m_pContext);
             break;
         case LEVEL::GAMEPLAY:
+#ifdef _DEBUG
+            MSG_BOX("게임플레이 레벨 전환");
+#endif
             pNewLevel = CLevel_GamePlay::Create(m_pDevice, m_pContext);
             break;
         default:

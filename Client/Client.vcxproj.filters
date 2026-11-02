@@ -31,6 +31,12 @@
     <Filter Include="02. GameObjects\BackGround">
       <UniqueIdentifier>{c73dc169-9415-4831-be3f-8ae31a981734}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. GameObjects\Characters">
+      <UniqueIdentifier>{762f5ba2-a13d-4d6f-8f0b-dc337546d277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObjects\Characters\Verso">
+      <UniqueIdentifier>{2b93d668-3a4f-413f-9400-55d8e609d8cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\MainApp.h">
@@ -66,6 +72,12 @@
     <ClInclude Include="public\BackGround.h">
       <Filter>02. GameObjects\BackGround</Filter>
     </ClInclude>
+    <ClInclude Include="public\Verso.h">
+      <Filter>02. GameObjects\Characters\Verso</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Character.h">
+      <Filter>02. GameObjects\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\MainApp.cpp">
@@ -88,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="private\BackGround.cpp">
       <Filter>02. GameObjects\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Verso.cpp">
+      <Filter>02. GameObjects\Characters\Verso</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Character.cpp">
+      <Filter>02. GameObjects\Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

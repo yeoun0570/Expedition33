@@ -2,6 +2,7 @@
 
 #include "GameInstance.h"
 #include "BackGround.h"
+#include "Verso.h"
 
 CLoader::CLoader(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
 	: m_pDevice { pDevice },
@@ -76,18 +77,25 @@ HRESULT CLoader::Loading()
 
 HRESULT CLoader::Loading_For_LogoLV()
 {
-    // 원본 생성
-
     /* For.Prototype_GameObject_BackGround */
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::LOGO), TEXT("Prototype_GameObject_BackGround"),
         CBackGround::Create(m_pDevice, m_pContext))))
         return E_FAIL;
+
+    m_isFinished = true;
 
     return S_OK;
 }
 
 HRESULT CLoader::Loading_For_GamePlayLV()
 {
+    /* For.Prototype_GameObject_Verso */
+    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::GAMEPLAY), TEXT("Prototype_GameObject_Verso"),
+        CVerso::Create(m_pDevice, m_pContext))))
+        return E_FAIL;
+
+    m_isFinished = true;
+
     return S_OK;
 }
 

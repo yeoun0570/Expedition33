@@ -31,11 +31,11 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
         return E_FAIL;
 
     m_pPrototype_Manager = CPrototype_Manager::Create(EngineDesc.iNumLevels);
-    if (m_pModel_Manager == nullptr)
+    if (m_pPrototype_Manager == nullptr)
         return E_FAIL;
 
     m_pObject_Manager = CObject_Manager::Create(EngineDesc.iNumLevels);
-    if (m_pModel_Manager == nullptr)
+    if (m_pObject_Manager == nullptr)
         return E_FAIL;
 
     return S_OK;
