@@ -5,6 +5,8 @@
 #include "Timer_Manager.h"
 #include "Level_Manager.h"
 #include "Model_Manager.h"
+#include "Prototype_Manager.h"
+#include "Object_Manager.h"
 
 #include "Shader.h"
 #include "TriCol.h"
@@ -52,10 +54,21 @@ public:
 	HRESULT		Update_Transform(const TRANSFORM& Transform);
 #pragma endregion
 
+#pragma region Prototype_Manager
+	HRESULT Add_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, shared_ptr<class CPrototype> pPrototype);
+	shared_ptr<CPrototype> Clone_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, void* pArg);
+#pragma endregion
+
+#pragma region Obejct_Manager
+	HRESULT Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg);
+#pragma endregion
+
 
 private:
 	unique_ptr<CTimer_Manager>				m_pTimer_Manager = { nullptr };
 	unique_ptr<CLevel_Manager>				m_pLevel_Manager = { nullptr };
+	unique_ptr<CPrototype_Manager>			m_pPrototype_Manager = { nullptr };
+	unique_ptr<CObject_Manager>				m_pObject_Manager = { nullptr };
 	unique_ptr<CGraphic_Device>				m_pGraphic_Device = { nullptr };
 
 	unique_ptr<CShader>						m_pShader = { nullptr };

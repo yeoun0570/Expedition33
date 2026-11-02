@@ -1,19 +1,16 @@
 #include "Component.h"
 
-CComponent::CComponent(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
-	: CPrototype { pDevice, pContext }
+CComponent::CComponent(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext)
+    : CPrototype { pDevice, pContext }
 {
 }
 
-void CComponent::Update_Component(const f32_t fTimeDelta)
+HRESULT CComponent::Initialize_Prototype()
 {
+    return S_OK;
 }
 
-void CComponent::LateUpdate_Component(const f32_t fTimeDelta)
+HRESULT CComponent::Initialize(void* pArg)
 {
-}
-
-shared_ptr<CPrototype> CComponent::Clone(void* pArg)
-{
-	return shared_ptr<CPrototype>();
+    return S_OK;
 }

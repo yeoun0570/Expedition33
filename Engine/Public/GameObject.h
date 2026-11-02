@@ -1,11 +1,18 @@
 #pragma once
+
 #include "Prototype.h"
-#include "Component.h"
 
 NS_BEGIN(Engine)
 
-class ENGINE_DLL CGameObject : public CPrototype
+class ENGINE_DLL CGameObject abstract : public CPrototype
 {
+public:
+	typedef struct tagGameObjectDesc
+	{
+		/*GameObject 생성 시에 필요한 데이터 받아온다.*/
+		uint32_t iData = {};
+	}GAMEOBJECT_DESC;
+
 protected:
 	CGameObject(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 
@@ -13,21 +20,18 @@ public:
 	virtual ~CGameObject() = default;
 
 public:
-	shared_ptr<CComponent> Get_Component(COMPONENTID eID, const wstring_t& strComponentTag);
+	virtual HRESULT Initialize_Prototype() override;
+	virtual HRESULT Initialize(void* pArg) override;
+	virtual void Priority_Update(const f32_t fTimeDelta);
+	virtual void Update(const f32_t fTimeDelta);
+	virtual void Late_Update(const f32_t fTimeDelta);
+	virtual HRESULT Render();
+
+protected:
+	uint32_t			m_iData = {};
 
 public:
-	virtual			HRESULT		Initialize_GameObject();
-	virtual			void		Update_GameObject(const f32_t fTimeDelta);
-	virtual			void		LateUpdate_GameObject(const f32_t fTimeDelta);
-	virtual			void		Render_GameObject() = 0;
-	virtual			void		Add_Component(void* pArg) = 0;
-	
-protected:
-	map<wstring_t, shared_ptr<CComponent>>			m_Components[ETOUI(COMPONENTID::END)];
-
-private:
-	shared_ptr<CComponent> Find_Component(COMPONENTID eID, const wstring_t& strComponentTag);
-	shared_ptr<CPrototype> Clone(void* pArg) override;
+	virtual shared_ptr<CPrototype> Clone(void* pArg) = 0;
 };
 
 NS_END
