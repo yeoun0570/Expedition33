@@ -50,6 +50,9 @@ void CVerso::Update(const f32_t fTimeDelta)
 void CVerso::Late_Update(const f32_t fTimeDelta)
 {
     __super::Late_Update(fTimeDelta);
+
+    CGameInstance::Get().Add_RenderGroup(RENDERGROUP::NONBLEND, 
+                                        dynamic_pointer_cast<CGameObject>(shared_from_this()));
 }
 
 HRESULT CVerso::Render()

@@ -47,9 +47,14 @@ HRESULT CRenderer::Render_Priority()
         if (nullptr != pRenderObject)
         {
             if (FAILED(pRenderObject->Render()))
+            {
+                m_RenderObjects[ETOUI(RENDERGROUP::PRIORITY)].clear();
                 return E_FAIL;
+            }
         }
     }
+
+    m_RenderObjects[ETOUI(RENDERGROUP::PRIORITY)].clear();
 
     return S_OK;
 }
@@ -61,9 +66,14 @@ HRESULT CRenderer::Render_NonBlend()
         if (nullptr != pRenderObject)
         {
             if (FAILED(pRenderObject->Render()))
+            {
+                m_RenderObjects[ETOUI(RENDERGROUP::NONBLEND)].clear();
                 return E_FAIL;
+            }
         }
     }
+
+    m_RenderObjects[ETOUI(RENDERGROUP::NONBLEND)].clear();
 
     return S_OK;
 }
@@ -75,9 +85,14 @@ HRESULT CRenderer::Render_Blend()
         if (nullptr != pRenderObject)
         {
             if (FAILED(pRenderObject->Render()))
+            {
+                m_RenderObjects[ETOUI(RENDERGROUP::BLEND)].clear();
                 return E_FAIL;
+            }
         }
     }
+
+    m_RenderObjects[ETOUI(RENDERGROUP::BLEND)].clear();
 
     return S_OK;
 }
@@ -89,9 +104,14 @@ HRESULT CRenderer::Render_UI()
         if (nullptr != pRenderObject)
         {
             if (FAILED(pRenderObject->Render()))
+            {
+                m_RenderObjects[ETOUI(RENDERGROUP::UI)].clear();
                 return E_FAIL;
+            }
         }
     }
+
+    m_RenderObjects[ETOUI(RENDERGROUP::UI)].clear();
 
     return S_OK;
 }

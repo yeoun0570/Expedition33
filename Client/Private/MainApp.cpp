@@ -43,6 +43,9 @@ HRESULT CMainApp::Render()
 {
     float4_t        vClearColor = float4_t(0.f, 0.f, 1.f, 1.f);
 
+    if (FAILED(CGameInstance::Get().Draw(&vClearColor)))
+        return E_FAIL;
+
     return S_OK;
 }
 

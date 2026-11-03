@@ -47,6 +47,17 @@ HRESULT CGraphic_Device::Initialize(HWND hWnd, WINMODE isWindowed, uint32_t iWin
 	if (FAILED(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, 0, iFlag, nullptr, 0, D3D11_SDK_VERSION, m_pDevice.GetAddressOf(), &FeatureLV, m_pDeviceContext.GetAddressOf())))
 		return E_FAIL;
 
+
+	/* 멀티쓰레드 반영 사실을 알려준다. */
+	ComPtr<ID3D11Multithread> pMultithread = nullptr;
+
+	// 디바이스 생성이 아니라 사용하는 부분에서 멀티쓰레드가 필요할테니까 Context에다가 멀티쓰레드를 반영했다고 알려준다.
+	if (FAILED(m_pDeviceContext.As(&pMultithread)))
+		return E_FAIL;
+
+	pMultithread->SetMultithreadProtected(TRUE);
+
+
 	/* SwapChain : 더블버퍼링. 전면과 후면버퍼를 번갈아가며 화면에 보여준다.(Present) */
 
 
