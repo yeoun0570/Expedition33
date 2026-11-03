@@ -36,6 +36,16 @@ shared_ptr<CPrototype> CPrototype_Manager::Clone_Prototype(uint32_t iPrototypeLe
     return pPrototype->Clone(pArg);
 }
 
+void CPrototype_Manager::Clear(uint32_t iClearLevelIndex)
+{
+    for (auto& Pair : m_pPrototypes[iClearLevelIndex])
+    {
+        Pair.second.reset();
+    }
+
+    m_pPrototypes[iClearLevelIndex].clear();
+}
+
 shared_ptr<class CPrototype> CPrototype_Manager::Find_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag)
 {
     auto    iter = m_pPrototypes[iPrototypeLevelIndex].find(strPrototypeTag);

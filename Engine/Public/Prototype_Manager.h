@@ -16,6 +16,7 @@ public:
 
 	HRESULT Add_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, shared_ptr<class CPrototype> pPrototype);
 	shared_ptr<CPrototype> Clone_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, void* pArg);
+	void	Clear(uint32_t iClearLevelIndex);
 
 private:
 	shared_ptr<class CPrototype> Find_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag);

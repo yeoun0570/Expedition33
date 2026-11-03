@@ -16,6 +16,10 @@ public:
 public:
 	HRESULT Initialize(uint32_t iNumLevels);
 	HRESULT Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg);
+	void	Priority_Update(const f32_t fTimeDelta);
+	void	Update(const f32_t fTimeDelta);
+	void	Late_Update(const f32_t fTimeDelta);
+	void	Clear(uint32_t iClearLevelIndex);
 
 private:
 	uint32_t		m_iNumLevels = {};

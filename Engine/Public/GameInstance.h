@@ -7,6 +7,7 @@
 #include "Model_Manager.h"
 #include "Prototype_Manager.h"
 #include "Object_Manager.h"
+#include "Renderer.h"
 
 #include "Shader.h"
 #include "TriCol.h"
@@ -63,13 +64,19 @@ public:
 	HRESULT Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg);
 #pragma endregion
 
+#pragma region Renderer
+	HRESULT Add_RenderGroup(RENDERGROUP eGroup, shared_ptr<class CGameObject> pRenderObject);
+#pragma endregion
+
 
 private:
+	unique_ptr<CGraphic_Device>				m_pGraphic_Device = { nullptr };
+
 	unique_ptr<CTimer_Manager>				m_pTimer_Manager = { nullptr };
 	unique_ptr<CLevel_Manager>				m_pLevel_Manager = { nullptr };
 	unique_ptr<CPrototype_Manager>			m_pPrototype_Manager = { nullptr };
 	unique_ptr<CObject_Manager>				m_pObject_Manager = { nullptr };
-	unique_ptr<CGraphic_Device>				m_pGraphic_Device = { nullptr };
+	unique_ptr<CRenderer>					m_pRenderer = { nullptr };
 
 	unique_ptr<CShader>						m_pShader = { nullptr };
 	unique_ptr<CTriCol>						m_pTriCol = { nullptr };

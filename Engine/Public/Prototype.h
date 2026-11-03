@@ -4,7 +4,7 @@
 
 NS_BEGIN(Engine)
 
-class ENGINE_DLL CPrototype abstract
+class ENGINE_DLL CPrototype abstract : public enable_shared_from_this<CPrototype>
 {
 protected:
 	CPrototype(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
