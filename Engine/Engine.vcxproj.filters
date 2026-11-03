@@ -88,6 +88,9 @@
     <Filter Include="01.Utility\04. GameObject\Manager\Layer">
       <UniqueIdentifier>{9f45785e-8a38-4029-bb97-68452dc8f487}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Utility\05. Renderer">
+      <UniqueIdentifier>{75f6d382-c642-4225-89bc-d2c3a5020979}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -168,6 +171,9 @@
     <ClInclude Include="public\Component.h">
       <Filter>01.Utility\03. Component</Filter>
     </ClInclude>
+    <ClInclude Include="public\Renderer.h">
+      <Filter>01.Utility\05. Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -229,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="private\Component.cpp">
       <Filter>01.Utility\03. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Renderer.cpp">
+      <Filter>01.Utility\05. Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
