@@ -75,7 +75,7 @@ HRESULT CGameInstance::Draw_Begin(const float4_t* pClearColor)
     return S_OK;
 }
 
-HRESULT CGameInstance::Draw(const float4_t* pClearColor, const wstring_t& strModelTag)
+HRESULT CGameInstance::Draw(const float4_t* pClearColor)
 {
     // 1. 화면 지우기
     if (FAILED(Draw_Begin(pClearColor)))
@@ -87,15 +87,6 @@ HRESULT CGameInstance::Draw(const float4_t* pClearColor, const wstring_t& strMod
     if (FAILED(m_pLevel_Manager->Render()))
         return E_FAIL;
 
-    //// 2. 셰이더와 입력 레이아웃 연결
-    //m_pShader->Bind_Shader();
-    //
-    //// 3. 정점·인덱스 버퍼 연결 후 그리기
-    ////m_pTriCol->Render_Buffer();
-    //if(FAILED(m_pModel_Manager->Render_Model(strModelTag)))
-    //    return E_FAIL;
-
-    // 4. 완성한 화면 표시
     if (FAILED(Draw_End()))
         return E_FAIL;
 
@@ -150,10 +141,17 @@ HRESULT CGameInstance::Add_Model(const wstring_t& strModelTag, const char* pFile
     return m_pModel_Manager->Add_Model(strModelTag, pFilePath);
 }
 
-HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag)
+HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag, const TRANSFORM& Transform)
 {
     if (nullptr == m_pModel_Manager)
         return E_FAIL;
+
+    // 여기에서 상수 버퍼까지 전달
+    if (FAILED(Update_Transform(Transform)))
+        return E_FAIL;
+
+    // 셰이더와 입력 레이아웃 연결
+    m_pShader->Bind_Shader();
 
     return m_pModel_Manager->Render_Model(strModelTag);
 }
@@ -181,6 +179,7 @@ shared_ptr<CPrototype> CGameInstance::Clone_Prototype(uint32_t iPrototypeLevelIn
     return m_pPrototype_Manager->Clone_Prototype(iPrototypeLevelIndex, strPrototypeTag, pArg);
 }
 #pragma endregion
+
 #pragma region OBJECT_MANAGER
 HRESULT CGameInstance::Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg)
 {

@@ -29,7 +29,7 @@ public:
 	void	Update_Engine(f32_t fTimeDelta);
 
 	HRESULT Draw_Begin(const float4_t* pClearColor);
-	HRESULT Draw(const float4_t* pClearColor, const wstring_t& strModelTag);
+	HRESULT Draw(const float4_t* pClearColor);
 	HRESULT Draw_End();
 
 	HRESULT Clear_Resources(uint32_t iClearLevelIndex);
@@ -48,7 +48,7 @@ public:
 
 #pragma region Model_Manager
 	HRESULT	Add_Model(const wstring_t& strModelTag, const char* pFilePath);
-	HRESULT	Render_Model(const wstring_t& strModelTag);
+	HRESULT	Render_Model(const wstring_t& strModelTag, const TRANSFORM& Transform);
 #pragma endregion
 
 #pragma region Shader

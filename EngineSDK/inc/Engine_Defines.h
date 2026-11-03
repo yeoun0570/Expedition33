@@ -2,6 +2,7 @@
 
 #include <d3d11.h>
 #include <DirectXMath.h>
+#include <d3d11_4.h> // DX11 추후에 추가된 기능들이 있는 헤더
 
 using namespace DirectX;
 
