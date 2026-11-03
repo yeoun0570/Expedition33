@@ -141,9 +141,13 @@ HRESULT CGameInstance::Add_Model(const wstring_t& strModelTag, const char* pFile
     return m_pModel_Manager->Add_Model(strModelTag, pFilePath);
 }
 
-HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag)
+HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag, const TRANSFORM& Transform)
 {
     if (nullptr == m_pModel_Manager)
+        return E_FAIL;
+
+    // 여기에서 상수 버퍼까지 전달
+    if (FAILED(Update_Transform(Transform)))
         return E_FAIL;
 
     // 셰이더와 입력 레이아웃 연결
@@ -175,6 +179,7 @@ shared_ptr<CPrototype> CGameInstance::Clone_Prototype(uint32_t iPrototypeLevelIn
     return m_pPrototype_Manager->Clone_Prototype(iPrototypeLevelIndex, strPrototypeTag, pArg);
 }
 #pragma endregion
+
 #pragma region OBJECT_MANAGER
 HRESULT CGameInstance::Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg)
 {

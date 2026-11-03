@@ -48,7 +48,7 @@ public:
 
 #pragma region Model_Manager
 	HRESULT	Add_Model(const wstring_t& strModelTag, const char* pFilePath);
-	HRESULT	Render_Model(const wstring_t& strModelTag);
+	HRESULT	Render_Model(const wstring_t& strModelTag, const TRANSFORM& Transform);
 #pragma endregion
 
 #pragma region Shader

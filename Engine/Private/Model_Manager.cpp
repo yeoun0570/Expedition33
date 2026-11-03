@@ -1,6 +1,8 @@
 #include "Model_Manager.h"
 #include "FbxLoader.h"
 
+#include "GameInstance.h"
+
 CModel_Manager::CModel_Manager(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
 	: m_pDevice { pDevice },
 	m_pContext { pContext }
