@@ -7,6 +7,7 @@ NS_BEGIN(Engine)
 class ENGINE_DLL CGameObject abstract : public CPrototype
 {
 public:
+	// 오브젝트의 DESC 구조체들은 사본에서만 사용하는 추가 데이터들
 	typedef struct tagGameObjectDesc
 	{
 		/*GameObject 생성 시에 필요한 데이터 받아온다.*/
