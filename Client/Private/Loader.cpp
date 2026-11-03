@@ -65,12 +65,12 @@ HRESULT CLoader::Loading()
         break;
     }
 
-    if (FAILED(hr))
-        return E_FAIL;
-
     CoUninitialize();
 
     LeaveCriticalSection(&m_CrticalSection);
+
+    if (FAILED(hr))
+        return E_FAIL;
 
     return S_OK;
 }

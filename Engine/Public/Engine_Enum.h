@@ -8,6 +8,8 @@ namespace Engine
 	
 	enum class COMPONENTID { DYNAMIC, STATIC, END };
 
+	enum class RENDERGROUP { PRIORITY, NONBLEND, BLEND, UI, END };
+
 	//enum INFO {	INFO_RIGHT, INFO_UP, INFO_LOOK, INFO_POS, INFO_END };
 
 	//enum ROTATION { ROT_X, ROT_Y, ROT_Z, ROT_END };

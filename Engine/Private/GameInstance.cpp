@@ -38,16 +38,28 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     if (m_pObject_Manager == nullptr)
         return E_FAIL;
 
+    m_pRenderer = CRenderer::Create(pDevice, pContext);
+    if (m_pRenderer == nullptr)
+        return E_FAIL;
+
     return S_OK;
 }
 
 void CGameInstance::Update_Engine(f32_t fTimeDelta)
 {
+    m_pObject_Manager->Priority_Update(fTimeDelta);
+    m_pObject_Manager->Update(fTimeDelta);
+    m_pObject_Manager->Late_Update(fTimeDelta);
+
     m_pLevel_Manager->Update(fTimeDelta);
 }
 
 HRESULT CGameInstance::Clear_Resources(uint32_t iClearLevelIndex)
 {
+    m_pObject_Manager->Clear(iClearLevelIndex);
+
+    m_pPrototype_Manager->Clear(iClearLevelIndex);
+
     return S_OK;
 }
 
@@ -69,13 +81,26 @@ HRESULT CGameInstance::Draw(const float4_t* pClearColor, const wstring_t& strMod
     if (FAILED(Draw_Begin(pClearColor)))
         return E_FAIL;
 
+    if (FAILED(m_pRenderer->Draw()))
+        return E_FAIL;
+
     if (FAILED(m_pLevel_Manager->Render()))
         return E_FAIL;
 
+<<<<<<< HEAD
     // 2. 정점·인덱스 버퍼 연결 후 그리기
     //m_pTriCol->Render_Buffer();
     if(FAILED(m_pModel_Manager->Render_Model(strModelTag)))
         return E_FAIL;
+=======
+    //// 2. 셰이더와 입력 레이아웃 연결
+    //m_pShader->Bind_Shader();
+    //
+    //// 3. 정점·인덱스 버퍼 연결 후 그리기
+    ////m_pTriCol->Render_Buffer();
+    //if(FAILED(m_pModel_Manager->Render_Model(strModelTag)))
+    //    return E_FAIL;
+>>>>>>> main
 
     // 4. 완성한 화면 표시
     if (FAILED(Draw_End()))
@@ -174,6 +199,13 @@ HRESULT CGameInstance::Add_GameObject(uint32_t iPrototypeLevelIndex, const wstri
 
 #pragma endregion
 
+#pragma region Renderer
+HRESULT CGameInstance::Add_RenderGroup(RENDERGROUP eGroup, shared_ptr<class CGameObject> pRenderObject)
+{
+    return m_pRenderer->Add_RenderGroup(eGroup, pRenderObject);
+}
+#pragma endregion
+
 void CGameInstance::Release_Engine()
 {
     m_pTimer_Manager.reset();
@@ -181,6 +213,7 @@ void CGameInstance::Release_Engine()
     m_pModel_Manager.reset();
     m_pPrototype_Manager.reset();
     m_pObject_Manager.reset();
+    m_pRenderer.reset();
     
     m_pShader.reset();
     m_pTriCol.reset();
