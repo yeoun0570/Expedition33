@@ -15,13 +15,36 @@ HRESULT CVerso::Initialize_Prototype()
 
     if (FAILED(CGameInstance::Get().Add_Model(L"Verso_Body", pFilePath)))
     {
+#ifdef _DEBUG
         MSG_BOX("베르소 몸통 모델 등록에 실패했습니다.");
+#endif
         return E_FAIL;
     }
 
+#ifdef _DEBUG
     MSG_BOX("베르소 몸통 모델 등록에 성공했습니다.");
+#endif
 
 #pragma endregion
+
+#pragma region 얼굴 등록
+
+    pFilePath = "./Bin/Resource/FBX/Characters_FBX/Verso/Faces/Default.fbx";
+
+    if (FAILED(CGameInstance::Get().Add_Model(TEXT("Verso_Face"), pFilePath)))
+    {
+#ifdef _DEBUG
+        MSG_BOX("베르소 얼굴 모델 등록에 실패했습니다.");
+#endif
+        return E_FAIL;
+    }
+
+#ifdef _DEBUG
+    MSG_BOX("베르소 얼굴 모델 등록에 성공했습니다.");
+#endif
+
+#pragma endregion
+
 
     if (FAILED(__super::Initialize_Prototype()))
         return E_FAIL;
@@ -87,6 +110,9 @@ HRESULT CVerso::Render()
 {
 #pragma region 모델 테스트(모델 출력)
     if (FAILED(CGameInstance::Get().Render_Model(TEXT("Verso_Body"), m_Transform)))
+        return E_FAIL;
+
+    if (FAILED(CGameInstance::Get().Render_Model(TEXT("Verso_Face"), m_Transform)))
         return E_FAIL;
 #pragma endregion
 
