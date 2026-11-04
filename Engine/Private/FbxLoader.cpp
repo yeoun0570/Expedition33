@@ -50,6 +50,8 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 	// FbxImporter : 파일의 데이터를 SDK 객체로 가져오는 도구
 	// FbxScene : 파일에서 읽어 온 모델·뼈대 등을 담는 공간
 
+	/* 파일 읽을 준비와 저장할 공간 준비 */
+
 	if (m_pManager == nullptr)
 		return E_FAIL;
 
@@ -102,8 +104,59 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 	// ===============================================================================//
 	// ===============================================================================//
 
-	// Fbx에서 메시 정보 추출해서 저장하기
+	/* Fbx 노드 데이터 읽어와서 뼈대 가져오기 */
+
+	m_vecNodeDatas.clear(); // 새로 로드 되었을 때 비워놓고 다시 저장하기 위한 용도
+
+	// 최상위 노드 데이터 m_vecNodeDatas에 저장
+	FbxNode* pRootNode = pScene->GetRootNode();
+	if (nullptr == pRootNode)
+		return E_FAIL;
+
+	vector<FbxNode*> vecNodes;
+	vecNodes.push_back(pRootNode);
+
+	FBX_NODE_DATA	RootData
+	{
+		pRootNode->GetName(),
+		-1,
+		pRootNode->GetSkeleton() != nullptr,
+	};
+
+	m_vecNodeDatas.push_back(RootData);
+
+
+	// 나머지 노드들 데이터 m_vecNodeDatas에 저장
+	for (uint64_t iNodeIndex = 0; iNodeIndex < vecNodes.size(); ++iNodeIndex)
+	{
+		FbxNode* pParentNode = vecNodes[iNodeIndex];
+
+		for (int32_t iChildIndex = 0; iChildIndex < pParentNode->GetChildCount(); ++iChildIndex)
+		{
+			FbxNode* pChildNode = pParentNode->GetChild(iChildIndex);
+
+			vecNodes.push_back(pChildNode);
+
+
+			FBX_NODE_DATA	ChildData
+			{
+				pChildNode->GetName(),
+				static_cast<int32_t>(iNodeIndex),
+				pChildNode->GetSkeleton() != nullptr,
+			};
+
+			m_vecNodeDatas.push_back(ChildData);
+		}
+	}
+
+	// ===============================================================================//
+	// ===============================================================================//
+	// ===============================================================================//
+
+	/* Fbx에서 메시 정보 추출해서 저장하기 */
 	
+
+	/* 정점 정보 저장하기 */
 
 	// 변환된 메시를 대상으로 개수 확인과 데이터 추출
 	const int iMeshCount = pScene->GetSrcObjectCount<FbxMesh>();
@@ -143,17 +196,30 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 				static_cast<f32_t>(Position[2])
 			};
 
-			// 첫 표시는 텍스처 없이 초록색으로 확인
-			MeshData.vecVerticles[iPoint].vColor =
+
+			if (strcmp(pFilePath, "./Bin/Resource/FBX/Characters_FBX/Verso/Outfits/BikiniB.fbx") == 0 ||
+				strcmp(pFilePath, "./Bin/Resource/FBX/Characters_FBX/Verso/Outfits/Default.fbx") == 0)
 			{
-				0.f, 1.f, 0.f, 1.f
-			};
+				// 첫 표시는 텍스처 없이 초록색으로 확인
+				MeshData.vecVerticles[iPoint].vColor =
+				{
+					0.f, 1.f, 0.f, 1.f
+				};
+			}
+
+			else
+			{
+				MeshData.vecVerticles[iPoint].vColor =
+				{
+					1.f, 0.f, 0.f, 1.f
+				};
+			}
 		}
 
 
 		// ===============================================================================//
 
-		// 인덱스 정보 저장
+		/* 인덱스 정보 저장 */
 
 		const int32_t iPolygonCount = pMesh->GetPolygonCount();
 
@@ -188,7 +254,7 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 
 		// ===============================================================================//
 
-		// 처리 메시지
+		/* 처리 메시지 */
 
 		char szMessage[512] = {};
 
