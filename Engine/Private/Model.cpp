@@ -6,7 +6,7 @@ CModel::CModel(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceCon
 {
 }
 
-HRESULT CModel::Initialize(const vector<MESH_DATA>& MeshDatas)
+HRESULT CModel::Initialize(const vector<MESH_DATA>& MeshDatas, const vector<FBX_NODE_DATA>& NodeDatas)
 {
     if (m_pDevice == nullptr || m_pContext == nullptr)
         return E_FAIL;
@@ -29,6 +29,8 @@ HRESULT CModel::Initialize(const vector<MESH_DATA>& MeshDatas)
         }
     }
 
+    m_vecNodeDatas = NodeDatas;
+
     return S_OK;
 }
 
@@ -40,11 +42,11 @@ void CModel::Render()
     }
 }
 
-shared_ptr<CModel> CModel::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, const vector<MESH_DATA>& MeshDatas)
+shared_ptr<CModel> CModel::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, const vector<MESH_DATA>& MeshDatas, const vector<FBX_NODE_DATA>& NodeDatas)
 {
     auto pInstance = shared_ptr<CModel>(new CModel(pDevice, pContext));
 
-    if (FAILED(pInstance->Initialize(MeshDatas)))
+    if (FAILED(pInstance->Initialize(MeshDatas, NodeDatas)))
     {
         MSG_BOX("Failed to Created : CModel");
         pInstance.reset();
