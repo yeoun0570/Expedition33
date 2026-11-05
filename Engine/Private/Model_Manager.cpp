@@ -35,8 +35,8 @@ HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFil
 		return E_FAIL;
 	}
 
-	// 가져온 Fbx파일 메시 데이터들을 모델에 연결해서 생성
-	auto pModel = CModel::Create(m_pDevice, m_pContext, pLoader->Get_MeshDatas());
+	// 가져온 Fbx파일 메시 데이터, 노드들을 모델에 연결해서 생성
+	auto pModel = CModel::Create(m_pDevice, m_pContext, pLoader->Get_MeshDatas(), pLoader->Get_NodeDatas());
 	if (nullptr == pModel)
 		return E_FAIL;
 
