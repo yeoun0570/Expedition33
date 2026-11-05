@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Prototype.h"
+#include "Transform.h"
 
 NS_BEGIN(Engine)
 
@@ -8,7 +9,7 @@ class ENGINE_DLL CGameObject abstract : public CPrototype
 {
 public:
 	// 오브젝트의 DESC 구조체들은 사본에서만 사용하는 추가 데이터들
-	typedef struct tagGameObjectDesc
+	typedef struct tagGameObjectDesc : public CTransform::TRANSFORM_DESC
 	{
 		/*GameObject 생성 시에 필요한 데이터 받아온다.*/
 		uint32_t iData = {};
@@ -29,7 +30,11 @@ public:
 	virtual HRESULT Render();
 
 protected:
-	uint32_t			m_iData = {};
+	uint32_t				m_iData = {};
+	shared_ptr<CTransform>	m_pTransformCom = { nullptr };
+
+protected:
+	map<wstring_t, shared_ptr<CComponent>>		m_pComponents;
 
 public:
 	virtual shared_ptr<CPrototype> Clone(void* pArg) = 0;

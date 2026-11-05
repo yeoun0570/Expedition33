@@ -155,6 +155,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Public\Engine_Global.h" />
     <ClInclude Include="Public\Object_Manager.h" />
     <ClInclude Include="public\Component.h" />
     <ClInclude Include="Public\Engine_Defines.h" />
@@ -179,6 +180,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="public\Shader.h" />
     <ClInclude Include="Public\Timer.h" />
     <ClInclude Include="Public\Timer_Manager.h" />
+    <ClInclude Include="public\Transform.h" />
     <ClInclude Include="public\TriCol.h" />
     <ClInclude Include="public\UIObject.h" />
     <ClInclude Include="public\VIBuffer.h" />
@@ -202,6 +204,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="private\Shader.cpp" />
     <ClCompile Include="Private\Timer.cpp" />
     <ClCompile Include="Private\Timer_Manager.cpp" />
+    <ClCompile Include="private\Transform.cpp" />
     <ClCompile Include="private\TriCol.cpp" />
     <ClCompile Include="private\UIObject.cpp" />
     <ClCompile Include="private\VIBuffer.cpp" />

@@ -5,10 +5,9 @@ namespace Engine
 {
 	enum class WINMODE { FULL, WIN, END };
 
-	
-	enum class COMPONENTID { DYNAMIC, STATIC, END };
-
 	enum class RENDERGROUP { PRIORITY, NONBLEND, BLEND, UI, END };
+
+	enum class STATE { RIGHT, UP, LOOK, POSITION, END };
 
 	//enum INFO {	INFO_RIGHT, INFO_UP, INFO_LOOK, INFO_POS, INFO_END };
 

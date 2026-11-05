@@ -24,6 +24,15 @@ HRESULT CGameObject::Initialize(void* pArg)
     if (FAILED(__super::Initialize(pArg)))
         return E_FAIL;
 
+    m_pTransformCom = CTransform::Create(m_pDevice, m_pContext);
+    if (nullptr == m_pTransformCom)
+        return E_FAIL;
+
+    if (FAILED(m_pTransformCom->Initialize(pArg)))
+        return E_FAIL;
+
+    m_pComponents.emplace(g_strTransformComTag, m_pTransformCom);
+
     return S_OK;
 }
 
