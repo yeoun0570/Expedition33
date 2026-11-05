@@ -30,6 +30,12 @@ private:
 	vector<MESH_DATA>		m_vecMeshDatas;
 	vector<FBX_NODE_DATA>	m_vecNodeDatas;
 
+private:
+	HRESULT	Read_BoneNodes(FbxScene* pScene);
+	HRESULT	Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData);
+	void	Read_MeshCluster(FbxMesh* pMesh, MESH_DATA& MeshData);
+
+
 public:
 	static unique_ptr<CFbxLoader> Create();
 };
