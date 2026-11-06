@@ -39,13 +39,22 @@ public:
 			XMVectorGetX(XMVector3Length(Get_State(STATE::LOOK))));
 	}
 
+public:
 	void SetUp_Scale(f32_t fScaleX, f32_t fScaleY, f32_t fScaleZ);
 
-public:
 	void Go_Straight(const f32_t fTimeDelta);
 	void Go_Backward(const f32_t fTimeDelta);
 	void Go_Right(const f32_t fTimeDelta);
 	void Go_Left(const f32_t fTimeDelta);
+
+	void Rotation(fvector_t vAxis, f32_t fAngle);
+	void Rotation(f32_t fAngleX, f32_t fAngleY, f32_t fAngleZ);
+
+	void Turn(fvector_t vAxis, const f32_t fTimeDelta);
+	void Turn(const f32_t fTimeDelta, bool_t isRotX = false, bool_t isRotY = false, bool_t isRotZ = false);
+
+	void LookAt(fvector_t vAt);
+	void Chase(fvector_t vTarget, const f32_t fTimeDelta, f32_t fLimitDistance);
 
 private:
 	float4x4_t		m_WorldMatrix = {};
