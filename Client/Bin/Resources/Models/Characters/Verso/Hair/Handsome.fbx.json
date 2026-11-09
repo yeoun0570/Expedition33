@@ -1,0 +1,93 @@
+{
+  "attachmentVerticesRebased": 0,
+  "conversionVersion": 10,
+  "file": "Hair/Handsome.fbx",
+  "generatedTangentsFromUV": true,
+  "jointMapping": [
+    {
+      "copyWorldFrom": "head",
+      "joint": "head__part_495",
+      "paletteSlot": 495
+    }
+  ],
+  "materials": [
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 0.0,
+      "mode": 1,
+      "name": "MI_Hair_Gustave_Verso_823aaf7d",
+      "normalStrength": 1.0,
+      "parameters": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224,
+        0.800000011920929,
+        0.015625,
+        0.014221999794244766,
+        0.013183999806642532,
+        1.5,
+        0.010417000390589237,
+        0.009325000457465649,
+        0.00851800013333559,
+        0.20000000298023224,
+        0.21875,
+        0.19851699471473694,
+        0.1834309995174408,
+        6.0,
+        0.1818380057811737,
+        -0.15838800370693207,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 0.4000000059604645,
+      "section": 0,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/a2e95595199d574b4d5d_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/daac8cff4490f768.png",
+        "sourceCoverageChannel": "R",
+        "transparency": "Textures/FBXOpacity/a2e95595199d574b4d5d_Transparency.png",
+        "opacity": "Textures/FBXOpacity/a2e95595199d574b4d5d_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/eab3a8758c079439.png",
+        "",
+        "",
+        "",
+        "Textures/Verso/daac8cff4490f768.png",
+        "Textures/Verso/66b945c70e58b5a9.png",
+        "Textures/Verso/33488dacad727069.png",
+        "Textures/Verso/7c169a1eda53ff6d.png",
+        "",
+        ""
+      ]
+    }
+  ],
+  "maxWeightSumError": 0.0,
+  "roundtripVerified": true,
+  "sourcePart": "Hair_Handsome.vpart",
+  "sourcePostprocessGroup": -1,
+  "triangles": 80040,
+  "uvConvention": "FBX bottom-left; V=1-nativeD3DV",
+  "vertices": 75161
+}

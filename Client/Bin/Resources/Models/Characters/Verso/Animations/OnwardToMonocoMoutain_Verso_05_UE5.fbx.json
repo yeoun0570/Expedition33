@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.534601962977945e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7224945754179544e-06,
+  "fps": 30.009727478027344,
+  "frames": 3085,
+  "lastKeyTime": 102.76667797993358,
+  "loopDuration": 102.80000050846144,
+  "name": "OnwardToMonocoMoutain_Verso_05_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Camp/Forced/OnwardToMonocosStation/Animation/OnwardToMonocoMoutain_Verso_05_UE5.uasset"
+}

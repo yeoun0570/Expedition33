@@ -31,7 +31,7 @@ HRESULT CGameObject::Initialize(void* pArg)
     if (FAILED(m_pTransformCom->Initialize(pArg)))
         return E_FAIL;
 
-    m_pComponents.emplace(g_strTransformComTag, m_pTransformCom);
+    m_Components.emplace(g_strTransformComTag, m_pTransformCom);
 
     return S_OK;
 }
@@ -51,4 +51,13 @@ void CGameObject::Late_Update(const f32_t fTimeDelta)
 HRESULT CGameObject::Render()
 {
     return S_OK;
+}
+
+shared_ptr<CComponent> CGameObject::Find_Component(const wstring_t& strComponentTag)
+{
+    auto    iter = m_Components.find(strComponentTag);
+    if (iter == m_Components.end())
+        return nullptr;
+        
+    return iter->second;
 }

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.3223588557774733e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7455640641261816e-06,
+  "fps": 30.157894134521484,
+  "frames": 191,
+  "lastKeyTime": 6.300174645898389,
+  "loopDuration": 6.33333345982417,
+  "name": "Verso_Skill_Risk_Taker",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skill_Risk_Taker.uasset"
+}

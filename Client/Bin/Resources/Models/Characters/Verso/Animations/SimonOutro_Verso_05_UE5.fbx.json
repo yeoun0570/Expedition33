@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.1482293017793808e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6990762471552623e-06,
+  "fps": 30.011709213256836,
+  "frames": 2563,
+  "lastKeyTime": 85.3666807776582,
+  "loopDuration": 85.4000011058306,
+  "name": "SimonOutro_Verso_05_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Simon/SimonOutro/Animation/SimonOutro_Verso_05_UE5.uasset"
+}

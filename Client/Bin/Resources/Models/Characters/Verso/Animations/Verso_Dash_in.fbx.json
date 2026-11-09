@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 3.328727399498632e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.389810548868553e-06,
+  "fps": 30.58823585510254,
+  "frames": 52,
+  "lastKeyTime": 1.667307661729452,
+  "loopDuration": 1.6999999688221863,
+  "name": "Verso_Dash_in",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Dash_in.uasset"
+}

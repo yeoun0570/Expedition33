@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.1988390590245146e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5690444245825951e-06,
+  "fps": 31.11111068725586,
+  "frames": 28,
+  "lastKeyTime": 0.8678571546807583,
+  "loopDuration": 0.900000012261527,
+  "name": "Verso_Base_to_Item_Transition_Reverse",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Base_to_Item_Transition_Reverse.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.6838935145979672e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5039913691672346e-06,
+  "fps": 30.612245559692383,
+  "frames": 50,
+  "lastKeyTime": 1.6006666320656677,
+  "loopDuration": 1.6333332980261916,
+  "name": "A_RD_Thinking_TransOut_Verso_V2",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Animations/AnimNPC/RD_Idles/Verso/A_RD_Thinking_TransOut_Verso_V2.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.7121762873051338e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.694229790460966e-06,
+  "fps": 30.697675704956055,
+  "frames": 44,
+  "lastKeyTime": 1.4007575170604127,
+  "loopDuration": 1.4333332732711201,
+  "name": "Verso_Free_Aim_Shoot_01",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/FreeAimV2/Verso_Free_Aim_Shoot_01.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.3126991926768203e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6151085778792762e-06,
+  "fps": 30.191083908081055,
+  "frames": 158,
+  "lastKeyTime": 5.200210780043469,
+  "loopDuration": 5.233333141699797,
+  "name": "Verso_Skill_Perfect_Strike",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skill_Perfect_Strike.uasset"
+}

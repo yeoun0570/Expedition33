@@ -11,7 +11,7 @@ HRESULT CVerso::Initialize_Prototype()
 {
 #pragma region ¸öÃ¼ µî·Ï
 
-    const char* pFilePath = "./Bin/Resource/FBX/Characters_FBX/Verso/Outfits/Default.fbx";
+    const char* pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/Default.fbx";
 
     if (FAILED(CGameInstance::Get().Add_Model(L"Verso_Body", pFilePath)))
     {
@@ -29,7 +29,7 @@ HRESULT CVerso::Initialize_Prototype()
 
 #pragma region ¾ó±¼ µî·Ï
 
-    pFilePath = "./Bin/Resource/FBX/Characters_FBX/Verso/Faces/Default.fbx";
+    pFilePath = "./Bin/Resources/Models/Characters/Verso/Faces/Default.fbx";
 
     if (FAILED(CGameInstance::Get().Add_Model(TEXT("Verso_Face"), pFilePath)))
     {

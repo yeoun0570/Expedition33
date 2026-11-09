@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.34145460181745e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6822770694636469e-06,
+  "fps": 30.008142471313477,
+  "frames": 3685,
+  "lastKeyTime": 122.76667919454692,
+  "loopDuration": 122.80000348314479,
+  "name": "MirrorCleaIntro_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/CleasTower/MirrorCleaIntro/Animation/MirrorCleaIntro_Verso_02_UE5.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.9364476962778774e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6853001825883895e-06,
+  "fps": 30.006765365600586,
+  "frames": 4436,
+  "lastKeyTime": 147.80000263154767,
+  "loopDuration": 147.83332844950291,
+  "name": "VersoTriesToTalkToMaelle_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Camp/Forced/VersoTriesToTalkToMaelle/Animation/VersoTriesToTalkToMaelle_Verso_02_UE5.uasset"
+}

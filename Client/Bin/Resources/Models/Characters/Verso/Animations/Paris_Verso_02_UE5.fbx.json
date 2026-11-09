@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.673765845679187e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6596560097614788e-06,
+  "fps": 30.032154083251953,
+  "frames": 934,
+  "lastKeyTime": 31.066702621917706,
+  "loopDuration": 31.100000266742914,
+  "name": "Paris_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Lumiere/Act03/Paris/Animation/Paris_Verso_02_UE5.uasset"
+}

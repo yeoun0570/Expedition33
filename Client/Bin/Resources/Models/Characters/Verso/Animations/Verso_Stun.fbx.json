@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.6320666428315533e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7214963113076909e-06,
+  "fps": 30.1875,
+  "frames": 161,
+  "lastKeyTime": 5.300207039337474,
+  "loopDuration": 5.333333333333333,
+  "name": "Verso_Stun",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Stun.uasset"
+}

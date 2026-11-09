@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.6950559967042764e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7812554830021199e-06,
+  "fps": 30.021215438842773,
+  "frames": 1415,
+  "lastKeyTime": 47.10002507661647,
+  "loopDuration": 47.13333485389837,
+  "name": "RipGustave_P1_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ForgottenBattlefield/Cutscene/RipGustave/Animation/RipGustave_P1_Verso_03_UE5.uasset"
+}

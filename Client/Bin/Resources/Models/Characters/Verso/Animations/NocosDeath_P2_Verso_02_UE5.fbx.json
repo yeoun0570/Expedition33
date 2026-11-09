@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.708052457056631e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6911254024920552e-06,
+  "fps": 30.00986671447754,
+  "frames": 3041,
+  "lastKeyTime": 101.30001672194783,
+  "loopDuration": 101.33333909586952,
+  "name": "NocosDeath_P2_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/OldLumiere/NocosDeath/Animation/NocosDeath_P2_Verso_02_UE5.uasset"
+}

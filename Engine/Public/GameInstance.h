@@ -2,6 +2,9 @@
 
 #include "Graphic_Device.h"
 
+#include "Texture.h"
+#include "Transform.h"
+
 #include "Timer_Manager.h"
 #include "Level_Manager.h"
 #include "Model_Manager.h"

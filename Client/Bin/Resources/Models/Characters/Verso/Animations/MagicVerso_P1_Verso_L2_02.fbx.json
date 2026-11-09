@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.4880029767794234e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.449796244945567e-06,
+  "fps": 30.02012062072754,
+  "frames": 1492,
+  "lastKeyTime": 49.66668917947424,
+  "loopDuration": 49.70000017154632,
+  "name": "MagicVerso_P1_Verso_L2_02",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Camp/Forced/MagicVerso/Animation/P1/MagicVerso_P1_Verso_L2_02.uasset"
+}

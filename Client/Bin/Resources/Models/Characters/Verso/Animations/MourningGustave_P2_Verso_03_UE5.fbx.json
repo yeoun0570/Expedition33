@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.289487923013561e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7176440859217879e-06,
+  "fps": 30.008684158325195,
+  "frames": 3456,
+  "lastKeyTime": 115.13333879524646,
+  "loopDuration": 115.16666248230732,
+  "name": "MourningGustave_P2_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Camp/Forced/MourningGustave/Animation/MourningGustave_P2_Verso_03_UE5.uasset"
+}

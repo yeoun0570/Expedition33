@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.8800271492924736e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7440490401032793e-06,
+  "fps": 61.25,
+  "frames": 49,
+  "lastKeyTime": 0.7836734693877551,
+  "loopDuration": 0.8,
+  "name": "Verso_Run_Alt1_Costume",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Locomotion/Verso_Run_Alt1_Costume.uasset"
+}

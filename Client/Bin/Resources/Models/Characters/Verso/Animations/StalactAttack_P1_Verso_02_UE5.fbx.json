@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.0096883681652855e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.92924959302454e-06,
+  "fps": 30.024490356445313,
+  "frames": 1226,
+  "lastKeyTime": 40.80002642699416,
+  "loopDuration": 40.83333257101619,
+  "name": "StalactAttack_P1_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/MonocoStation/StalactAttacks/Animation/StalactAttack_P1_Verso_02_UE5.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.4856564946041928e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6312918652006125e-06,
+  "fps": 31.0,
+  "frames": 31,
+  "lastKeyTime": 0.967741935483871,
+  "loopDuration": 1.0,
+  "name": "Verso_Idle_AllyOnLeftTargeted_TransitionBaseToLeftTargeted",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/BattleReactions/Verso_Idle_AllyOnLeftTargeted_TransitionBaseToLeftTargeted.uasset"
+}

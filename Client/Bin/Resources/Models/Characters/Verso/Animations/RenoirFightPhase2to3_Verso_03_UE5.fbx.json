@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.7608401736017862e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7083765136427509e-06,
+  "fps": 30.00762176513672,
+  "frames": 3937,
+  "lastKeyTime": 131.166675946739,
+  "loopDuration": 131.20000081359538,
+  "name": "RenoirFightPhase2to3_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Lumiere/Act03/RenoirFightPhase2to3/Animation/RenoirFightPhase2to3_Verso_03_UE5.uasset"
+}

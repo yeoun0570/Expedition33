@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 4.4946956764269075e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7257633536660322e-06,
+  "fps": 30.3125,
+  "frames": 97,
+  "lastKeyTime": 3.1670103092783504,
+  "loopDuration": 3.2,
+  "name": "Verso_Idle_Ultimate",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Idle_Ultimate.uasset"
+}

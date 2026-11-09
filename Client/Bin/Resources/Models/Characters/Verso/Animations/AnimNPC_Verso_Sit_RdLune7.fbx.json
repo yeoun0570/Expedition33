@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.771423025973996e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5741167336026651e-06,
+  "fps": 30.63829803466797,
+  "frames": 48,
+  "lastKeyTime": 1.5340277696502063,
+  "loopDuration": 1.5666666583661681,
+  "name": "AnimNPC_Verso_Sit_RdLune7",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Animations/AnimNPC/AnimNPC_Verso_Sit_RdLune7.uasset"
+}

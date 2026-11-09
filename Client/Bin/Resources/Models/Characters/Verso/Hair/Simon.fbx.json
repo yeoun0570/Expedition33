@@ -1,0 +1,93 @@
+{
+  "attachmentVerticesRebased": 0,
+  "conversionVersion": 10,
+  "file": "Hair/Simon.fbx",
+  "generatedTangentsFromUV": true,
+  "jointMapping": [
+    {
+      "copyWorldFrom": "head",
+      "joint": "head__part_495",
+      "paletteSlot": 495
+    }
+  ],
+  "materials": [
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 0.0,
+      "mode": 1,
+      "name": "MI_Hair_Simon_Custo_1fc01ee7",
+      "normalStrength": 1.0,
+      "parameters": [
+        1.0,
+        0.4000000059604645,
+        0.05000000074505806,
+        0.699999988079071,
+        0.5572919845581055,
+        0.5183539986610413,
+        0.5137540102005005,
+        2.0,
+        0.35416701436042786,
+        0.33303898572921753,
+        0.3301979899406433,
+        0.16500000655651093,
+        0.5583400130271912,
+        0.5209959745407104,
+        0.5149180293083191,
+        7.0,
+        0.4580000042915344,
+        0.5754240155220032,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 0.4000000059604645,
+      "section": 0,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/d2634f2e07920b5cf7ff_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/5f3a3fbf9fad6066.png",
+        "sourceCoverageChannel": "R",
+        "transparency": "Textures/FBXOpacity/d2634f2e07920b5cf7ff_Transparency.png",
+        "opacity": "Textures/FBXOpacity/d2634f2e07920b5cf7ff_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/e265d3b5fb19175d.png",
+        "",
+        "",
+        "",
+        "Textures/Verso/5f3a3fbf9fad6066.png",
+        "Textures/Verso/390a310ba22740bf.png",
+        "Textures/Verso/d63f18c88b4d1c06.png",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "maxWeightSumError": 0.0,
+  "roundtripVerified": true,
+  "sourcePart": "Hair_Simon.vpart",
+  "sourcePostprocessGroup": -1,
+  "triangles": 128277,
+  "uvConvention": "FBX bottom-left; V=1-nativeD3DV",
+  "vertices": 163879
+}

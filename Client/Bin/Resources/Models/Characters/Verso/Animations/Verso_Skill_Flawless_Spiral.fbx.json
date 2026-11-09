@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.3059344966824824e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7014967805262238e-06,
+  "fps": 30.2608699798584,
+  "frames": 116,
+  "lastKeyTime": 3.800287304249477,
+  "loopDuration": 3.8333332808081684,
+  "name": "Verso_Skill_Flawless_Spiral",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skill_Flawless_Spiral.uasset"
+}

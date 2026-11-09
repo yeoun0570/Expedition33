@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.8300586749758763e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5472771396074503e-06,
+  "fps": 30.21126937866211,
+  "frames": 143,
+  "lastKeyTime": 4.70023282438748,
+  "loopDuration": 4.733333055545138,
+  "name": "Verso_Death",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Death.uasset"
+}

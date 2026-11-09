@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.7509218474820454e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6943605329056144e-06,
+  "fps": 30.34090805053711,
+  "frames": 89,
+  "lastKeyTime": 2.9003746312873515,
+  "loopDuration": 2.933333433915617,
+  "name": "A_RD_WeightShift_TransIn_Verso",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Animations/AnimNPC/RD_Idles/Verso/A_RD_WeightShift_TransIn_Verso.uasset"
+}

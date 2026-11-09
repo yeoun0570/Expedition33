@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.952170811225784e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6857993549723727e-06,
+  "fps": 30.007923126220703,
+  "frames": 3788,
+  "lastKeyTime": 126.20000338147184,
+  "loopDuration": 126.23332791365603,
+  "name": "MonocoJoinsTheGroup_Verso_01_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/MonocoStation/MonocoJoinsTheGroup/Animation/MonocoJoinsTheGroup_Verso_01_UE5.uasset"
+}

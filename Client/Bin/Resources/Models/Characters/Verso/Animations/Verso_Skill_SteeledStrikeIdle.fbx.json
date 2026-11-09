@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.9088032471234473e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.737385332600816e-06,
+  "fps": 30.937498092651367,
+  "frames": 33,
+  "lastKeyTime": 1.0343434981124415,
+  "loopDuration": 1.0666667324284553,
+  "name": "Verso_Skill_SteeledStrikeIdle",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skill_SteeledStrikeIdle.uasset"
+}

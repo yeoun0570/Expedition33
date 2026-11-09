@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.3120884753979887e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7078463122807697e-06,
+  "fps": 30.00554847717285,
+  "frames": 5409,
+  "lastKeyTime": 180.23333264893367,
+  "loopDuration": 180.26665981843237,
+  "name": "TheFinalGommage_P5_Verso_04_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Lumiere/Act02/TheFinalGommage/Animation/TheFinalGommage_P5_Verso_04_UE5.uasset"
+}

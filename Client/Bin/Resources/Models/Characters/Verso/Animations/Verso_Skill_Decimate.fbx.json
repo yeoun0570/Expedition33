@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 3.3243916369024573e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6513943497942218e-06,
+  "fps": 30.194807052612305,
+  "frames": 155,
+  "lastKeyTime": 5.100214739960615,
+  "loopDuration": 5.133333017492826,
+  "name": "Verso_Skill_Decimate",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skill_Decimate.uasset"
+}

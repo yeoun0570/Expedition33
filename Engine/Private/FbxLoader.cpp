@@ -1,3 +1,4 @@
+#include <fbxsdk.h>
 #include "FbxLoader.h"
 
 CFbxLoader::CFbxLoader()

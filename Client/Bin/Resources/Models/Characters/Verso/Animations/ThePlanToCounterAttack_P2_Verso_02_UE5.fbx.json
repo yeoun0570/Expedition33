@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.8935026320231483e-06,
+  "fbxRoundtripMaxLocalMatrixError": 2.3012263727362203e-06,
+  "fps": 30.012081146240234,
+  "frames": 2484,
+  "lastKeyTime": 82.73334954350734,
+  "loopDuration": 82.7666694587484,
+  "name": "ThePlanToCounterAttack_P2_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Lumiere/Act03/ThePlanToCounterAttack/Animation/ThePlanToCounterAttack_P2_Verso_02_UE5.uasset"
+}

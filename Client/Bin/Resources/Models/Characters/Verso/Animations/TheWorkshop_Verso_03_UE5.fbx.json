@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 3.1039063808080414e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7844519204224252e-06,
+  "fps": 30.00796890258789,
+  "frames": 3766,
+  "lastKeyTime": 125.46667227701992,
+  "loopDuration": 125.4999967583684,
+  "name": "TheWorkshop_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ReacherZone/TheWorkshop/Animation/TheWorkshop_Verso_03_UE5.uasset"
+}

@@ -28,6 +28,13 @@ public:
 	virtual void Late_Update(const f32_t fTimeDelta) override;
 	virtual HRESULT Render() override;
 
+private:
+	float4_t				m_vColor = {};
+	shared_ptr<CTexture>	m_pTextureCom = { nullptr };
+
+private:
+	HRESULT Ready_Components();
+
 public:
 	static shared_ptr<CBackGround> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 	virtual shared_ptr<CPrototype> Clone(void* pArg) override;

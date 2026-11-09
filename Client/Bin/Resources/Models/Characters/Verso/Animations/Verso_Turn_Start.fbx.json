@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.4731576096771448e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.328489414860294e-06,
+  "fps": 31.034482955932617,
+  "frames": 30,
+  "lastKeyTime": 0.9344444385034067,
+  "loopDuration": 0.9666666605207656,
+  "name": "Verso_Turn_Start",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Turn_Start.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.21288320101376e-06,
+  "fbxRoundtripMaxLocalMatrixError": 2.0299730717210362e-06,
+  "fps": 30.010286331176758,
+  "frames": 2918,
+  "lastKeyTime": 97.20000561839421,
+  "loopDuration": 97.23332752638818,
+  "name": "SireneIntro_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Siren/IntroSirene/Animation/SireneIntro_Verso_02_UE5.uasset"
+}

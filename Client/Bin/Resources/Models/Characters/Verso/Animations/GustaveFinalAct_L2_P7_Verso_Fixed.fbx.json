@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.411969080184928e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.8588567267524558e-06,
+  "fps": 30.005592346191406,
+  "frames": 5365,
+  "lastKeyTime": 178.7666758287093,
+  "loopDuration": 178.80000294948275,
+  "name": "GustaveFinalAct_L2_P7_Verso_Fixed",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/SeaCliff/GustavesFinalAct/Animation/P7/GustaveFinalAct_L2_P7_Verso_Fixed.uasset"
+}

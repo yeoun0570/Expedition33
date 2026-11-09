@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.519638521519818e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.4228670514454533e-06,
+  "fps": 30.004989624023438,
+  "frames": 6014,
+  "lastKeyTime": 200.40000264441696,
+  "loopDuration": 200.4333304346455,
+  "name": "TheEndOfTheRealReacher_P2_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ReacherZone/TheEndOfTheRealReacher/Animation/TheEndOfTheRealReacher_P2_Verso_02_UE5.uasset"
+}

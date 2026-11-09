@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.1371343370824025e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5110842012944214e-06,
+  "fps": 30.006986618041992,
+  "frames": 4295,
+  "lastKeyTime": 143.10000716360472,
+  "loopDuration": 143.13333273583658,
+  "name": "GoingInsideTheMonolith_P1_Verso_04_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/WalkToThePaintress/GoingInsideTheMonolith/Animation/GoingInsideTheMonolith_P1_Verso_04_UE5.uasset"
+}

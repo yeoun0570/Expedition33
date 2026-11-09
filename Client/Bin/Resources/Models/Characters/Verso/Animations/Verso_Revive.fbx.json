@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.7665589596149722e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.576451903406717e-06,
+  "fps": 30.428571701049805,
+  "frames": 71,
+  "lastKeyTime": 2.300469462968088,
+  "loopDuration": 2.3333333124390605,
+  "name": "Verso_Revive",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Revive.uasset"
+}
