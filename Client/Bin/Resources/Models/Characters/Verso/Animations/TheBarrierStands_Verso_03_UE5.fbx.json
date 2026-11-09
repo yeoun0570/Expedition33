@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.9842550330606556e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.633599633368149e-06,
+  "fps": 30.023040771484375,
+  "frames": 1303,
+  "lastKeyTime": 43.36669326434877,
+  "loopDuration": 43.400001016471926,
+  "name": "TheBarrierStands_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/TheBarrier/TheBarrierStand/Animation/TheBarrierStands_Verso_03_UE5.uasset"
+}

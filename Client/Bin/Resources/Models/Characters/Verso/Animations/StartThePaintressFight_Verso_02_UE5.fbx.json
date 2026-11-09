@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.0052008809293143e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7221582524315666e-06,
+  "fps": 30.027027130126953,
+  "frames": 1111,
+  "lastKeyTime": 36.96669654273919,
+  "loopDuration": 36.99999987295788,
+  "name": "StartThePaintressFight_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/WalkToThePaintress/StartThePaintressFight/Animation/StartThePaintressFight_Verso_02_UE5.uasset"
+}

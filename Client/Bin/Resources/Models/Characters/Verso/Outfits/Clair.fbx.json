@@ -1,0 +1,1696 @@
+{
+  "attachmentVerticesRebased": 0,
+  "conversionVersion": 10,
+  "file": "Outfits/Clair.fbx",
+  "generatedTangentsFromUV": true,
+  "jointMapping": [
+    {
+      "copyWorldFrom": "pelvis",
+      "joint": "pelvis",
+      "paletteSlot": 1
+    },
+    {
+      "copyWorldFrom": "spine_01",
+      "joint": "spine_01",
+      "paletteSlot": 2
+    },
+    {
+      "copyWorldFrom": "spine_02",
+      "joint": "spine_02",
+      "paletteSlot": 3
+    },
+    {
+      "copyWorldFrom": "spine_03",
+      "joint": "spine_03",
+      "paletteSlot": 4
+    },
+    {
+      "copyWorldFrom": "spine_04",
+      "joint": "spine_04",
+      "paletteSlot": 5
+    },
+    {
+      "copyWorldFrom": "spine_05",
+      "joint": "spine_05",
+      "paletteSlot": 6
+    },
+    {
+      "copyWorldFrom": "neck_01",
+      "joint": "neck_01",
+      "paletteSlot": 7
+    },
+    {
+      "copyWorldFrom": "neck_02",
+      "joint": "neck_02",
+      "paletteSlot": 8
+    },
+    {
+      "copyWorldFrom": "head",
+      "joint": "head",
+      "paletteSlot": 9
+    },
+    {
+      "copyWorldFrom": "clavicle_l",
+      "joint": "clavicle_l",
+      "paletteSlot": 23
+    },
+    {
+      "copyWorldFrom": "hand_l",
+      "joint": "hand_l",
+      "paletteSlot": 26
+    },
+    {
+      "copyWorldFrom": "middle_metacarpal_l",
+      "joint": "middle_metacarpal_l",
+      "paletteSlot": 27
+    },
+    {
+      "copyWorldFrom": "middle_01_l",
+      "joint": "middle_01_l",
+      "paletteSlot": 28
+    },
+    {
+      "copyWorldFrom": "middle_02_l",
+      "joint": "middle_02_l",
+      "paletteSlot": 29
+    },
+    {
+      "copyWorldFrom": "middle_03_l",
+      "joint": "middle_03_l",
+      "paletteSlot": 30
+    },
+    {
+      "copyWorldFrom": "middle_03_in_l",
+      "joint": "middle_03_in_l",
+      "paletteSlot": 32
+    },
+    {
+      "copyWorldFrom": "middle_02_dip_l",
+      "joint": "middle_02_dip_l",
+      "paletteSlot": 33
+    },
+    {
+      "copyWorldFrom": "middle_03_bulge_l",
+      "joint": "middle_03_bulge_l",
+      "paletteSlot": 34
+    },
+    {
+      "copyWorldFrom": "middle_02_side_inn_l",
+      "joint": "middle_02_side_inn_l",
+      "paletteSlot": 35
+    },
+    {
+      "copyWorldFrom": "middle_02_side_out_l",
+      "joint": "middle_02_side_out_l",
+      "paletteSlot": 36
+    },
+    {
+      "copyWorldFrom": "middle_02_in_l",
+      "joint": "middle_02_in_l",
+      "paletteSlot": 38
+    },
+    {
+      "copyWorldFrom": "middle_02_pip_l",
+      "joint": "middle_02_pip_l",
+      "paletteSlot": 39
+    },
+    {
+      "copyWorldFrom": "middle_02_bulge_l",
+      "joint": "middle_02_bulge_l",
+      "paletteSlot": 40
+    },
+    {
+      "copyWorldFrom": "middle_01_side_inn_l",
+      "joint": "middle_01_side_inn_l",
+      "paletteSlot": 41
+    },
+    {
+      "copyWorldFrom": "middle_01_side_out_l",
+      "joint": "middle_01_side_out_l",
+      "paletteSlot": 42
+    },
+    {
+      "copyWorldFrom": "middle_01_palm_l",
+      "joint": "middle_01_palm_l",
+      "paletteSlot": 44
+    },
+    {
+      "copyWorldFrom": "middle_01_mcp_l",
+      "joint": "middle_01_mcp_l",
+      "paletteSlot": 45
+    },
+    {
+      "copyWorldFrom": "middle_01_bulge_l",
+      "joint": "middle_01_bulge_l",
+      "paletteSlot": 46
+    },
+    {
+      "copyWorldFrom": "middle_01_palmMid_l",
+      "joint": "middle_01_palmMid_l",
+      "paletteSlot": 47
+    },
+    {
+      "copyWorldFrom": "middle_metacarpal_slide_l",
+      "joint": "middle_metacarpal_slide_l",
+      "paletteSlot": 48
+    },
+    {
+      "copyWorldFrom": "pinky_metacarpal_l",
+      "joint": "pinky_metacarpal_l",
+      "paletteSlot": 49
+    },
+    {
+      "copyWorldFrom": "pinky_01_l",
+      "joint": "pinky_01_l",
+      "paletteSlot": 50
+    },
+    {
+      "copyWorldFrom": "pinky_02_l",
+      "joint": "pinky_02_l",
+      "paletteSlot": 51
+    },
+    {
+      "copyWorldFrom": "pinky_03_l",
+      "joint": "pinky_03_l",
+      "paletteSlot": 52
+    },
+    {
+      "copyWorldFrom": "pinky_03_half_l",
+      "joint": "pinky_03_half_l",
+      "paletteSlot": 53
+    },
+    {
+      "copyWorldFrom": "pinky_03_in_l",
+      "joint": "pinky_03_in_l",
+      "paletteSlot": 54
+    },
+    {
+      "copyWorldFrom": "pinky_02_dip_l",
+      "joint": "pinky_02_dip_l",
+      "paletteSlot": 55
+    },
+    {
+      "copyWorldFrom": "pinky_03_bulge_l",
+      "joint": "pinky_03_bulge_l",
+      "paletteSlot": 56
+    },
+    {
+      "copyWorldFrom": "pinky_02_in_l",
+      "joint": "pinky_02_in_l",
+      "paletteSlot": 58
+    },
+    {
+      "copyWorldFrom": "pinky_02_pip_l",
+      "joint": "pinky_02_pip_l",
+      "paletteSlot": 59
+    },
+    {
+      "copyWorldFrom": "pinky_02_bulge_l",
+      "joint": "pinky_02_bulge_l",
+      "paletteSlot": 60
+    },
+    {
+      "copyWorldFrom": "pinky_02_side_out_l",
+      "joint": "pinky_02_side_out_l",
+      "paletteSlot": 61
+    },
+    {
+      "copyWorldFrom": "pinky_02_side_inn_l",
+      "joint": "pinky_02_side_inn_l",
+      "paletteSlot": 62
+    },
+    {
+      "copyWorldFrom": "pinky_01_side_inn_l",
+      "joint": "pinky_01_side_inn_l",
+      "paletteSlot": 63
+    },
+    {
+      "copyWorldFrom": "pinky_01_side_out_l",
+      "joint": "pinky_01_side_out_l",
+      "paletteSlot": 64
+    },
+    {
+      "copyWorldFrom": "pinky_01_palm_l",
+      "joint": "pinky_01_palm_l",
+      "paletteSlot": 66
+    },
+    {
+      "copyWorldFrom": "pinky_01_mcp_l",
+      "joint": "pinky_01_mcp_l",
+      "paletteSlot": 67
+    },
+    {
+      "copyWorldFrom": "pinky_01_bulge_l",
+      "joint": "pinky_01_bulge_l",
+      "paletteSlot": 68
+    },
+    {
+      "copyWorldFrom": "pinky_01_palmMid_l",
+      "joint": "pinky_01_palmMid_l",
+      "paletteSlot": 69
+    },
+    {
+      "copyWorldFrom": "pinky_metacarpal_slide_l",
+      "joint": "pinky_metacarpal_slide_l",
+      "paletteSlot": 70
+    },
+    {
+      "copyWorldFrom": "ring_metacarpal_l",
+      "joint": "ring_metacarpal_l",
+      "paletteSlot": 71
+    },
+    {
+      "copyWorldFrom": "ring_01_l",
+      "joint": "ring_01_l",
+      "paletteSlot": 72
+    },
+    {
+      "copyWorldFrom": "ring_02_l",
+      "joint": "ring_02_l",
+      "paletteSlot": 73
+    },
+    {
+      "copyWorldFrom": "ring_03_l",
+      "joint": "ring_03_l",
+      "paletteSlot": 74
+    },
+    {
+      "copyWorldFrom": "ring_03_half_l",
+      "joint": "ring_03_half_l",
+      "paletteSlot": 75
+    },
+    {
+      "copyWorldFrom": "ring_03_in_l",
+      "joint": "ring_03_in_l",
+      "paletteSlot": 76
+    },
+    {
+      "copyWorldFrom": "ring_02_dip_l",
+      "joint": "ring_02_dip_l",
+      "paletteSlot": 77
+    },
+    {
+      "copyWorldFrom": "ring_03_bulge_l",
+      "joint": "ring_03_bulge_l",
+      "paletteSlot": 78
+    },
+    {
+      "copyWorldFrom": "ring_02_in_l",
+      "joint": "ring_02_in_l",
+      "paletteSlot": 80
+    },
+    {
+      "copyWorldFrom": "ring_02_pip_l",
+      "joint": "ring_02_pip_l",
+      "paletteSlot": 81
+    },
+    {
+      "copyWorldFrom": "ring_02_bulge_l",
+      "joint": "ring_02_bulge_l",
+      "paletteSlot": 82
+    },
+    {
+      "copyWorldFrom": "ring_02_side_out_l",
+      "joint": "ring_02_side_out_l",
+      "paletteSlot": 83
+    },
+    {
+      "copyWorldFrom": "ring_02_side_inn_l",
+      "joint": "ring_02_side_inn_l",
+      "paletteSlot": 84
+    },
+    {
+      "copyWorldFrom": "ring_01_palm_l",
+      "joint": "ring_01_palm_l",
+      "paletteSlot": 86
+    },
+    {
+      "copyWorldFrom": "ring_01_mcp_l",
+      "joint": "ring_01_mcp_l",
+      "paletteSlot": 87
+    },
+    {
+      "copyWorldFrom": "ring_01_bulge_l",
+      "joint": "ring_01_bulge_l",
+      "paletteSlot": 88
+    },
+    {
+      "copyWorldFrom": "ring_01_side_out_l",
+      "joint": "ring_01_side_out_l",
+      "paletteSlot": 89
+    },
+    {
+      "copyWorldFrom": "ring_01_side_inn_l",
+      "joint": "ring_01_side_inn_l",
+      "paletteSlot": 90
+    },
+    {
+      "copyWorldFrom": "ring_01_palmMid_l",
+      "joint": "ring_01_palmMid_l",
+      "paletteSlot": 91
+    },
+    {
+      "copyWorldFrom": "ring_metacarpal_slide_l",
+      "joint": "ring_metacarpal_slide_l",
+      "paletteSlot": 92
+    },
+    {
+      "copyWorldFrom": "thumb_01_l",
+      "joint": "thumb_01_l",
+      "paletteSlot": 93
+    },
+    {
+      "copyWorldFrom": "thumb_02_l",
+      "joint": "thumb_02_l",
+      "paletteSlot": 94
+    },
+    {
+      "copyWorldFrom": "thumb_03_l",
+      "joint": "thumb_03_l",
+      "paletteSlot": 95
+    },
+    {
+      "copyWorldFrom": "thumb_03_half_l",
+      "joint": "thumb_03_half_l",
+      "paletteSlot": 96
+    },
+    {
+      "copyWorldFrom": "thumb_03_pip_l",
+      "joint": "thumb_03_pip_l",
+      "paletteSlot": 97
+    },
+    {
+      "copyWorldFrom": "thumb_03_in_l",
+      "joint": "thumb_03_in_l",
+      "paletteSlot": 98
+    },
+    {
+      "copyWorldFrom": "thumb_03_side_out_l",
+      "joint": "thumb_03_side_out_l",
+      "paletteSlot": 99
+    },
+    {
+      "copyWorldFrom": "thumb_03_bulge_l",
+      "joint": "thumb_03_bulge_l",
+      "paletteSlot": 101
+    },
+    {
+      "copyWorldFrom": "thumb_02_half_l",
+      "joint": "thumb_02_half_l",
+      "paletteSlot": 102
+    },
+    {
+      "copyWorldFrom": "thumb_02_mcp_l",
+      "joint": "thumb_02_mcp_l",
+      "paletteSlot": 103
+    },
+    {
+      "copyWorldFrom": "thumb_02_in_l",
+      "joint": "thumb_02_in_l",
+      "paletteSlot": 104
+    },
+    {
+      "copyWorldFrom": "thumb_02_side_out_l",
+      "joint": "thumb_02_side_out_l",
+      "paletteSlot": 105
+    },
+    {
+      "copyWorldFrom": "thumb_02_side_inn_l",
+      "joint": "thumb_02_side_inn_l",
+      "paletteSlot": 106
+    },
+    {
+      "copyWorldFrom": "thumb_02_bulge_l",
+      "joint": "thumb_02_bulge_l",
+      "paletteSlot": 107
+    },
+    {
+      "copyWorldFrom": "thumb_01_side_out_l",
+      "joint": "thumb_01_side_out_l",
+      "paletteSlot": 108
+    },
+    {
+      "copyWorldFrom": "thumb_01_side_inn_l",
+      "joint": "thumb_01_side_inn_l",
+      "paletteSlot": 109
+    },
+    {
+      "copyWorldFrom": "index_metacarpal_l",
+      "joint": "index_metacarpal_l",
+      "paletteSlot": 110
+    },
+    {
+      "copyWorldFrom": "index_01_l",
+      "joint": "index_01_l",
+      "paletteSlot": 111
+    },
+    {
+      "copyWorldFrom": "index_02_l",
+      "joint": "index_02_l",
+      "paletteSlot": 112
+    },
+    {
+      "copyWorldFrom": "index_03_l",
+      "joint": "index_03_l",
+      "paletteSlot": 113
+    },
+    {
+      "copyWorldFrom": "index_03_half_l",
+      "joint": "index_03_half_l",
+      "paletteSlot": 114
+    },
+    {
+      "copyWorldFrom": "index_03_in_l",
+      "joint": "index_03_in_l",
+      "paletteSlot": 115
+    },
+    {
+      "copyWorldFrom": "index_02_dip_l",
+      "joint": "index_02_dip_l",
+      "paletteSlot": 116
+    },
+    {
+      "copyWorldFrom": "index_03_bulge_l",
+      "joint": "index_03_bulge_l",
+      "paletteSlot": 117
+    },
+    {
+      "copyWorldFrom": "index_02_side_inn_l",
+      "joint": "index_02_side_inn_l",
+      "paletteSlot": 118
+    },
+    {
+      "copyWorldFrom": "index_02_side_out_l",
+      "joint": "index_02_side_out_l",
+      "paletteSlot": 119
+    },
+    {
+      "copyWorldFrom": "index_02_in_l",
+      "joint": "index_02_in_l",
+      "paletteSlot": 121
+    },
+    {
+      "copyWorldFrom": "index_02_pip_l",
+      "joint": "index_02_pip_l",
+      "paletteSlot": 122
+    },
+    {
+      "copyWorldFrom": "index_02_bulge_l",
+      "joint": "index_02_bulge_l",
+      "paletteSlot": 123
+    },
+    {
+      "copyWorldFrom": "index_01_side_out_l",
+      "joint": "index_01_side_out_l",
+      "paletteSlot": 124
+    },
+    {
+      "copyWorldFrom": "index_01_side_inn_l",
+      "joint": "index_01_side_inn_l",
+      "paletteSlot": 125
+    },
+    {
+      "copyWorldFrom": "index_01_palm_l",
+      "joint": "index_01_palm_l",
+      "paletteSlot": 127
+    },
+    {
+      "copyWorldFrom": "index_01_mcp_l",
+      "joint": "index_01_mcp_l",
+      "paletteSlot": 128
+    },
+    {
+      "copyWorldFrom": "index_01_bulge_l",
+      "joint": "index_01_bulge_l",
+      "paletteSlot": 129
+    },
+    {
+      "copyWorldFrom": "index_01_palmMid_l",
+      "joint": "index_01_palmMid_l",
+      "paletteSlot": 130
+    },
+    {
+      "copyWorldFrom": "index_metacarpal_slide_l",
+      "joint": "index_metacarpal_slide_l",
+      "paletteSlot": 131
+    },
+    {
+      "copyWorldFrom": "wrist_inner_l",
+      "joint": "wrist_inner_l",
+      "paletteSlot": 132
+    },
+    {
+      "copyWorldFrom": "wrist_outer_l",
+      "joint": "wrist_outer_l",
+      "paletteSlot": 133
+    },
+    {
+      "copyWorldFrom": "lowerarm_twist_02_l",
+      "joint": "lowerarm_twist_02_l",
+      "paletteSlot": 142
+    },
+    {
+      "copyWorldFrom": "lowerarm_twist_01_l",
+      "joint": "lowerarm_twist_01_l",
+      "paletteSlot": 143
+    },
+    {
+      "copyWorldFrom": "lowerarm_out_l",
+      "joint": "lowerarm_out_l",
+      "paletteSlot": 147
+    },
+    {
+      "copyWorldFrom": "lowerarm_in_l",
+      "joint": "lowerarm_in_l",
+      "paletteSlot": 148
+    },
+    {
+      "copyWorldFrom": "lowerarm_fwd_l",
+      "joint": "lowerarm_fwd_l",
+      "paletteSlot": 149
+    },
+    {
+      "copyWorldFrom": "lowerarm_bck_l",
+      "joint": "lowerarm_bck_l",
+      "paletteSlot": 150
+    },
+    {
+      "copyWorldFrom": "upperarm_twistCor_01_l",
+      "joint": "upperarm_twistCor_01_l",
+      "paletteSlot": 158
+    },
+    {
+      "copyWorldFrom": "upperarm_twistCor_02_l",
+      "joint": "upperarm_twistCor_02_l",
+      "paletteSlot": 172
+    },
+    {
+      "copyWorldFrom": "upperarm_bicep_l",
+      "joint": "upperarm_bicep_l",
+      "paletteSlot": 173
+    },
+    {
+      "copyWorldFrom": "upperarm_tricep_l",
+      "joint": "upperarm_tricep_l",
+      "paletteSlot": 174
+    },
+    {
+      "copyWorldFrom": "upperarm_bck_l",
+      "joint": "upperarm_bck_l",
+      "paletteSlot": 176
+    },
+    {
+      "copyWorldFrom": "upperarm_fwd_l",
+      "joint": "upperarm_fwd_l",
+      "paletteSlot": 177
+    },
+    {
+      "copyWorldFrom": "upperarm_in_l",
+      "joint": "upperarm_in_l",
+      "paletteSlot": 178
+    },
+    {
+      "copyWorldFrom": "upperarm_out_l",
+      "joint": "upperarm_out_l",
+      "paletteSlot": 179
+    },
+    {
+      "copyWorldFrom": "clavicle_out_l",
+      "joint": "clavicle_out_l",
+      "paletteSlot": 182
+    },
+    {
+      "copyWorldFrom": "clavicle_scap_l",
+      "joint": "clavicle_scap_l",
+      "paletteSlot": 183
+    },
+    {
+      "copyWorldFrom": "clavicle_r",
+      "joint": "clavicle_r",
+      "paletteSlot": 186
+    },
+    {
+      "copyWorldFrom": "hand_r",
+      "joint": "hand_r",
+      "paletteSlot": 189
+    },
+    {
+      "copyWorldFrom": "middle_metacarpal_r",
+      "joint": "middle_metacarpal_r",
+      "paletteSlot": 190
+    },
+    {
+      "copyWorldFrom": "middle_01_r",
+      "joint": "middle_01_r",
+      "paletteSlot": 191
+    },
+    {
+      "copyWorldFrom": "middle_02_r",
+      "joint": "middle_02_r",
+      "paletteSlot": 192
+    },
+    {
+      "copyWorldFrom": "middle_03_r",
+      "joint": "middle_03_r",
+      "paletteSlot": 193
+    },
+    {
+      "copyWorldFrom": "middle_03_in_r",
+      "joint": "middle_03_in_r",
+      "paletteSlot": 195
+    },
+    {
+      "copyWorldFrom": "middle_02_dip_r",
+      "joint": "middle_02_dip_r",
+      "paletteSlot": 196
+    },
+    {
+      "copyWorldFrom": "middle_03_bulge_r",
+      "joint": "middle_03_bulge_r",
+      "paletteSlot": 197
+    },
+    {
+      "copyWorldFrom": "middle_02_side_inn_r",
+      "joint": "middle_02_side_inn_r",
+      "paletteSlot": 198
+    },
+    {
+      "copyWorldFrom": "middle_02_side_out_r",
+      "joint": "middle_02_side_out_r",
+      "paletteSlot": 199
+    },
+    {
+      "copyWorldFrom": "middle_02_in_r",
+      "joint": "middle_02_in_r",
+      "paletteSlot": 201
+    },
+    {
+      "copyWorldFrom": "middle_02_pip_r",
+      "joint": "middle_02_pip_r",
+      "paletteSlot": 202
+    },
+    {
+      "copyWorldFrom": "middle_02_bulge_r",
+      "joint": "middle_02_bulge_r",
+      "paletteSlot": 203
+    },
+    {
+      "copyWorldFrom": "middle_01_side_inn_r",
+      "joint": "middle_01_side_inn_r",
+      "paletteSlot": 204
+    },
+    {
+      "copyWorldFrom": "middle_01_side_out_r",
+      "joint": "middle_01_side_out_r",
+      "paletteSlot": 205
+    },
+    {
+      "copyWorldFrom": "middle_01_palm_r",
+      "joint": "middle_01_palm_r",
+      "paletteSlot": 207
+    },
+    {
+      "copyWorldFrom": "middle_01_mcp_r",
+      "joint": "middle_01_mcp_r",
+      "paletteSlot": 208
+    },
+    {
+      "copyWorldFrom": "middle_01_bulge_r",
+      "joint": "middle_01_bulge_r",
+      "paletteSlot": 209
+    },
+    {
+      "copyWorldFrom": "middle_01_palmMid_r",
+      "joint": "middle_01_palmMid_r",
+      "paletteSlot": 210
+    },
+    {
+      "copyWorldFrom": "middle_metacarpal_slide_r",
+      "joint": "middle_metacarpal_slide_r",
+      "paletteSlot": 213
+    },
+    {
+      "copyWorldFrom": "pinky_metacarpal_r",
+      "joint": "pinky_metacarpal_r",
+      "paletteSlot": 214
+    },
+    {
+      "copyWorldFrom": "pinky_01_r",
+      "joint": "pinky_01_r",
+      "paletteSlot": 215
+    },
+    {
+      "copyWorldFrom": "pinky_02_r",
+      "joint": "pinky_02_r",
+      "paletteSlot": 216
+    },
+    {
+      "copyWorldFrom": "pinky_03_r",
+      "joint": "pinky_03_r",
+      "paletteSlot": 217
+    },
+    {
+      "copyWorldFrom": "pinky_03_half_r",
+      "joint": "pinky_03_half_r",
+      "paletteSlot": 218
+    },
+    {
+      "copyWorldFrom": "pinky_03_in_r",
+      "joint": "pinky_03_in_r",
+      "paletteSlot": 219
+    },
+    {
+      "copyWorldFrom": "pinky_02_dip_r",
+      "joint": "pinky_02_dip_r",
+      "paletteSlot": 220
+    },
+    {
+      "copyWorldFrom": "pinky_03_bulge_r",
+      "joint": "pinky_03_bulge_r",
+      "paletteSlot": 221
+    },
+    {
+      "copyWorldFrom": "pinky_02_in_r",
+      "joint": "pinky_02_in_r",
+      "paletteSlot": 223
+    },
+    {
+      "copyWorldFrom": "pinky_02_pip_r",
+      "joint": "pinky_02_pip_r",
+      "paletteSlot": 224
+    },
+    {
+      "copyWorldFrom": "pinky_02_bulge_r",
+      "joint": "pinky_02_bulge_r",
+      "paletteSlot": 225
+    },
+    {
+      "copyWorldFrom": "pinky_02_side_out_r",
+      "joint": "pinky_02_side_out_r",
+      "paletteSlot": 226
+    },
+    {
+      "copyWorldFrom": "pinky_02_side_inn_r",
+      "joint": "pinky_02_side_inn_r",
+      "paletteSlot": 227
+    },
+    {
+      "copyWorldFrom": "pinky_01_side_inn_r",
+      "joint": "pinky_01_side_inn_r",
+      "paletteSlot": 228
+    },
+    {
+      "copyWorldFrom": "pinky_01_side_out_r",
+      "joint": "pinky_01_side_out_r",
+      "paletteSlot": 229
+    },
+    {
+      "copyWorldFrom": "pinky_01_palm_r",
+      "joint": "pinky_01_palm_r",
+      "paletteSlot": 231
+    },
+    {
+      "copyWorldFrom": "pinky_01_mcp_r",
+      "joint": "pinky_01_mcp_r",
+      "paletteSlot": 232
+    },
+    {
+      "copyWorldFrom": "pinky_01_bulge_r",
+      "joint": "pinky_01_bulge_r",
+      "paletteSlot": 233
+    },
+    {
+      "copyWorldFrom": "pinky_01_palmMid_r",
+      "joint": "pinky_01_palmMid_r",
+      "paletteSlot": 234
+    },
+    {
+      "copyWorldFrom": "pinky_metacarpal_slide_r",
+      "joint": "pinky_metacarpal_slide_r",
+      "paletteSlot": 235
+    },
+    {
+      "copyWorldFrom": "ring_metacarpal_r",
+      "joint": "ring_metacarpal_r",
+      "paletteSlot": 236
+    },
+    {
+      "copyWorldFrom": "ring_01_r",
+      "joint": "ring_01_r",
+      "paletteSlot": 237
+    },
+    {
+      "copyWorldFrom": "ring_02_r",
+      "joint": "ring_02_r",
+      "paletteSlot": 238
+    },
+    {
+      "copyWorldFrom": "ring_03_r",
+      "joint": "ring_03_r",
+      "paletteSlot": 239
+    },
+    {
+      "copyWorldFrom": "ring_03_half_r",
+      "joint": "ring_03_half_r",
+      "paletteSlot": 240
+    },
+    {
+      "copyWorldFrom": "ring_03_in_r",
+      "joint": "ring_03_in_r",
+      "paletteSlot": 241
+    },
+    {
+      "copyWorldFrom": "ring_02_dip_r",
+      "joint": "ring_02_dip_r",
+      "paletteSlot": 242
+    },
+    {
+      "copyWorldFrom": "ring_03_bulge_r",
+      "joint": "ring_03_bulge_r",
+      "paletteSlot": 243
+    },
+    {
+      "copyWorldFrom": "ring_02_in_r",
+      "joint": "ring_02_in_r",
+      "paletteSlot": 245
+    },
+    {
+      "copyWorldFrom": "ring_02_pip_r",
+      "joint": "ring_02_pip_r",
+      "paletteSlot": 246
+    },
+    {
+      "copyWorldFrom": "ring_02_bulge_r",
+      "joint": "ring_02_bulge_r",
+      "paletteSlot": 247
+    },
+    {
+      "copyWorldFrom": "ring_02_side_out_r",
+      "joint": "ring_02_side_out_r",
+      "paletteSlot": 248
+    },
+    {
+      "copyWorldFrom": "ring_02_side_inn_r",
+      "joint": "ring_02_side_inn_r",
+      "paletteSlot": 249
+    },
+    {
+      "copyWorldFrom": "ring_01_palm_r",
+      "joint": "ring_01_palm_r",
+      "paletteSlot": 251
+    },
+    {
+      "copyWorldFrom": "ring_01_mcp_r",
+      "joint": "ring_01_mcp_r",
+      "paletteSlot": 252
+    },
+    {
+      "copyWorldFrom": "ring_01_bulge_r",
+      "joint": "ring_01_bulge_r",
+      "paletteSlot": 253
+    },
+    {
+      "copyWorldFrom": "ring_01_side_out_r",
+      "joint": "ring_01_side_out_r",
+      "paletteSlot": 254
+    },
+    {
+      "copyWorldFrom": "ring_01_side_inn_r",
+      "joint": "ring_01_side_inn_r",
+      "paletteSlot": 255
+    },
+    {
+      "copyWorldFrom": "ring_01_palmMid_r",
+      "joint": "ring_01_palmMid_r",
+      "paletteSlot": 256
+    },
+    {
+      "copyWorldFrom": "ring_metacarpal_slide_r",
+      "joint": "ring_metacarpal_slide_r",
+      "paletteSlot": 257
+    },
+    {
+      "copyWorldFrom": "thumb_01_r",
+      "joint": "thumb_01_r",
+      "paletteSlot": 258
+    },
+    {
+      "copyWorldFrom": "thumb_02_r",
+      "joint": "thumb_02_r",
+      "paletteSlot": 259
+    },
+    {
+      "copyWorldFrom": "thumb_03_r",
+      "joint": "thumb_03_r",
+      "paletteSlot": 260
+    },
+    {
+      "copyWorldFrom": "thumb_03_half_r",
+      "joint": "thumb_03_half_r",
+      "paletteSlot": 261
+    },
+    {
+      "copyWorldFrom": "thumb_03_pip_r",
+      "joint": "thumb_03_pip_r",
+      "paletteSlot": 262
+    },
+    {
+      "copyWorldFrom": "thumb_03_in_r",
+      "joint": "thumb_03_in_r",
+      "paletteSlot": 263
+    },
+    {
+      "copyWorldFrom": "thumb_03_side_out_r",
+      "joint": "thumb_03_side_out_r",
+      "paletteSlot": 264
+    },
+    {
+      "copyWorldFrom": "thumb_03_bulge_r",
+      "joint": "thumb_03_bulge_r",
+      "paletteSlot": 266
+    },
+    {
+      "copyWorldFrom": "thumb_02_half_r",
+      "joint": "thumb_02_half_r",
+      "paletteSlot": 267
+    },
+    {
+      "copyWorldFrom": "thumb_02_mcp_r",
+      "joint": "thumb_02_mcp_r",
+      "paletteSlot": 268
+    },
+    {
+      "copyWorldFrom": "thumb_02_in_r",
+      "joint": "thumb_02_in_r",
+      "paletteSlot": 269
+    },
+    {
+      "copyWorldFrom": "thumb_02_side_out_r",
+      "joint": "thumb_02_side_out_r",
+      "paletteSlot": 270
+    },
+    {
+      "copyWorldFrom": "thumb_02_side_inn_r",
+      "joint": "thumb_02_side_inn_r",
+      "paletteSlot": 271
+    },
+    {
+      "copyWorldFrom": "thumb_02_bulge_r",
+      "joint": "thumb_02_bulge_r",
+      "paletteSlot": 272
+    },
+    {
+      "copyWorldFrom": "thumb_01_side_out_r",
+      "joint": "thumb_01_side_out_r",
+      "paletteSlot": 273
+    },
+    {
+      "copyWorldFrom": "thumb_01_side_inn_r",
+      "joint": "thumb_01_side_inn_r",
+      "paletteSlot": 274
+    },
+    {
+      "copyWorldFrom": "index_metacarpal_r",
+      "joint": "index_metacarpal_r",
+      "paletteSlot": 275
+    },
+    {
+      "copyWorldFrom": "index_01_r",
+      "joint": "index_01_r",
+      "paletteSlot": 276
+    },
+    {
+      "copyWorldFrom": "index_02_r",
+      "joint": "index_02_r",
+      "paletteSlot": 277
+    },
+    {
+      "copyWorldFrom": "index_03_r",
+      "joint": "index_03_r",
+      "paletteSlot": 278
+    },
+    {
+      "copyWorldFrom": "index_03_half_r",
+      "joint": "index_03_half_r",
+      "paletteSlot": 279
+    },
+    {
+      "copyWorldFrom": "index_03_in_r",
+      "joint": "index_03_in_r",
+      "paletteSlot": 280
+    },
+    {
+      "copyWorldFrom": "index_02_dip_r",
+      "joint": "index_02_dip_r",
+      "paletteSlot": 281
+    },
+    {
+      "copyWorldFrom": "index_03_bulge_r",
+      "joint": "index_03_bulge_r",
+      "paletteSlot": 282
+    },
+    {
+      "copyWorldFrom": "index_02_side_inn_r",
+      "joint": "index_02_side_inn_r",
+      "paletteSlot": 283
+    },
+    {
+      "copyWorldFrom": "index_02_side_out_r",
+      "joint": "index_02_side_out_r",
+      "paletteSlot": 284
+    },
+    {
+      "copyWorldFrom": "index_02_in_r",
+      "joint": "index_02_in_r",
+      "paletteSlot": 286
+    },
+    {
+      "copyWorldFrom": "index_02_pip_r",
+      "joint": "index_02_pip_r",
+      "paletteSlot": 287
+    },
+    {
+      "copyWorldFrom": "index_02_bulge_r",
+      "joint": "index_02_bulge_r",
+      "paletteSlot": 288
+    },
+    {
+      "copyWorldFrom": "index_01_side_out_r",
+      "joint": "index_01_side_out_r",
+      "paletteSlot": 289
+    },
+    {
+      "copyWorldFrom": "index_01_side_inn_r",
+      "joint": "index_01_side_inn_r",
+      "paletteSlot": 290
+    },
+    {
+      "copyWorldFrom": "index_01_palm_r",
+      "joint": "index_01_palm_r",
+      "paletteSlot": 292
+    },
+    {
+      "copyWorldFrom": "index_01_mcp_r",
+      "joint": "index_01_mcp_r",
+      "paletteSlot": 293
+    },
+    {
+      "copyWorldFrom": "index_01_bulge_r",
+      "joint": "index_01_bulge_r",
+      "paletteSlot": 294
+    },
+    {
+      "copyWorldFrom": "index_01_palmMid_r",
+      "joint": "index_01_palmMid_r",
+      "paletteSlot": 295
+    },
+    {
+      "copyWorldFrom": "index_metacarpal_slide_r",
+      "joint": "index_metacarpal_slide_r",
+      "paletteSlot": 296
+    },
+    {
+      "copyWorldFrom": "wrist_inner_r",
+      "joint": "wrist_inner_r",
+      "paletteSlot": 297
+    },
+    {
+      "copyWorldFrom": "wrist_outer_r",
+      "joint": "wrist_outer_r",
+      "paletteSlot": 298
+    },
+    {
+      "copyWorldFrom": "lowerarm_twist_02_r",
+      "joint": "lowerarm_twist_02_r",
+      "paletteSlot": 319
+    },
+    {
+      "copyWorldFrom": "lowerarm_twist_01_r",
+      "joint": "lowerarm_twist_01_r",
+      "paletteSlot": 320
+    },
+    {
+      "copyWorldFrom": "lowerarm_out_r",
+      "joint": "lowerarm_out_r",
+      "paletteSlot": 324
+    },
+    {
+      "copyWorldFrom": "lowerarm_fwd_r",
+      "joint": "lowerarm_fwd_r",
+      "paletteSlot": 325
+    },
+    {
+      "copyWorldFrom": "lowerarm_in_r",
+      "joint": "lowerarm_in_r",
+      "paletteSlot": 326
+    },
+    {
+      "copyWorldFrom": "lowerarm_bck_r",
+      "joint": "lowerarm_bck_r",
+      "paletteSlot": 327
+    },
+    {
+      "copyWorldFrom": "upperarm_twistCor_01_r",
+      "joint": "upperarm_twistCor_01_r",
+      "paletteSlot": 333
+    },
+    {
+      "copyWorldFrom": "upperarm_twistCor_02_r",
+      "joint": "upperarm_twistCor_02_r",
+      "paletteSlot": 335
+    },
+    {
+      "copyWorldFrom": "upperarm_tricep_r",
+      "joint": "upperarm_tricep_r",
+      "paletteSlot": 336
+    },
+    {
+      "copyWorldFrom": "upperarm_bicep_r",
+      "joint": "upperarm_bicep_r",
+      "paletteSlot": 337
+    },
+    {
+      "copyWorldFrom": "upperarm_fwd_r",
+      "joint": "upperarm_fwd_r",
+      "paletteSlot": 339
+    },
+    {
+      "copyWorldFrom": "upperarm_bck_r",
+      "joint": "upperarm_bck_r",
+      "paletteSlot": 340
+    },
+    {
+      "copyWorldFrom": "upperarm_in_r",
+      "joint": "upperarm_in_r",
+      "paletteSlot": 341
+    },
+    {
+      "copyWorldFrom": "upperarm_out_r",
+      "joint": "upperarm_out_r",
+      "paletteSlot": 342
+    },
+    {
+      "copyWorldFrom": "clavicle_out_r",
+      "joint": "clavicle_out_r",
+      "paletteSlot": 348
+    },
+    {
+      "copyWorldFrom": "clavicle_scap_r",
+      "joint": "clavicle_scap_r",
+      "paletteSlot": 349
+    },
+    {
+      "copyWorldFrom": "clavicle_pec_r",
+      "joint": "clavicle_pec_r",
+      "paletteSlot": 353
+    },
+    {
+      "copyWorldFrom": "spine_04_latissimus_l",
+      "joint": "spine_04_latissimus_l",
+      "paletteSlot": 354
+    },
+    {
+      "copyWorldFrom": "spine_04_latissimus_r",
+      "joint": "spine_04_latissimus_r",
+      "paletteSlot": 355
+    },
+    {
+      "copyWorldFrom": "clavicle_pec_l",
+      "joint": "clavicle_pec_l",
+      "paletteSlot": 356
+    },
+    {
+      "copyWorldFrom": "thigh_l",
+      "joint": "thigh_l",
+      "paletteSlot": 396
+    },
+    {
+      "copyWorldFrom": "foot_l",
+      "joint": "foot_l",
+      "paletteSlot": 398
+    },
+    {
+      "copyWorldFrom": "ball_l",
+      "joint": "ball_l",
+      "paletteSlot": 399
+    },
+    {
+      "copyWorldFrom": "ankle_bck_l",
+      "joint": "ankle_bck_l",
+      "paletteSlot": 401
+    },
+    {
+      "copyWorldFrom": "ankle_fwd_l",
+      "joint": "ankle_fwd_l",
+      "paletteSlot": 402
+    },
+    {
+      "copyWorldFrom": "calf_twistCor_02_l",
+      "joint": "calf_twistCor_02_l",
+      "paletteSlot": 406
+    },
+    {
+      "copyWorldFrom": "calf_twist_01_l",
+      "joint": "calf_twist_01_l",
+      "paletteSlot": 407
+    },
+    {
+      "copyWorldFrom": "calf_kneeBack_l",
+      "joint": "calf_kneeBack_l",
+      "paletteSlot": 409
+    },
+    {
+      "copyWorldFrom": "calf_knee_l",
+      "joint": "calf_knee_l",
+      "paletteSlot": 410
+    },
+    {
+      "copyWorldFrom": "thigh_twistCor_01_l",
+      "joint": "thigh_twistCor_01_l",
+      "paletteSlot": 412
+    },
+    {
+      "copyWorldFrom": "thigh_twistCor_02_l",
+      "joint": "thigh_twistCor_02_l",
+      "paletteSlot": 414
+    },
+    {
+      "copyWorldFrom": "thigh_correctiveRoot_l",
+      "joint": "thigh_correctiveRoot_l",
+      "paletteSlot": 415
+    },
+    {
+      "copyWorldFrom": "thigh_bck_l",
+      "joint": "thigh_bck_l",
+      "paletteSlot": 416
+    },
+    {
+      "copyWorldFrom": "thigh_fwd_l",
+      "joint": "thigh_fwd_l",
+      "paletteSlot": 417
+    },
+    {
+      "copyWorldFrom": "thigh_out_l",
+      "joint": "thigh_out_l",
+      "paletteSlot": 418
+    },
+    {
+      "copyWorldFrom": "thigh_in_l",
+      "joint": "thigh_in_l",
+      "paletteSlot": 419
+    },
+    {
+      "copyWorldFrom": "thigh_bck_lwr_l",
+      "joint": "thigh_bck_lwr_l",
+      "paletteSlot": 420
+    },
+    {
+      "copyWorldFrom": "thigh_fwd_lwr_l",
+      "joint": "thigh_fwd_lwr_l",
+      "paletteSlot": 421
+    },
+    {
+      "copyWorldFrom": "thigh_r",
+      "joint": "thigh_r",
+      "paletteSlot": 422
+    },
+    {
+      "copyWorldFrom": "foot_r",
+      "joint": "foot_r",
+      "paletteSlot": 424
+    },
+    {
+      "copyWorldFrom": "ball_r",
+      "joint": "ball_r",
+      "paletteSlot": 425
+    },
+    {
+      "copyWorldFrom": "ankle_bck_r",
+      "joint": "ankle_bck_r",
+      "paletteSlot": 427
+    },
+    {
+      "copyWorldFrom": "ankle_fwd_r",
+      "joint": "ankle_fwd_r",
+      "paletteSlot": 428
+    },
+    {
+      "copyWorldFrom": "calf_twistCor_02_r",
+      "joint": "calf_twistCor_02_r",
+      "paletteSlot": 432
+    },
+    {
+      "copyWorldFrom": "calf_twist_01_r",
+      "joint": "calf_twist_01_r",
+      "paletteSlot": 433
+    },
+    {
+      "copyWorldFrom": "calf_kneeBack_r",
+      "joint": "calf_kneeBack_r",
+      "paletteSlot": 435
+    },
+    {
+      "copyWorldFrom": "calf_knee_r",
+      "joint": "calf_knee_r",
+      "paletteSlot": 436
+    },
+    {
+      "copyWorldFrom": "thigh_twistCor_01_r",
+      "joint": "thigh_twistCor_01_r",
+      "paletteSlot": 438
+    },
+    {
+      "copyWorldFrom": "thigh_twistCor_02_r",
+      "joint": "thigh_twistCor_02_r",
+      "paletteSlot": 440
+    },
+    {
+      "copyWorldFrom": "thigh_correctiveRoot_r",
+      "joint": "thigh_correctiveRoot_r",
+      "paletteSlot": 441
+    },
+    {
+      "copyWorldFrom": "thigh_fwd_r",
+      "joint": "thigh_fwd_r",
+      "paletteSlot": 442
+    },
+    {
+      "copyWorldFrom": "thigh_bck_r",
+      "joint": "thigh_bck_r",
+      "paletteSlot": 443
+    },
+    {
+      "copyWorldFrom": "thigh_out_r",
+      "joint": "thigh_out_r",
+      "paletteSlot": 444
+    },
+    {
+      "copyWorldFrom": "thigh_in_r",
+      "joint": "thigh_in_r",
+      "paletteSlot": 445
+    },
+    {
+      "copyWorldFrom": "thigh_bck_lwr_r",
+      "joint": "thigh_bck_lwr_r",
+      "paletteSlot": 446
+    },
+    {
+      "copyWorldFrom": "thigh_fwd_lwr_r",
+      "joint": "thigh_fwd_lwr_r",
+      "paletteSlot": 447
+    }
+  ],
+  "materials": [
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 1.0,
+      "mode": 1,
+      "name": "MI_Gustave_Verso_Clair_Top_2c1f114b",
+      "normalStrength": 1.0,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 1.0,
+      "section": 0,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/3e3acbdbe629c467bb16_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/1e5b8d74b604bf7e.png",
+        "sourceCoverageChannel": "A",
+        "transparency": "Textures/FBXOpacity/3e3acbdbe629c467bb16_Transparency.png",
+        "opacity": "Textures/FBXOpacity/3e3acbdbe629c467bb16_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/1e5b8d74b604bf7e.png",
+        "Textures/Verso/e4c2ae31b98fae81.png",
+        "Textures/Verso/b8a27723346d6f29.png",
+        "Textures/Verso/1d7f2971a548c70b.png",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 1.0,
+      "mode": 1,
+      "name": "MI_Gustave_Verso_Clair_Bottom_83242590",
+      "normalStrength": 1.0,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 1.0,
+      "section": 1,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/23ec6085c868658338d9_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/f9064ad3313fd42b.png",
+        "sourceCoverageChannel": "A",
+        "transparency": "Textures/FBXOpacity/23ec6085c868658338d9_Transparency.png",
+        "opacity": "Textures/FBXOpacity/23ec6085c868658338d9_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/f9064ad3313fd42b.png",
+        "Textures/Verso/4d834ca53e606f49.png",
+        "Textures/Verso/93a5afb356ed8201.png",
+        "Textures/Verso/a818f56fffc4638b.png",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 1.0,
+      "mode": 1,
+      "name": "MI_Gustave_Verso_Clair_Armor_52b93972",
+      "normalStrength": 1.0,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 1.0,
+      "section": 2,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/bb11f2c2d87d462b76a1_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/bb61c816a13ee8b0.png",
+        "sourceCoverageChannel": "A",
+        "transparency": "Textures/FBXOpacity/bb11f2c2d87d462b76a1_Transparency.png",
+        "opacity": "Textures/FBXOpacity/bb11f2c2d87d462b76a1_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/bb61c816a13ee8b0.png",
+        "Textures/Verso/0020fbb728526071.png",
+        "Textures/Verso/3924e0a6f5c4b47b.png",
+        "Textures/Verso/4ac37a921bb2d53f.png",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 0.0,
+      "mode": 1,
+      "name": "MI_Body_Verso_48fc22fa",
+      "normalStrength": 0.6000000238418579,
+      "parameters": [
+        2.0,
+        0.5,
+        0.38999998569488525,
+        1.0,
+        0.4000000059604645,
+        0.8999999761581421,
+        0.6000000238418579,
+        0.38297873735427856,
+        0.27000001072883606,
+        18.0,
+        0.5,
+        1.0,
+        0.3515329957008362,
+        0.0,
+        0.0,
+        0.0,
+        0.609375,
+        0.3942739963531494,
+        0.3173829913139343,
+        0.8500000238418579,
+        0.25984427332878113,
+        0.08028142154216766,
+        0.0371660552918911,
+        0.10000000149011612,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 1.0,
+      "section": 3,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/8cbae884ac138a5ddf58_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/5fd5a8b7cc9d5eaa.png",
+        "sourceCoverageChannel": "A",
+        "transparency": "Textures/FBXOpacity/8cbae884ac138a5ddf58_Transparency.png",
+        "opacity": "Textures/FBXOpacity/8cbae884ac138a5ddf58_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/5fd5a8b7cc9d5eaa.png",
+        "Textures/Verso/ce2e7171f528b6e5.png",
+        "Textures/Verso/1fc2e9f80b3f7ca0.png",
+        "",
+        "Textures/Verso/b5dc6aa821811b8e.png",
+        "Textures/Verso/ba7d6b7d114ff428.png",
+        "Textures/Verso/523fca5895e2819c.png",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "maxWeightSumError": 1.6624107956886292e-07,
+  "roundtripVerified": true,
+  "sourcePart": "Outfit_Clair.vpart",
+  "sourcePostprocessGroup": 4,
+  "triangles": 133781,
+  "uvConvention": "FBX bottom-left; V=1-nativeD3DV",
+  "vertices": 75841
+}

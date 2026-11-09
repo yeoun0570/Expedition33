@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.651670071822764e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.377791449430621e-06,
+  "fps": 60.68965530395508,
+  "frames": 88,
+  "lastKeyTime": 1.4335227241656505,
+  "loopDuration": 1.4499999968572097,
+  "name": "Verso_Dash_Out",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Dash_Out.uasset"
+}

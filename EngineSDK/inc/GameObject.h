@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Prototype.h"
-#include "Transform.h"
+#include "GameInstance.h"
 
 NS_BEGIN(Engine)
 
@@ -29,12 +28,34 @@ public:
 	virtual void Late_Update(const f32_t fTimeDelta);
 	virtual HRESULT Render();
 
+public:
+	shared_ptr<CComponent>	Find_Component(const wstring_t& strComponentTag);
+
 protected:
 	uint32_t				m_iData = {};
 	shared_ptr<CTransform>	m_pTransformCom = { nullptr };
 
 protected:
-	map<wstring_t, shared_ptr<CComponent>>		m_pComponents;
+	map<wstring_t, shared_ptr<CComponent>>		m_Components;
+
+protected:
+	template<typename T>
+	HRESULT Add_Component(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag,
+		const wstring_t& strComponentTag, shared_ptr<T>& pOut, void* pArg = nullptr)
+	{
+		if (nullptr != Find_Component(strComponentTag))
+			return E_FAIL;
+
+		auto	pComponent = dynamic_pointer_cast<T>(CGameInstance::Get().Clone_Prototype(iPrototypeLevelIndex, strPrototypeTag, pArg));
+		if (nullptr == pComponent)
+			return E_FAIL;
+
+		m_Components.emplace(strComponentTag, pComponent);
+
+		pOut = pComponent;
+
+		return S_OK;
+	}
 
 public:
 	virtual shared_ptr<CPrototype> Clone(void* pArg) = 0;

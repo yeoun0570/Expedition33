@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.7211433044349587e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6771459487585627e-06,
+  "fps": 30.009235382080078,
+  "frames": 3249,
+  "lastKeyTime": 108.23334745608125,
+  "loopDuration": 108.26667053103694,
+  "name": "SoStartsTheAxonHunt_P3_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Camp/Forced/SoStartTheAxonHunt/Animation/SoStartsTheAxonHunt_P3_Verso_02_UE5.uasset"
+}

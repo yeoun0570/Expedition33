@@ -5,7 +5,7 @@ CTriCol::CTriCol(ComPtr<ID3D11Device> pDevice, ComPtr<ID3D11DeviceContext> pCont
 {
 }
 
-HRESULT CTriCol::Initialize_Buffer()
+HRESULT CTriCol::Initialize_Prototype()
 {
     m_iVtxSize = static_cast<uint32_t>(sizeof(VTXCOL));
     m_iVtxCnt = 3;
@@ -15,7 +15,7 @@ HRESULT CTriCol::Initialize_Buffer()
 	m_eTopology     = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
 	// 1. 부모 클래스에서 GPU 버퍼 공간 생성
-	if (FAILED(CVIBuffer::Initialize_Buffer()))
+	if (FAILED(CVIBuffer::Initialize_Prototype()))
 		return E_FAIL;
 
 	// 2. CPU 메모리에 정점 데이터 작성
@@ -60,6 +60,11 @@ HRESULT CTriCol::Initialize_Buffer()
 	return S_OK;
 }
 
+HRESULT CTriCol::Initialize(void* pArg)
+{
+    return S_OK;
+}
+
 void CTriCol::Render_Buffer()
 {
 	CVIBuffer::Render_Buffer();
@@ -69,9 +74,22 @@ unique_ptr<CTriCol> CTriCol::Create(ComPtr<ID3D11Device> pDevice, ComPtr<ID3D11D
 {
     auto    pInstance = unique_ptr<CTriCol>(new CTriCol(pDevice, pContext));
 
-    if (FAILED(pInstance->Initialize_Buffer()))
+    if (FAILED(pInstance->Initialize_Prototype()))
     {
         MSG_BOX("Failed to Created : CTriCol");
+        pInstance.reset();
+    }
+
+    return pInstance;
+}
+
+shared_ptr<CPrototype> CTriCol::Clone(void* pArg)
+{
+    auto    pInstance = shared_ptr<CTriCol>(new CTriCol(*this));
+
+    if (FAILED(pInstance->Initialize(pArg)))
+    {
+        MSG_BOX("Failed to Cloned : CTriCol");
         pInstance.reset();
     }
 

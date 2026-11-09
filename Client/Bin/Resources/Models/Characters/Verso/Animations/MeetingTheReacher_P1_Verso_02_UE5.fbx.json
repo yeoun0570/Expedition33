@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 3.4135930136597326e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.792419472165796e-06,
+  "fps": 30.00433349609375,
+  "frames": 6923,
+  "lastKeyTime": 230.70000874710888,
+  "loopDuration": 230.73333726614197,
+  "name": "MeetingTheReacher_P1_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ReacherZone/MeetingTheReacher/Animation/MeetingTheReacher_P1_Verso_02_UE5.uasset"
+}

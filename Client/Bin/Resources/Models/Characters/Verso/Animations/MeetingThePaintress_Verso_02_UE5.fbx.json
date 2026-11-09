@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.863061637645159e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.8249589264773824e-06,
+  "fps": 30.010522842407227,
+  "frames": 2852,
+  "lastKeyTime": 95.0000109951871,
+  "loopDuration": 95.033332640573,
+  "name": "MeetingThePaintress_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/WalkToThePaintress/MeetingThePaintress/Animation/MeetingThePaintress_Verso_02_UE5.uasset"
+}

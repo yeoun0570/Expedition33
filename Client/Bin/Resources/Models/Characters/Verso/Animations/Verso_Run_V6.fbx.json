@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.003154488505743e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6086620759359072e-06,
+  "fps": 31.25,
+  "frames": 25,
+  "lastKeyTime": 0.768,
+  "loopDuration": 0.8,
+  "name": "Verso_Run_V6",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Locomotion/Verso_Run_V6.uasset"
+}

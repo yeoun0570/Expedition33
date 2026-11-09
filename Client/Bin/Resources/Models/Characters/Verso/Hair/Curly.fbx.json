@@ -1,0 +1,93 @@
+{
+  "attachmentVerticesRebased": 0,
+  "conversionVersion": 10,
+  "file": "Hair/Curly.fbx",
+  "generatedTangentsFromUV": true,
+  "jointMapping": [
+    {
+      "copyWorldFrom": "head",
+      "joint": "head__part_495",
+      "paletteSlot": 495
+    }
+  ],
+  "materials": [
+    {
+      "alphaCutoff": 0.33329999446868896,
+      "metallic": 0.0,
+      "mode": 1,
+      "name": "MI_HairVar_Verso_Curly_f5976061",
+      "normalStrength": 1.0,
+      "parameters": [
+        1.0,
+        0.44999998807907104,
+        0.20000000298023224,
+        0.30000001192092896,
+        0.05729199945926666,
+        0.05403300002217293,
+        0.051621999591588974,
+        1.0,
+        0.020833000540733337,
+        0.01901400089263916,
+        0.017687000334262848,
+        0.20000000298023224,
+        0.453125,
+        0.453125,
+        0.453125,
+        5.0,
+        0.6000000238418579,
+        0.36399999260902405,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "roughness": 0.44999998807907104,
+      "section": 0,
+      "standardFBXOpacity": {
+        "diffuse": "Textures/FBXOpacity/f431d35172149a449b65_ColorAlpha.png",
+        "sourceCoverage": "Textures/Verso/8a301b93c6bc0618.png",
+        "sourceCoverageChannel": "R",
+        "transparency": "Textures/FBXOpacity/f431d35172149a449b65_Transparency.png",
+        "opacity": "Textures/FBXOpacity/f431d35172149a449b65_Transparency.png",
+        "channelMeaning": "RGB and A store opacity coverage: 0 transparent, 1 opaque"
+      },
+      "textures": [
+        "Textures/Verso/d12bfd3236a03b5b.png",
+        "",
+        "",
+        "",
+        "Textures/Verso/8a301b93c6bc0618.png",
+        "Textures/Verso/16028990fa7234bd.png",
+        "Textures/Verso/c62f5df43619c189.png",
+        "Textures/Verso/7c169a1eda53ff6d.png",
+        "",
+        ""
+      ]
+    }
+  ],
+  "maxWeightSumError": 0.0,
+  "roundtripVerified": true,
+  "sourcePart": "Hair_Curly.vpart",
+  "sourcePostprocessGroup": -1,
+  "triangles": 99806,
+  "uvConvention": "FBX bottom-left; V=1-nativeD3DV",
+  "vertices": 96054
+}

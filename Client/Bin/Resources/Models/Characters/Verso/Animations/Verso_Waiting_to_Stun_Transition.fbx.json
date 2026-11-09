@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.8367432357280222e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.3372286463281258e-06,
+  "fps": 30.749998092651367,
+  "frames": 41,
+  "lastKeyTime": 1.3008130888163925,
+  "loopDuration": 1.3333334160368022,
+  "name": "Verso_Waiting_to_Stun_Transition",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Waiting_to_Stun_Transition.uasset"
+}

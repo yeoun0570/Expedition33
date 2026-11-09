@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.894125487345022e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7683466732865138e-06,
+  "fps": 30.015872955322266,
+  "frames": 1891,
+  "lastKeyTime": 62.96668442104645,
+  "loopDuration": 63.00000012708933,
+  "name": "Visages_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Visages/Visages/Animation/Visages_Verso_02_UE5.uasset"
+}

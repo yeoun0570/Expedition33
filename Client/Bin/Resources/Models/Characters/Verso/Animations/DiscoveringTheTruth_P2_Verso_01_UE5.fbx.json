@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.7376000641111666e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6958117336485223e-06,
+  "fps": 30.01556968688965,
+  "frames": 1928,
+  "lastKeyTime": 64.2000141960219,
+  "loopDuration": 64.23333023867681,
+  "name": "DiscoveringTheTruth_P2_Verso_01_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/OldLumiere/DiscoveringTheTruth/Animation/P2/DiscoveringTheTruth_P2_Verso_01_UE5.uasset"
+}

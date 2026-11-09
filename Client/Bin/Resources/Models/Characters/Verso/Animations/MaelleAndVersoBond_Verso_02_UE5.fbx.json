@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.6483767950891135e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6714493269176511e-06,
+  "fps": 30.00645637512207,
+  "frames": 4647,
+  "lastKeyTime": 154.83334459486304,
+  "loopDuration": 154.86667075598976,
+  "name": "MaelleAndVersoBond_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Camp/Forced/MaelleAndVersoBond/Animation/MaelleAndVersoBond_Verso_02_UE5.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.472367166244215e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5846840609734514e-06,
+  "fps": 30.009998321533203,
+  "frames": 3002,
+  "lastKeyTime": 100.00000559302529,
+  "loopDuration": 100.03332782081371,
+  "name": "Idle_Battle_Verso_01_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Animations/Idles/Battle_Mocap/Idle_Battle_Verso_01_UE5.uasset"
+}

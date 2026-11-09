@@ -4,6 +4,13 @@
 #include <DirectXMath.h>
 #include <d3d11_4.h> // DX11 추후에 추가된 기능들이 있는 헤더
 
+#include "DirectXTK/DDSTextureLoader.h"
+#include "DirectXTK/WICTextureLoader.h"
+
+#ifdef ENGINE_EXPORTS
+#include <fbxsdk.h>
+#endif
+
 using namespace DirectX;
 
 #include <memory>
@@ -16,7 +23,6 @@ using namespace DirectX;
 #include <unordered_map>
 #include <ctime>
 #include <d3dcompiler.h>
-#include <fbxsdk.h>
 
 #include <wrl/client.h>
 using namespace Microsoft::WRL;

@@ -48,6 +48,16 @@ HRESULT CBackGround::Render()
     return S_OK;
 }
 
+HRESULT CBackGround::Ready_Components()
+{
+	if(FAILED(__super::Add_Component(ETOUI(LEVEL::LOGO), TEXT("Prototype_Component_Texture_BackGround"),
+		TEXT("Com_Texture"), m_pTextureCom)))
+		return E_FAIL;
+
+
+	return S_OK;
+}
+
 shared_ptr<CBackGround> CBackGround::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
 {
 	auto    pInstance = shared_ptr<CBackGround>(new CBackGround(pDevice, pContext));

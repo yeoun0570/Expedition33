@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.137508702926283e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.653909058235703e-06,
+  "fps": 30.01313018798828,
+  "frames": 2286,
+  "lastKeyTime": 76.13334516219479,
+  "loopDuration": 76.16666391281282,
+  "name": "TheTwinTowers_Verso_04_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ReacherZone/TheTwinTowers/Animation/TheTwinTowers_Verso_04_UE5.uasset"
+}

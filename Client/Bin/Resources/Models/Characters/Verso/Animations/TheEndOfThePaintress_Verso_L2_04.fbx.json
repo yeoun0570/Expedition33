@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.6348164204881286e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.64094137647397e-06,
+  "fps": 30.003009796142578,
+  "frames": 9974,
+  "lastKeyTime": 332.3999847935992,
+  "loopDuration": 332.43331478305004,
+  "name": "TheEndOfThePaintress_Verso_L2_04",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ThePaintress/TheEndOfThePaintress/Animation/TheEndOfThePaintress_Verso_L2_04.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.6972357579358999e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.4082740752013878e-06,
+  "fps": 30.00922966003418,
+  "frames": 3251,
+  "lastKeyTime": 108.30001425622395,
+  "loopDuration": 108.33333733753355,
+  "name": "ArrivingInTheBattlefield_Verso_01_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ForgottenBattlefield/Cutscene/ArrivingInTheBattleField/Animation/ArrivingInTheBattlefield_Verso_01_UE5.uasset"
+}

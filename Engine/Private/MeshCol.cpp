@@ -5,7 +5,7 @@ CMeshCol::CMeshCol(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11Devic
 {
 }
 
-HRESULT CMeshCol::Initialize_Buffer(const MESH_DATA& MeshData)
+HRESULT CMeshCol::Initialize_Prototype(const MESH_DATA& MeshData)
 {
     if (MeshData.vecVerticles.empty() || MeshData.vecIndices.empty())
         return E_FAIL;
@@ -34,7 +34,7 @@ HRESULT CMeshCol::Initialize_Buffer(const MESH_DATA& MeshData)
     m_eTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
     // 기존 함수로 GPU 버퍼 공간 생성
-    if (FAILED(CVIBuffer::Initialize_Buffer()))
+    if (FAILED(CVIBuffer::Initialize_Prototype()))
         return E_FAIL;
 
     // 추출한 정점·인덱스를 GPU 버퍼에 복사
@@ -55,18 +55,36 @@ HRESULT CMeshCol::Initialize_Buffer(const MESH_DATA& MeshData)
 	return S_OK;
 }
 
+HRESULT CMeshCol::Initialize(void* pArg)
+{
+    return S_OK;
+}
+
 void CMeshCol::Render_Buffer()
 {
     CVIBuffer::Render_Buffer();
 }
 
-unique_ptr<CMeshCol> CMeshCol::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext, const MESH_DATA& MeshData)
+shared_ptr<CMeshCol> CMeshCol::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext, const MESH_DATA& MeshData)
 {
-    auto pInstance = unique_ptr<CMeshCol>(new CMeshCol(pDevice, pContext));
+    auto pInstance = shared_ptr<CMeshCol>(new CMeshCol(pDevice, pContext));
 
-    if (FAILED(pInstance->Initialize_Buffer(MeshData)))
+    if (FAILED(pInstance->Initialize_Prototype(MeshData)))
     {
         MSG_BOX("Failed to Created : CMeshCol");
+        pInstance.reset();
+    }
+
+    return pInstance;
+}
+
+shared_ptr<CPrototype> CMeshCol::Clone(void* pArg)
+{
+    auto    pInstance = shared_ptr<CMeshCol>(new CMeshCol(*this));
+
+    if (FAILED(pInstance->Initialize(pArg)))
+    {
+        MSG_BOX("Failed to Cloned : CMeshCol");
         pInstance.reset();
     }
 

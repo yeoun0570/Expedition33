@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.6602536907078802e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7008390743654227e-06,
+  "fps": 30.35714340209961,
+  "frames": 85,
+  "lastKeyTime": 2.7670587738565104,
+  "loopDuration": 2.7999999497357546,
+  "name": "A_RD_WeightShift_Idle_Verso",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Animations/AnimNPC/RD_Idles/Verso/A_RD_WeightShift_Idle_Verso.uasset"
+}

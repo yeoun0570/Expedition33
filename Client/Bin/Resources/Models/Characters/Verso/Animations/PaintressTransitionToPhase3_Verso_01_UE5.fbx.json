@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.8815622638557183e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.8801937479440145e-06,
+  "fps": 30.015880584716797,
+  "frames": 1890,
+  "lastKeyTime": 62.93335271868796,
+  "loopDuration": 62.9666684162627,
+  "name": "PaintressTransitionToPhase3_Verso_01_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ThePaintress/PaintressTransitionToPhase3/Animation/PaintressTransitionToPhase3_Verso_01_UE5.uasset"
+}

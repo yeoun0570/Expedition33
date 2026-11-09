@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.4670971153485368e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.4583674082572183e-06,
+  "fps": 40.054054260253906,
+  "frames": 38,
+  "lastKeyTime": 0.9237516821540716,
+  "loopDuration": 0.9487179438339113,
+  "name": "Verso_Idle_Targeted_TransitionBaseToTargeted",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Idle_Targeted_TransitionBaseToTargeted.uasset"
+}

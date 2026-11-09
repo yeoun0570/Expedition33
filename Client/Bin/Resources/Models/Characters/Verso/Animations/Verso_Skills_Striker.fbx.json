@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.2717134722238796e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.78034678574579e-06,
+  "fps": 60.47999954223633,
+  "frames": 126,
+  "lastKeyTime": 2.06679895744222,
+  "loopDuration": 2.083333349101758,
+  "name": "Verso_Skills_Striker",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skills_Striker.uasset"
+}

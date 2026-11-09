@@ -94,6 +94,9 @@
     <Filter Include="01.Utility\03. Component\Transform">
       <UniqueIdentifier>{3370aad9-b63a-4af8-9a42-6e94f73c871a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Utility\03. Component\Texture">
+      <UniqueIdentifier>{32351d2b-03f8-48dc-afc4-8f7a4ed47227}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -183,6 +186,9 @@
     <ClInclude Include="Public\Engine_Global.h">
       <Filter>99.Defines</Filter>
     </ClInclude>
+    <ClInclude Include="public\Texture.h">
+      <Filter>01.Utility\03. Component\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -250,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="private\Transform.cpp">
       <Filter>01.Utility\03. Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Texture.cpp">
+      <Filter>01.Utility\03. Component\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

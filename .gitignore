@@ -16,9 +16,9 @@
 /Client/Win32/
 /Engine/x64/
 /Engine/Win32/
-/Client/Bin/Resource/FBX/
+/Client/Bin/Resources/
 /CharacterSelector_CPP_DX11_Test/
-/ThirdParty/FBXSDK/
+/Engine/ThirdPartyLib/FBXSDK/
 
 # Generated binaries only: keep room for runtime assets in Bin
 /Client/Bin/*.exe

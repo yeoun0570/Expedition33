@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.533362101375669e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.795228217360556e-06,
+  "fps": 30.017793655395508,
+  "frames": 1687,
+  "lastKeyTime": 56.1666863113023,
+  "loopDuration": 56.199999885626916,
+  "name": "MeetingMonoco_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/MonocoStation/MeetingMonoco/Animation/MeetingMonoco_Verso_03_UE5.uasset"
+}

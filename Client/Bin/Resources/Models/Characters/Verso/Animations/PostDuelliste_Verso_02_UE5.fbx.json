@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.9769386447876514e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.5825341478092891e-06,
+  "fps": 30.02159881591797,
+  "frames": 1390,
+  "lastKeyTime": 46.26668980945573,
+  "loopDuration": 46.29999916137038,
+  "name": "PostDuelliste_Verso_02_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ForgottenBattlefield/Cutscene/PostDuallist/Animation/PostDuelliste_Verso_02_UE5.uasset"
+}

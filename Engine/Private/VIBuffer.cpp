@@ -1,12 +1,11 @@
 #include "VIBuffer.h"
 
 CVIBuffer::CVIBuffer(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
-	: m_pDevice(pDevice)
-	, m_pContext(pContext)
+	: CComponent { pDevice, pContext }
 {
 }
 
-HRESULT CVIBuffer::Initialize_Buffer()
+HRESULT CVIBuffer::Initialize_Prototype()
 {
     if (m_pDevice == nullptr || m_pContext == nullptr)
         return E_FAIL;
@@ -44,6 +43,11 @@ HRESULT CVIBuffer::Initialize_Buffer()
 
     return S_OK;
 
+}
+
+HRESULT CVIBuffer::Initialize(void* pArg)
+{
+    return S_OK;
 }
 
 void CVIBuffer::Render_Buffer()

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.4818245686342166e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.636923782133426e-06,
+  "fps": 30.005420684814453,
+  "frames": 5536,
+  "lastKeyTime": 184.4666688109868,
+  "loopDuration": 184.49999612242507,
+  "name": "MirrorRenoirRound2_Verso_05_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/OldLumiere/MirrorRenoirRound2/Animation/MirrorRenoirRound2_Verso_05_UE5.uasset"
+}

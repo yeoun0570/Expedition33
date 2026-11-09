@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 5.530179729262841e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.4124241079493949e-06,
+  "fps": 30.19355010986328,
+  "frames": 156,
+  "lastKeyTime": 5.133546715639986,
+  "loopDuration": 5.166666371869922,
+  "name": "Verso_Skill_Elegant_Chain",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/Skills/Verso_Skill_Elegant_Chain.uasset"
+}

@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.1692228957537196e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.8024647625153323e-06,
+  "fps": 30.00511360168457,
+  "frames": 5868,
+  "lastKeyTime": 195.5333373465585,
+  "loopDuration": 195.5666649990805,
+  "name": "TheEndOfMirrorRenoir_P1_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/MonolithInterior/TheEndOfMirrorRenoir/Animation/TheEndOfMirrorRenoir_P1_Verso_03_UE5.uasset"
+}

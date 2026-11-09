@@ -1,0 +1,262 @@
+{
+  "character": "Verso",
+  "default": {
+    "Outfits": "Outfits/Default.fbx",
+    "FacialHair": "FacialHair/Default.fbx",
+    "Faces": "Faces/Default.fbx",
+    "Hair": "Hair/Default.fbx"
+  },
+  "choices": [
+    {
+      "kind": "hair",
+      "name": "Anniversary",
+      "files": {
+        "Hair": "Hair/Anniversary.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Baguette",
+      "files": {
+        "Hair": "Hair/Baguette.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Bald",
+      "files": {
+        "Hair": "Hair/Bald.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Bun",
+      "files": {
+        "Hair": "Hair/Bun.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "BunBraid",
+      "files": {
+        "Hair": "Hair/BunBraid.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Chic",
+      "files": {
+        "Hair": "Hair/Chic.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Curly",
+      "files": {
+        "Hair": "Hair/Curly.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Default_WhiteVer",
+      "files": {
+        "Hair": "Hair/Default_WhiteVer.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Esquie",
+      "files": {
+        "Hair": "Hair/Esquie.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "FlowerSuit",
+      "files": {
+        "Hair": "Hair/FlowerSuit.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Gestral",
+      "files": {
+        "Hair": "Hair/Gestral.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Handsome",
+      "files": {
+        "Hair": "Hair/Handsome.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Osquio",
+      "files": {
+        "Hair": "Hair/Osquio.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Renoir",
+      "files": {
+        "Hair": "Hair/Renoir.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Samourai",
+      "files": {
+        "Hair": "Hair/Samourai.fbx"
+      }
+    },
+    {
+      "kind": "hair",
+      "name": "Simon",
+      "files": {
+        "Hair": "Hair/Simon.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Baguette",
+      "files": {
+        "Outfits": "Outfits/Baguette.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "BikiniA",
+      "files": {
+        "Outfits": "Outfits/BikiniA.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "BikiniB",
+      "files": {
+        "Outfits": "Outfits/BikiniB.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Chic",
+      "files": {
+        "Outfits": "Outfits/Chic.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Civil",
+      "files": {
+        "Outfits": "Outfits/Civil.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Clair",
+      "files": {
+        "Outfits": "Outfits/Clair.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Esquie",
+      "files": {
+        "Outfits": "Outfits/Esquie.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "FlowerSuit",
+      "files": {
+        "Outfits": "Outfits/FlowerSuit.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Gommage",
+      "files": {
+        "Outfits": "Outfits/Gommage.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Mirror",
+      "files": {
+        "Outfits": "Outfits/Mirror.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "NoArmBand",
+      "files": {
+        "Outfits": "Outfits/NoArmBand.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Obscur",
+      "files": {
+        "Outfits": "Outfits/Obscur.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Osquio",
+      "files": {
+        "Outfits": "Outfits/Osquio.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Pelerin",
+      "files": {
+        "Outfits": "Outfits/Pelerin.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Potatoe_Bag",
+      "files": {
+        "Outfits": "Outfits/Potatoe_Bag.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Pure",
+      "files": {
+        "Outfits": "Outfits/Pure.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "RealRenoir",
+      "files": {
+        "Outfits": "Outfits/RealRenoir.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Simple",
+      "files": {
+        "Outfits": "Outfits/Simple.fbx"
+      }
+    },
+    {
+      "kind": "outfit",
+      "name": "Visage",
+      "files": {
+        "Outfits": "Outfits/Visage.fbx"
+      }
+    }
+  ],
+  "skeleton": "Skeleton.fbx",
+  "meshesKeepTheirOwnBindMatrices": true,
+  "unit": "metres",
+  "axis": "Z up, left handed",
+  "animationPoseSpace": "CharacterRoot local space; CopyWorldFrom joints copy the named body bone world transform in this space",
+  "textures": "../Textures/Verso"
+}

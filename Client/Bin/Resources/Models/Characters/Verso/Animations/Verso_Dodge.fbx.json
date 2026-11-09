@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.4323813933292406e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.6510629327615156e-06,
+  "fps": 30.322580337524414,
+  "frames": 94,
+  "lastKeyTime": 3.067021307712122,
+  "loopDuration": 3.100000031450962,
+  "name": "Verso_Dodge",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Dodge.uasset"
+}

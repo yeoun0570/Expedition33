@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.3914582344398685e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.3517733492285355e-06,
+  "fps": 31.578948974609375,
+  "frames": 20,
+  "lastKeyTime": 0.601666636064319,
+  "loopDuration": 0.6333333011203358,
+  "name": "Verso_Gradient_Parry",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Gradient_Parry.uasset"
+}

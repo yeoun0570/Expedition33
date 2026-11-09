@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.9949404917027e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.637288272696158e-06,
+  "fps": 30.003890991210938,
+  "frames": 7711,
+  "lastKeyTime": 256.9666714979899,
+  "loopDuration": 257.00000050856033,
+  "name": "ThePaintress_Verso_01_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/ThePaintress/ThePaintress/Animation/ThePaintress_Verso_01_UE5.uasset"
+}

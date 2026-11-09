@@ -1,0 +1,15 @@
+{
+  "attachmentVerticesRebased": 0,
+  "conversionVersion": 10,
+  "file": "Hair/Bald.fbx",
+  "generatedTangentsFromUV": true,
+  "jointMapping": [],
+  "materials": [],
+  "maxWeightSumError": 0.0,
+  "roundtripVerified": true,
+  "sourcePart": "Hair_Bald.vpart",
+  "sourcePostprocessGroup": -1,
+  "triangles": 0,
+  "uvConvention": "FBX bottom-left; V=1-nativeD3DV",
+  "vertices": 0
+}

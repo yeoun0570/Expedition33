@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.4683829052962736e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.67903128941993e-06,
+  "fps": 30.1875,
+  "frames": 161,
+  "lastKeyTime": 5.300207039337474,
+  "loopDuration": 5.333333333333333,
+  "name": "Noah_Idle-World_ArmsCloser_Verso",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Noah/Animations/BattleTurn/Noah_Idle-World_ArmsCloser_Verso.uasset"
+}

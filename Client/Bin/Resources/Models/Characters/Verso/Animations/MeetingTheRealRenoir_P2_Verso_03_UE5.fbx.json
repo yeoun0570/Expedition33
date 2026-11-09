@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 2.5330171864457185e-06,
+  "fbxRoundtripMaxLocalMatrixError": 2.3021019895444472e-06,
+  "fps": 30.01308822631836,
+  "frames": 2293,
+  "lastKeyTime": 76.36668318557616,
+  "loopDuration": 76.40000198277754,
+  "name": "MeetingTheRealRenoir_P2_Verso_03_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Lumiere/Act03/MeetingRealRenoir/Animation/MeetingTheRealRenoir_P2_Verso_03_UE5.uasset"
+}

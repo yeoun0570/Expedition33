@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Gameplay",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 1.9333750920225157e-06,
+  "fbxRoundtripMaxLocalMatrixError": 1.7216331369696025e-06,
+  "fps": 30.35714340209961,
+  "frames": 85,
+  "lastKeyTime": 2.7670587738565104,
+  "loopDuration": 2.7999999497357546,
+  "name": "Verso_Jump_Counter",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Characters/Heros/Verso/Animations/Battle/BattleTurn/Verso_Jump_Counter.uasset"
+}

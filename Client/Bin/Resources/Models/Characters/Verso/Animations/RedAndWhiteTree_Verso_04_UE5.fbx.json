@@ -1,0 +1,17 @@
+{
+  "bakedOn": "Default outfit reference and supported original PoseDrivers",
+  "bindReferenceFinalized": true,
+  "category": "Cinematic",
+  "conversionVersion": 4,
+  "fbxRoundtripMaxGlobalMatrixError": 3.5140584545567677e-06,
+  "fbxRoundtripMaxLocalMatrixError": 2.148812822955204e-06,
+  "fps": 30.005584716796875,
+  "frames": 5373,
+  "lastKeyTime": 179.03333831694337,
+  "loopDuration": 179.06666544619074,
+  "name": "RedAndWhiteTree_Verso_04_UE5",
+  "positionCurveToleranceMetres": 1e-06,
+  "rotationCurveToleranceDegrees": 0.0001,
+  "scaleCurveTolerance": 1e-06,
+  "source": "Sandfall/Content/Cinematics/Lumiere/Act03/RedAndWhiteTree/Animation/RedAndWhiteTree_Verso_04_UE5.uasset"
+}
