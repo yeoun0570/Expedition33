@@ -42,20 +42,20 @@ namespace Engine
 	typedef struct tagFbxClusterData
 	{
 		string strBoneName;
-		vector<FBX_POINT_WEIGHT> vecPointWeights;
+		vector<FBX_POINT_WEIGHT> FbxPointWeights;
 	} FBX_CLUSTER_DATA;
 
 	typedef struct tagFbxSkinData
 	{
-		vector<FBX_CLUSTER_DATA> vecClusters;
+		vector<FBX_CLUSTER_DATA> FbxClusters;
 	} FBX_SKIN_DATA;
 
 	// 정점 + 인덱스 + 클러스터합친 Fbx데이터
 	typedef struct tagMeshData
 	{
-		vector<VTXCOL>				vecVerticles;
-		vector<uint32_t>			vecIndices;
-		vector<FBX_SKIN_DATA>		vecSkins;
+		vector<VTXCOL>				Verticles;
+		vector<uint32_t>			Indices;
+		vector<FBX_SKIN_DATA>		FbxSkins;
 	}MESH_DATA;
 
 

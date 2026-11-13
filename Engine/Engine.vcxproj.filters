@@ -135,13 +135,10 @@
     <ClInclude Include="public\VIBuffer.h">
       <Filter>02. Graphics\00. VIBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="public\TriCol.h">
-      <Filter>02. Graphics\00. VIBuffer\TriCol</Filter>
-    </ClInclude>
     <ClInclude Include="public\Shader.h">
       <Filter>02. Graphics\01. Shader</Filter>
     </ClInclude>
-    <ClInclude Include="public\MeshCol.h">
+    <ClInclude Include="public\VIBuffer_Mesh.h">
       <Filter>02. Graphics\00. VIBuffer\MeshCol</Filter>
     </ClInclude>
     <ClInclude Include="public\Level_Manager.h">
@@ -209,13 +206,10 @@
     <ClCompile Include="private\VIBuffer.cpp">
       <Filter>02. Graphics\00. VIBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="private\TriCol.cpp">
-      <Filter>02. Graphics\00. VIBuffer\TriCol</Filter>
-    </ClCompile>
     <ClCompile Include="private\Shader.cpp">
       <Filter>02. Graphics\01. Shader</Filter>
     </ClCompile>
-    <ClCompile Include="private\MeshCol.cpp">
+    <ClCompile Include="private\VIBuffer_Mesh.cpp">
       <Filter>02. Graphics\00. VIBuffer\MeshCol</Filter>
     </ClCompile>
     <ClCompile Include="private\Level_Manager.cpp">

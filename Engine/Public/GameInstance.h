@@ -13,7 +13,6 @@
 #include "Renderer.h"
 
 #include "Shader.h"
-#include "TriCol.h"
 
 NS_BEGIN(Engine)
 
@@ -50,8 +49,8 @@ public:
 #pragma endregion
 
 #pragma region Model_Manager
-	HRESULT	Add_Model(const wstring_t& strModelTag, const char* pFilePath);
-	HRESULT	Render_Model(const wstring_t& strModelTag, const TRANSFORM& Transform);
+	HRESULT	Add_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const char* pFilePath);
+	HRESULT	Render_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const TRANSFORM& Transform);
 #pragma endregion
 
 #pragma region Shader
@@ -82,7 +81,6 @@ private:
 	unique_ptr<CRenderer>					m_pRenderer = { nullptr };
 
 	unique_ptr<CShader>						m_pShader = { nullptr };
-	unique_ptr<CTriCol>						m_pTriCol = { nullptr };
 	unique_ptr<CModel_Manager>				m_pModel_Manager = { nullptr };
 
 public:

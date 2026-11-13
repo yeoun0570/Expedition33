@@ -128,7 +128,7 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 		Read_MeshCluster(pMesh, MeshData);
 
 		// 정점, 인덱스, 클러스터를 모두 채운 뒤 보관
- 		m_vecMeshDatas.push_back(MeshData);
+ 		m_MeshDatas.push_back(MeshData);
 	}
 
 	return S_OK;
@@ -139,7 +139,7 @@ HRESULT CFbxLoader::Read_BoneNodes(FbxScene* pScene)
 	/* Fbx 노드 데이터 읽어와서 뼈대 가져오기 */
 	/* 뼈가 존재하는 노드들만 m_vecNodeDatas에 넣기 */
 
-	m_vecNodeDatas.clear(); // 새로 로드 되었을 때 비워놓고 다시 저장하기 위한 용도
+	m_NodeDatas.clear(); // 새로 로드 되었을 때 비워놓고 다시 저장하기 위한 용도
 
 	// 최상위 노드 데이터 m_vecNodeDatas에 저장
 	FbxNode* pRootNode = pScene->GetRootNode();
@@ -156,7 +156,7 @@ HRESULT CFbxLoader::Read_BoneNodes(FbxScene* pScene)
 		pRootNode->GetSkeleton() != nullptr,
 	};
 
-	m_vecNodeDatas.push_back(RootData);
+	m_NodeDatas.push_back(RootData);
 
 
 	// 나머지 노드들 데이터 m_vecNodeDatas에 저장
@@ -178,7 +178,7 @@ HRESULT CFbxLoader::Read_BoneNodes(FbxScene* pScene)
 				pChildNode->GetSkeleton() != nullptr,
 			};
 
-			m_vecNodeDatas.push_back(ChildData);
+			m_NodeDatas.push_back(ChildData);
 		}
 	}
 
@@ -197,13 +197,13 @@ HRESULT CFbxLoader::Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData)
 		return E_FAIL;
 
 	// 점 개수만큼 정점 공간 확보
-	MeshData.vecVerticles.resize(static_cast<size_t>(iPointCount));
+	MeshData.Verticles.resize(static_cast<size_t>(iPointCount));
 
 	for (int32_t iPoint = 0; iPoint < iPointCount; ++iPoint)
 	{
 		const FbxVector4& Position = pPoints[iPoint];
 
-		MeshData.vecVerticles[iPoint].vPosition =
+		MeshData.Verticles[iPoint].vPosition =
 		{
 			static_cast<f32_t>(Position[0]),
 			static_cast<f32_t>(Position[1]),
@@ -211,7 +211,7 @@ HRESULT CFbxLoader::Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData)
 		};
 
 		// 첫 표시는 텍스처 없이 초록색으로 확인
-		MeshData.vecVerticles[iPoint].vColor =
+		MeshData.Verticles[iPoint].vColor =
 		{
 			0.f, 1.f, 0.f, 1.f
 		};
@@ -225,7 +225,7 @@ HRESULT CFbxLoader::Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData)
 	const int32_t iPolygonCount = pMesh->GetPolygonCount();
 
 	// 삼각형 하나당 인덱스 3개
-	MeshData.vecIndices.reserve(static_cast<size_t>(iPolygonCount) * 3);
+	MeshData.Indices.reserve(static_cast<size_t>(iPolygonCount) * 3);
 
 	for (int32_t iPolygon = 0; iPolygon < iPolygonCount; ++iPolygon)
 	{
@@ -245,7 +245,7 @@ HRESULT CFbxLoader::Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData)
 				return E_FAIL;
 			}
 
-			MeshData.vecIndices.push_back(static_cast<uint32_t>(iPointIndex));
+			MeshData.Indices.push_back(static_cast<uint32_t>(iPointIndex));
 		}
 	}
 
@@ -296,11 +296,11 @@ void CFbxLoader::Read_MeshCluster(FbxMesh* pMesh, MESH_DATA& MeshData)
 
 					for (int32_t iClusterVertex = 0; iClusterVertex < iClusterVertexCount; ++iClusterVertex)
 					{
-						ClusterData.vecPointWeights.push_back({pPointIndices[iClusterVertex], pWeights[iClusterVertex]});
+						ClusterData.FbxPointWeights.push_back({pPointIndices[iClusterVertex], pWeights[iClusterVertex]});
 					}
 
 					// 클러스터 정보 저장
-					SkinData.vecClusters.push_back(ClusterData);
+					SkinData.FbxClusters.push_back(ClusterData);
 
 					// 노드에서 공통 뼈대 읽어오기
 					FbxNode* pBoneNode = pCluster->GetLink();
@@ -308,7 +308,7 @@ void CFbxLoader::Read_MeshCluster(FbxMesh* pMesh, MESH_DATA& MeshData)
 			}
 
 			// 스킨 데이터 저장하기
-			MeshData.vecSkins.push_back(SkinData);
+			MeshData.FbxSkins.push_back(SkinData);
 		}
 	}
 }

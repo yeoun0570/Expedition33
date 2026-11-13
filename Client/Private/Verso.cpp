@@ -13,7 +13,7 @@ HRESULT CVerso::Initialize_Prototype()
 
     const char* pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/Default.fbx";
 
-    if (FAILED(CGameInstance::Get().Add_Model(L"Verso_Body", pFilePath)))
+    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Verso_Body"), pFilePath)))
     {
 #ifdef _DEBUG
         MSG_BOX("베르소 몸통 모델 등록에 실패했습니다.");
@@ -31,7 +31,7 @@ HRESULT CVerso::Initialize_Prototype()
 
     pFilePath = "./Bin/Resources/Models/Characters/Verso/Faces/Default.fbx";
 
-    if (FAILED(CGameInstance::Get().Add_Model(TEXT("Verso_Face"), pFilePath)))
+    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Verso_Face"), pFilePath)))
     {
 #ifdef _DEBUG
         MSG_BOX("베르소 얼굴 모델 등록에 실패했습니다.");
@@ -109,10 +109,10 @@ void CVerso::Late_Update(const f32_t fTimeDelta)
 HRESULT CVerso::Render()
 {
 #pragma region 모델 테스트(모델 출력)
-    if (FAILED(CGameInstance::Get().Render_Model(TEXT("Verso_Body"), m_Transform)))
+    if (FAILED(CGameInstance::Get().Render_Model(ETOUI(LEVEL::STATIC), TEXT("Verso_Body"), m_Transform)))
         return E_FAIL;
 
-    if (FAILED(CGameInstance::Get().Render_Model(TEXT("Verso_Face"), m_Transform)))
+    if (FAILED(CGameInstance::Get().Render_Model(ETOUI(LEVEL::STATIC), TEXT("Verso_Face"), m_Transform)))
         return E_FAIL;
 #pragma endregion
 

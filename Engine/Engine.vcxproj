@@ -171,7 +171,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="public\Layer.h" />
     <ClInclude Include="public\Level.h" />
     <ClInclude Include="public\Level_Manager.h" />
-    <ClInclude Include="public\MeshCol.h" />
+    <ClInclude Include="public\VIBuffer_Mesh.h" />
     <ClInclude Include="public\Model.h" />
     <ClInclude Include="public\Model_Manager.h" />
     <ClInclude Include="public\Prototype.h" />
@@ -182,7 +182,6 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="Public\Timer.h" />
     <ClInclude Include="Public\Timer_Manager.h" />
     <ClInclude Include="public\Transform.h" />
-    <ClInclude Include="public\TriCol.h" />
     <ClInclude Include="public\UIObject.h" />
     <ClInclude Include="public\VIBuffer.h" />
   </ItemGroup>
@@ -195,7 +194,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="private\Layer.cpp" />
     <ClCompile Include="private\Level.cpp" />
     <ClCompile Include="private\Level_Manager.cpp" />
-    <ClCompile Include="private\MeshCol.cpp" />
+    <ClCompile Include="private\VIBuffer_Mesh.cpp" />
     <ClCompile Include="private\Model.cpp" />
     <ClCompile Include="private\Model_Manager.cpp" />
     <ClCompile Include="private\Object_Manager.cpp" />
@@ -207,7 +206,6 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="Private\Timer.cpp" />
     <ClCompile Include="Private\Timer_Manager.cpp" />
     <ClCompile Include="private\Transform.cpp" />
-    <ClCompile Include="private\TriCol.cpp" />
     <ClCompile Include="private\UIObject.cpp" />
     <ClCompile Include="private\VIBuffer.cpp" />
   </ItemGroup>

@@ -15,30 +15,32 @@ HRESULT CModel::Initialize(const vector<MESH_DATA>& MeshDatas, const vector<FBX_
         return E_INVALIDARG;
 
     // 이미 초기화된 객체의 중복 생성을 방지
-    if (!m_vecMeshes.empty())
+    if (!m_Meshes.empty())
         return E_FAIL;
 
     for (const MESH_DATA& MeshData : MeshDatas)
     {
-        m_vecMeshes.push_back(CMeshCol::Create(m_pDevice, m_pContext, MeshData));
+        m_Meshes.push_back(CVIBuffer_Mesh::Create(m_pDevice, m_pContext, MeshData));
 
-        if (m_vecMeshes.back() == nullptr)
+        if (m_Meshes.back() == nullptr)
         {
-            m_vecMeshes.pop_back();
+            m_Meshes.pop_back();
             return E_FAIL;
         }
     }
 
-    m_vecNodeDatas = NodeDatas;
+    m_NodeDatas = NodeDatas;
 
     return S_OK;
 }
 
 void CModel::Render()
 {
-    for (const auto& pMesh : m_vecMeshes)
+    for (const auto& pMesh : m_Meshes)
     {
-        pMesh->Render_Buffer();
+        pMesh->Begin();
+        pMesh->Render();
+        pMesh->End();
     }
 }
 

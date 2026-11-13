@@ -2,6 +2,7 @@
 
 #include "GameInstance.h"
 #include "Level_Loading.h"
+#include "Verso.h"
 
 CMainApp::CMainApp()
 {
@@ -26,6 +27,9 @@ HRESULT CMainApp::Initialize()
     const wstring_t strShaderPath = L"../EngineSDK/Shader/Shader_VtxCol.hlsl";
 
     if (FAILED(CGameInstance::Get().Initialize_Engine(EngineDesc, m_pDevice, m_pContext, strShaderPath)))
+        return E_FAIL;
+
+    if (FAILED(Ready_Statics()))
         return E_FAIL;
 
     if (FAILED(Start_Level(LEVEL::LOGO)))
@@ -56,6 +60,16 @@ HRESULT CMainApp::Start_Level(LEVEL eStartLevel)
     )))
         return E_FAIL;
 
+
+    return S_OK;
+}
+
+HRESULT CMainApp::Ready_Statics()
+{
+    /* For.Prototype_GameObject_Verso */
+    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_GameObject_Verso"),
+        CVerso::Create(m_pDevice, m_pContext))))
+        return E_FAIL;
 
     return S_OK;
 }
