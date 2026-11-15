@@ -139,9 +139,9 @@ HRESULT CGameInstance::Add_Model(uint32_t iModelLevelIndex, const wstring_t& str
     return m_pModel_Manager->Add_Model(strModelTag, pFilePath, iModelLevelIndex);
 }
 
-HRESULT CGameInstance::Render_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const TRANSFORM& Transform)
+HRESULT CGameInstance::Render_Model(const shared_ptr<CModel>& pModel, const TRANSFORM& Transform)
 {
-    if (nullptr == m_pModel_Manager)
+    if (nullptr == pModel || nullptr == m_pShader)
         return E_FAIL;
 
     // 여기에서 상수 버퍼까지 전달
@@ -151,7 +151,18 @@ HRESULT CGameInstance::Render_Model(uint32_t iModelLevelIndex, const wstring_t& 
     // 셰이더와 입력 레이아웃 연결
     m_pShader->Bind_Shader();
 
-    return m_pModel_Manager->Render_Model(iModelLevelIndex, strModelTag);
+    // 조립된 전체 모델이면 내부의 파츠들도 함께 그린다.
+    pModel->Render();
+
+    return S_OK;
+}
+
+HRESULT CGameInstance::Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut)
+{
+    if (nullptr == m_pModel_Manager)
+        return E_FAIL;
+
+    return m_pModel_Manager->Assemble_Model(pSourceModel, PartModels, pOut);
 }
 #pragma endregion
 

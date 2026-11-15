@@ -83,6 +83,55 @@ HRESULT CVIBuffer_Mesh::Initialize_Prototype(const MESH_DATA& MeshData)
 
 HRESULT CVIBuffer_Mesh::Initialize(void* pArg)
 {
+    /* 사본은 원본에 영향이 가지 않게 별도의 애니메이션을 적용시키기 위해서 별도의 버퍼 적용 */
+
+    if (FAILED(__super::Initialize(pArg)))
+        return E_FAIL;
+
+    if (nullptr == m_pDevice || nullptr == m_pContext ||
+        nullptr == m_pVB)
+        return E_FAIL;
+
+    // 원본 정점 버퍼와 같은 크기·설정으로 새 버퍼를 만듭니다.
+    D3D11_BUFFER_DESC BufferDesc{};
+    m_pVB->GetDesc(&BufferDesc);
+
+    ComPtr<ID3D11Buffer> pVertexBuffer;
+
+    if (FAILED(m_pDevice->CreateBuffer(
+        &BufferDesc, nullptr, pVertexBuffer.GetAddressOf())))
+        return E_FAIL;
+
+    // 원본 정점 내용을 새 버퍼에 복사합니다.
+    m_pContext->CopyResource(pVertexBuffer.Get(), m_pVB.Get());
+
+    // 이 메시 사본은 이후 자기 정점 버퍼를 사용합니다.
+    m_pVB = pVertexBuffer;
+
+    return S_OK;
+}
+
+HRESULT CVIBuffer_Mesh::Update_Vertices(
+    const vector<VTXCOL>& Vertices)
+{
+    // 정점 버퍼와 GPU 명령을 전달할 장치 문맥이 필요합니다.
+    if (nullptr == m_pVB || nullptr == m_pContext)
+        return E_FAIL;
+
+    // 기존 버퍼에 담을 수 있는 정점 개수와 형식인지 확인합니다.
+    if (Vertices.empty() ||
+        Vertices.size() != m_iNumVertices ||
+        sizeof(VTXCOL) != m_iVertexStride)
+        return E_FAIL;
+
+    // 전달받은 정점 배열 전체를 기존 정점 버퍼에 복사합니다.
+    m_pContext->UpdateSubresource(m_pVB.Get(),
+                                  0,
+                                  nullptr,
+                                  Vertices.data(),
+                                  0,
+                                  0);
+
     return S_OK;
 }
 

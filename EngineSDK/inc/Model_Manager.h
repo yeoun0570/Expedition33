@@ -16,6 +16,7 @@ public:
 	HRESULT Initialize(uint32_t iNumLevels);
 	HRESULT	Add_Model(const wstring_t& strModelTag, const char* pFilePath, uint32_t iModelLevelIndex);
 	HRESULT	Render_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag);
+	HRESULT Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut);
 	void	Clear(uint32_t iClearLevelIndex);
 
 private:

@@ -146,11 +146,12 @@ HRESULT CFbxLoader::Read_BoneNodes(FbxScene* pScene)
 	if (nullptr == pRootNode)
 		return E_FAIL;
 
-	vector<FbxNode*> vecNodes;
-	vecNodes.push_back(pRootNode);
+	vector<FbxNode*> Nodes;
+	Nodes.push_back(pRootNode);
 
 	FBX_NODE_DATA	RootData
 	{
+		pRootNode->GetUniqueID(),
 		pRootNode->GetName(),
 		-1,
 		pRootNode->GetSkeleton() != nullptr,
@@ -160,25 +161,46 @@ HRESULT CFbxLoader::Read_BoneNodes(FbxScene* pScene)
 
 
 	// 나머지 노드들 데이터 m_vecNodeDatas에 저장
-	for (uint64_t iNodeIndex = 0; iNodeIndex < vecNodes.size(); ++iNodeIndex)
+	for (uint64_t iNodeIndex = 0; iNodeIndex < Nodes.size(); ++iNodeIndex)
 	{
-		FbxNode* pParentNode = vecNodes[iNodeIndex];
+		FbxNode* pParentNode = Nodes[iNodeIndex];
 
 		for (int32_t iChildIndex = 0; iChildIndex < pParentNode->GetChildCount(); ++iChildIndex)
 		{
 			FbxNode* pChildNode = pParentNode->GetChild(iChildIndex);
 
-			vecNodes.push_back(pChildNode);
+			Nodes.push_back(pChildNode);
 
 
 			FBX_NODE_DATA	ChildData
 			{
+				pChildNode->GetUniqueID(),
 				pChildNode->GetName(),
 				static_cast<int32_t>(iNodeIndex),
 				pChildNode->GetSkeleton() != nullptr,
 			};
 
 			m_NodeDatas.push_back(ChildData);
+		}
+	}
+
+	// 노드에 Fbx 로컬, 글로벌(월드) 행렬 저장
+	// 뼈 매핑에 사용할 공통 뼈대 저장
+	for (uint64_t iNode = 0; iNode < Nodes.size(); ++iNode)
+	{
+		// EvaluateLocalTransform : Fbx 로컬 행렬 가져오기
+		// EvaluateGlobalTransform : Fbx 글로벌(월드) 행렬 가져오기
+		FbxAMatrix	LocalMatrix = Nodes[iNode]->EvaluateLocalTransform();
+		FbxAMatrix	GlobalMatrix = Nodes[iNode]->EvaluateGlobalTransform();
+
+		// 가져온 Fbx 로컬, 글로벌(월드) 행렬 저장
+		for (uint32_t iRow = 0; iRow < 4; ++iRow)
+		{
+			for (uint32_t iCol = 0; iCol < 4; ++iCol)
+			{
+				m_NodeDatas[iNode].LocalMatrix[iRow][iCol] = LocalMatrix.Get(iRow, iCol);
+				m_NodeDatas[iNode].GlobalMatrix[iRow][iCol] = GlobalMatrix.Get(iRow, iCol);
+			}
 		}
 	}
 
@@ -285,12 +307,30 @@ void CFbxLoader::Read_MeshCluster(FbxMesh* pMesh, MESH_DATA& MeshData)
 					nullptr != pCluster->GetLink() &&
 					pCluster->GetControlPointIndicesCount() > 0)
 				{
+					const uint64_t		iBoneID = pCluster->GetLink()->GetUniqueID();
 					const char_t*		pBoneName = pCluster->GetLink()->GetName(); // 뼈이름
 					const int32_t		iClusterVertexCount = pCluster->GetControlPointIndicesCount(); // 정점 개수
 					const int32_t*		pPointIndices = pCluster->GetControlPointIndices(); // 정점 번호 목록
 
 					FBX_CLUSTER_DATA ClusterData{};
+					ClusterData.iBoneID = iBoneID;
 					ClusterData.strBoneName = pBoneName;
+
+					FbxAMatrix MeshBind;
+					FbxAMatrix BoneBind;
+
+					pCluster->GetTransformMatrix(MeshBind);			// 메시 행렬
+					pCluster->GetTransformLinkMatrix(BoneBind);		// 뼈 행렬
+
+					// 클러스터의 메시 형렬과 뼈 행렬 저장
+					for (uint32_t iRow = 0; iRow < 4; ++iRow)
+					{
+						for (uint32_t iCol = 0; iCol < 4; ++iCol)
+						{
+							ClusterData.MeshBindMatrix[iRow][iCol] = MeshBind.Get(iRow, iCol);
+							ClusterData.BoneBindMatrix[iRow][iCol] = BoneBind.Get(iRow, iCol);
+						}
+					}
 
 					const f64_t* pWeights = pCluster->GetControlPointWeights();
 

@@ -19,6 +19,12 @@ namespace Engine
 		float4_t vColor;
 	} VTXCOL;
 
+	typedef struct tagVertexPositionTexcoord
+	{
+		XMFLOAT3			vPosition;
+		XMFLOAT2			vTexcoord;
+	}VTXPOSTEX;
+
 	typedef struct tagTransform
 	{
 		// float4x4_t : 4x4 행렬 자료형
@@ -39,16 +45,28 @@ namespace Engine
 		f64_t fWeight;
 	} FBX_POINT_WEIGHT;
 
+
+
 	typedef struct tagFbxClusterData
 	{
-		string strBoneName;
+		string	strBoneName;
 		vector<FBX_POINT_WEIGHT> FbxPointWeights;
+
+		uint64_t		iBoneID;
+		f64_t			MeshBindMatrix[4][4]{}; // 바인드 메시
+		f64_t			BoneBindMatrix[4][4]{}; // 바인드 뼈
+
+		int32_t			iNodeIndex = -1;	// 노드 연결용 인덱스
 	} FBX_CLUSTER_DATA;
+
+
 
 	typedef struct tagFbxSkinData
 	{
 		vector<FBX_CLUSTER_DATA> FbxClusters;
 	} FBX_SKIN_DATA;
+
+
 
 	// 정점 + 인덱스 + 클러스터합친 Fbx데이터
 	typedef struct tagMeshData
@@ -62,9 +80,12 @@ namespace Engine
 	// 뼈대 가져오기용
 	typedef struct tagFbxNodeData
 	{
-		string		strName;			// 현재 노드 이름
-		int32_t		iParentIndex = -1;	// 부모 노드 번호(부모가 없으면 -1)
-		bool_t		isBone = false;		// 노드에 뼈가 존재하는지
+		uint64_t	iNodeID;
+		string		strName;				// 현재 노드 이름
+		int32_t		iParentIndex = -1;		// 부모 노드 번호(부모가 없으면 -1)
+		bool_t		isBone = false;			// 노드에 뼈가 존재하는지
+		f64_t		LocalMatrix[4][4]{};	// FBX 기본 자세 행렬
+		f64_t		GlobalMatrix[4][4]{};	// FBX 파일 기준 월드 행렬(게임에 반영되는 월드 행렬이 아니라 FBX 파일 안의 월드 행렬임)
 	}FBX_NODE_DATA;
 
 }

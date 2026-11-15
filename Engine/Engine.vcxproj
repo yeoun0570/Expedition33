@@ -184,6 +184,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="public\Transform.h" />
     <ClInclude Include="public\UIObject.h" />
     <ClInclude Include="public\VIBuffer.h" />
+    <ClInclude Include="Public\VIBuffer_Rect.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\Component.cpp" />
@@ -208,6 +209,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="private\Transform.cpp" />
     <ClCompile Include="private\UIObject.cpp" />
     <ClCompile Include="private\VIBuffer.cpp" />
+    <ClCompile Include="Private\VIBuffer_Rect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shader\Shader_VtxCol.hlsl">

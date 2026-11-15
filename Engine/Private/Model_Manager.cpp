@@ -49,6 +49,11 @@ HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFil
 	if (nullptr == pModel)
 		return E_FAIL;
 
+	// 생성한 모델을 컴포넌트 원형으로도 등록합니다.
+	if (FAILED(CGameInstance::Get().Add_Prototype(iModelLevelIndex, strModelTag, pModel)))
+		return E_FAIL;
+	
+
 	// 해당 모델을 관리하기 위해 map에 저장
 	m_pModels[iModelLevelIndex].emplace(strModelTag, pModel);
 
@@ -63,6 +68,30 @@ HRESULT CModel_Manager::Render_Model(uint32_t iModelLevelIndex, const wstring_t&
 	
 	pModel->Render();
 
+	return S_OK;
+}
+
+HRESULT CModel_Manager::Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut)
+{
+	if (nullptr == pSourceModel)
+		return E_FAIL;
+
+	// 외형 메시 없이 기준 노드만 복사해 전체 모델을 만든다.
+	auto pModel = CModel::Create(m_pDevice, m_pContext, vector<MESH_DATA>{}, pSourceModel->Get_NodeDatas());
+
+	if (nullptr == pModel)
+		return E_FAIL;
+
+	// 사용할 구성 요소로 초기화한다.
+	if (FAILED(pModel->Initialize(nullptr)))
+		return E_FAIL;
+
+	// 전체 모델에 복사한 뼈대를 기준으로 기존 파츠들을 조립한다.
+	if (FAILED(pModel->Assemble(*pModel, PartModels)))
+		return E_FAIL;
+
+	// 모두 성공했을 때만 완성된 모델을 전달한다.
+	pOut = pModel;
 	return S_OK;
 }
 

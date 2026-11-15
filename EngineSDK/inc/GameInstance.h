@@ -50,7 +50,8 @@ public:
 
 #pragma region Model_Manager
 	HRESULT	Add_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const char* pFilePath);
-	HRESULT	Render_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const TRANSFORM& Transform);
+	HRESULT Render_Model(const shared_ptr<CModel>& pModel, const TRANSFORM& Transform);
+	HRESULT Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut);
 #pragma endregion
 
 #pragma region Shader
