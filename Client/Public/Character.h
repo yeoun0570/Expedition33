@@ -27,7 +27,7 @@ public:
 	virtual HRESULT Render() override;
 
 protected:
-	TRANSFORM		m_Transform{};
+	TRANSFORM m_Transform{};
 
 public:
 	virtual shared_ptr<CPrototype> Clone(void* pArg) = 0;

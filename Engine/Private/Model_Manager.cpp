@@ -9,9 +9,18 @@ CModel_Manager::CModel_Manager(const ComPtr<ID3D11Device>& pDevice, const ComPtr
 {
 }
 
-HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFilePath)
+HRESULT CModel_Manager::Initialize(uint32_t iNumLevels)
 {
-	if (nullptr != Find_Model(strModelTag))
+	m_iNumLevels = iNumLevels;
+
+	m_pModels = make_shared<MODELS[]>(iNumLevels);
+
+	return S_OK;
+}
+
+HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFilePath, uint32_t iModelLevelIndex)
+{
+	if (nullptr != Find_Model(iModelLevelIndex, strModelTag))
 		return E_FAIL;
 
 	if (strModelTag.empty())
@@ -40,15 +49,20 @@ HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFil
 	if (nullptr == pModel)
 		return E_FAIL;
 
+	// 생성한 모델을 컴포넌트 원형으로도 등록합니다.
+	if (FAILED(CGameInstance::Get().Add_Prototype(iModelLevelIndex, strModelTag, pModel)))
+		return E_FAIL;
+	
+
 	// 해당 모델을 관리하기 위해 map에 저장
-	m_Models.emplace(strModelTag, pModel);
+	m_pModels[iModelLevelIndex].emplace(strModelTag, pModel);
 
 	return S_OK;
 }
 
-HRESULT CModel_Manager::Render_Model(const wstring_t& strModelTag)
+HRESULT CModel_Manager::Render_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag)
 {
-	auto	pModel = Find_Model(strModelTag);
+	auto	pModel = Find_Model(iModelLevelIndex, strModelTag);
 	if (nullptr == pModel)
 		return E_FAIL;
 	
@@ -57,18 +71,59 @@ HRESULT CModel_Manager::Render_Model(const wstring_t& strModelTag)
 	return S_OK;
 }
 
-shared_ptr<CModel> CModel_Manager::Find_Model(const wstring_t& strModelTag)
+HRESULT CModel_Manager::Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut)
 {
-	auto	iter = m_Models.find(strModelTag);
+	if (nullptr == pSourceModel)
+		return E_FAIL;
 
-	if (iter == m_Models.end())
+	// 외형 메시 없이 기준 노드만 복사해 전체 모델을 만든다.
+	auto pModel = CModel::Create(m_pDevice, m_pContext, vector<MESH_DATA>{}, pSourceModel->Get_NodeDatas());
+
+	if (nullptr == pModel)
+		return E_FAIL;
+
+	// 사용할 구성 요소로 초기화한다.
+	if (FAILED(pModel->Initialize(nullptr)))
+		return E_FAIL;
+
+	// 전체 모델에 복사한 뼈대를 기준으로 기존 파츠들을 조립한다.
+	if (FAILED(pModel->Assemble(*pModel, PartModels)))
+		return E_FAIL;
+
+	// 모두 성공했을 때만 완성된 모델을 전달한다.
+	pOut = pModel;
+	return S_OK;
+}
+
+void CModel_Manager::Clear(uint32_t iClearLevelIndex)
+{
+	for (auto& Pair : m_pModels[iClearLevelIndex])
+	{
+		Pair.second.reset();
+	}
+
+	m_pModels[iClearLevelIndex].clear();
+}
+
+shared_ptr<CModel> CModel_Manager::Find_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag)
+{
+	auto    iter = m_pModels[iModelLevelIndex].find(strModelTag);
+	if (iter == m_pModels[iModelLevelIndex].end())
 		return nullptr;
 
 	return iter->second;
 }
 
-unique_ptr<CModel_Manager> CModel_Manager::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
+unique_ptr<CModel_Manager> CModel_Manager::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, uint32_t iNumLevels)
 {
-	return unique_ptr<CModel_Manager>(new CModel_Manager(pDevice, pContext));
+	auto    pInstance = unique_ptr<CModel_Manager>(new CModel_Manager(pDevice, pContext));
+
+	if (FAILED(pInstance->Initialize(iNumLevels)))
+	{
+		MSG_BOX("Failed to Created : CModel_Manager");
+		pInstance.reset();
+	}
+
+	return pInstance;
 }
 

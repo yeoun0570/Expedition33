@@ -11,9 +11,9 @@ HRESULT CVerso::Initialize_Prototype()
 {
 #pragma region 몸체 등록
 
-    const char* pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/Default.fbx";
+    const char* pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/BikiniB.fbx";
 
-    if (FAILED(CGameInstance::Get().Add_Model(L"Verso_Body", pFilePath)))
+    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_Model"), pFilePath)))
     {
 #ifdef _DEBUG
         MSG_BOX("베르소 몸통 모델 등록에 실패했습니다.");
@@ -31,7 +31,7 @@ HRESULT CVerso::Initialize_Prototype()
 
     pFilePath = "./Bin/Resources/Models/Characters/Verso/Faces/Default.fbx";
 
-    if (FAILED(CGameInstance::Get().Add_Model(TEXT("Verso_Face"), pFilePath)))
+    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Face_Model"), pFilePath)))
     {
 #ifdef _DEBUG
         MSG_BOX("베르소 얼굴 모델 등록에 실패했습니다.");
@@ -55,6 +55,9 @@ HRESULT CVerso::Initialize_Prototype()
 HRESULT CVerso::Initialize(void* pArg)
 {
     if(FAILED(__super::Initialize(pArg)))
+        return E_FAIL;
+
+    if (FAILED(Ready_Components()))
         return E_FAIL;
 
     return S_OK;
@@ -108,16 +111,40 @@ void CVerso::Late_Update(const f32_t fTimeDelta)
 
 HRESULT CVerso::Render()
 {
-#pragma region 모델 테스트(모델 출력)
-    if (FAILED(CGameInstance::Get().Render_Model(TEXT("Verso_Body"), m_Transform)))
-        return E_FAIL;
-
-    if (FAILED(CGameInstance::Get().Render_Model(TEXT("Verso_Face"), m_Transform)))
-        return E_FAIL;
-#pragma endregion
-
     if (FAILED(__super::Render()))
         return E_FAIL;
+
+    if (FAILED(CGameInstance::Get().Render_Model(m_pAssembleModelCom, m_Transform)))
+        return E_FAIL;
+    
+
+    return S_OK;
+}
+
+HRESULT CVerso::Ready_Components()
+{
+    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_Model"),
+        TEXT("Com_Verso_Body_Model"), m_pBodyModelCom)))
+        return E_FAIL;
+
+    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Face_Model"),
+        TEXT("Com_Verso_Face_Model"), m_pFaceModelCom)))
+        return E_FAIL;
+
+    // 파츠 이름과 이미 준비한 모델 사본을 연결한다.
+    const map<wstring_t, shared_ptr<CModel>> PartModels
+    {
+        { TEXT("Body"), m_pBodyModelCom },
+        { TEXT("Face"), m_pFaceModelCom }
+    };
+
+    // 몸체에서 기준 노드를 가져오되,
+    // 출력할 몸체와 얼굴은 모두 파츠로 전달한다.
+    // 생성과 조립 계산은 엔진에서 처리한다.
+    if (FAILED(CGameInstance::Get().Assemble_Model(m_pBodyModelCom, PartModels, m_pAssembleModelCom)))
+    {
+        return E_FAIL;
+    }
 
     return S_OK;
 }

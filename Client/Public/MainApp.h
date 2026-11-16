@@ -19,6 +19,7 @@ public:
 
 private:
 	HRESULT Start_Level(LEVEL eStartLevel);
+	HRESULT Ready_Statics();
 
 private:
 	ComPtr<ID3D11Device>			m_pDevice = { nullptr };

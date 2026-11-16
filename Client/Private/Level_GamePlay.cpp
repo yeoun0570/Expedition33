@@ -27,14 +27,10 @@ HRESULT CLevel_GamePlay::Render()
 
 HRESULT CLevel_GamePlay::Ready_Layer_Characters(const wstring_t& strLayerTag)
 {
-    CVerso::VERSO_DESC  Desc{};
+    CVerso::VERSO_DESC Desc{};
 
-    /* 海福家 单捞磐 技泼 */
-    //Desc.iData = ;
-
-    if(FAILED(CGameInstance::Get().Add_GameObject(ETOUI(LEVEL::GAMEPLAY), TEXT("Prototype_GameObject_Verso"),
-                                        ETOUI(LEVEL::GAMEPLAY), strLayerTag, 
-                                        &Desc)))
+    if(FAILED(CGameInstance::Get().Add_GameObject(ETOUI(LEVEL::STATIC), TEXT("Prototype_GameObject_Verso"),
+                                        ETOUI(LEVEL::GAMEPLAY), strLayerTag, &Desc)))
         return E_FAIL;
 
     return S_OK;

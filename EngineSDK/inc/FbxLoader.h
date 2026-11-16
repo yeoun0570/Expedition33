@@ -22,13 +22,13 @@ public:
 public:
 	HRESULT Load_Model(const char* pFilePath);
 
-	const vector<MESH_DATA>&		Get_MeshDatas() const { return m_vecMeshDatas; }
-	const vector<FBX_NODE_DATA>&	Get_NodeDatas() const { return m_vecNodeDatas; }
+	const vector<MESH_DATA>&		Get_MeshDatas() const { return m_MeshDatas; }
+	const vector<FBX_NODE_DATA>&	Get_NodeDatas() const { return m_NodeDatas; }
 
 private:
 	FbxManager*				m_pManager = { nullptr };
-	vector<MESH_DATA>		m_vecMeshDatas;
-	vector<FBX_NODE_DATA>	m_vecNodeDatas;
+	vector<MESH_DATA>		m_MeshDatas;
+	vector<FBX_NODE_DATA>	m_NodeDatas;
 
 private:
 	HRESULT	Read_BoneNodes(FbxScene* pScene);

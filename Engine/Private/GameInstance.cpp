@@ -22,11 +22,7 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     if (nullptr == m_pShader)
         return E_FAIL;
 
-    m_pTriCol = CTriCol::Create(pDevice, pContext);
-    if (nullptr == m_pTriCol)
-        return E_FAIL;
-
-    m_pModel_Manager = CModel_Manager::Create(pDevice, pContext);
+    m_pModel_Manager = CModel_Manager::Create(pDevice, pContext, EngineDesc.iNumLevels);
     if (m_pModel_Manager == nullptr)
         return E_FAIL;
 
@@ -59,6 +55,8 @@ HRESULT CGameInstance::Clear_Resources(uint32_t iClearLevelIndex)
     m_pObject_Manager->Clear(iClearLevelIndex);
 
     m_pPrototype_Manager->Clear(iClearLevelIndex);
+
+    m_pModel_Manager->Clear(iClearLevelIndex);
 
     return S_OK;
 }
@@ -133,17 +131,17 @@ HRESULT CGameInstance::Change_Level(uint32_t iLevelIndex, shared_ptr<class CLeve
 #pragma endregion
 
 #pragma region Model_Manager
-HRESULT CGameInstance::Add_Model(const wstring_t& strModelTag, const char* pFilePath)
+HRESULT CGameInstance::Add_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const char* pFilePath)
 {
     if (nullptr == m_pModel_Manager)
         return E_FAIL;
 
-    return m_pModel_Manager->Add_Model(strModelTag, pFilePath);
+    return m_pModel_Manager->Add_Model(strModelTag, pFilePath, iModelLevelIndex);
 }
 
-HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag, const TRANSFORM& Transform)
+HRESULT CGameInstance::Render_Model(const shared_ptr<CModel>& pModel, const TRANSFORM& Transform)
 {
-    if (nullptr == m_pModel_Manager)
+    if (nullptr == pModel || nullptr == m_pShader)
         return E_FAIL;
 
     // 여기에서 상수 버퍼까지 전달
@@ -153,7 +151,18 @@ HRESULT CGameInstance::Render_Model(const wstring_t& strModelTag, const TRANSFOR
     // 셰이더와 입력 레이아웃 연결
     m_pShader->Bind_Shader();
 
-    return m_pModel_Manager->Render_Model(strModelTag);
+    // 조립된 전체 모델이면 내부의 파츠들도 함께 그린다.
+    pModel->Render();
+
+    return S_OK;
+}
+
+HRESULT CGameInstance::Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut)
+{
+    if (nullptr == m_pModel_Manager)
+        return E_FAIL;
+
+    return m_pModel_Manager->Assemble_Model(pSourceModel, PartModels, pOut);
 }
 #pragma endregion
 
@@ -205,7 +214,6 @@ void CGameInstance::Release_Engine()
     m_pRenderer.reset();
     
     m_pShader.reset();
-    m_pTriCol.reset();
 
     m_pGraphic_Device.reset();
 }

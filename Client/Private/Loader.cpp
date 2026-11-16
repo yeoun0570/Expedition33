@@ -99,11 +99,6 @@ HRESULT CLoader::Loading_For_LogoLV()
 
 HRESULT CLoader::Loading_For_GamePlayLV()
 {
-    /* For.Prototype_GameObject_Verso */
-    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::GAMEPLAY), TEXT("Prototype_GameObject_Verso"),
-        CVerso::Create(m_pDevice, m_pContext))))
-        return E_FAIL;
-
     m_isFinished = true;
 
     return S_OK;

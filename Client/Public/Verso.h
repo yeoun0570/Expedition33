@@ -26,6 +26,14 @@ public:
 	virtual void Late_Update(const f32_t fTimeDelta) override;
 	virtual HRESULT Render() override;
 
+private:
+	shared_ptr<CModel>	m_pAssembleModelCom = { nullptr };
+	shared_ptr<CModel>	m_pBodyModelCom = { nullptr };
+	shared_ptr<CModel>	m_pFaceModelCom = { nullptr };
+
+private:
+	HRESULT Ready_Components();
+
 public:
 	static shared_ptr<CVerso> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 	virtual shared_ptr<CPrototype> Clone(void* pArg) override;
