@@ -37,6 +37,15 @@
     <Filter Include="02. GameObjects\Characters\Verso">
       <UniqueIdentifier>{2b93d668-3a4f-413f-9400-55d8e609d8cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="97. ShaderFiles">
+      <UniqueIdentifier>{74f50f3b-ec7c-4738-9d56-2c3522124b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97. ShaderFiles\Vertex">
+      <UniqueIdentifier>{b48842bb-0b32-4a3f-9099-2dc83546f319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97. ShaderFiles\Pixel">
+      <UniqueIdentifier>{00fee06b-580f-4062-8182-2e0715bf4c66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\MainApp.h">
@@ -120,5 +129,13 @@
     <ResourceCompile Include="Client.rc">
       <Filter>99.Default</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Bin\ShaderFiles\VertexShader\VS_PosTex.hlsl">
+      <Filter>97. ShaderFiles\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="Bin\ShaderFiles\PixelShader\PS_PosTex.hlsl">
+      <Filter>97. ShaderFiles\Pixel</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
