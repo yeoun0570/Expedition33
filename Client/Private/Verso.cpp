@@ -11,15 +11,26 @@ HRESULT CVerso::Initialize_Prototype()
 {
 #pragma region 몸체 등록
 
-    const char* pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/BikiniB.fbx";
+    const char* pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/Default.fbx";
 
-    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_Model"), pFilePath)))
+    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_Default_Model"), pFilePath)))
     {
 #ifdef _DEBUG
-        MSG_BOX("베르소 몸통 모델 등록에 실패했습니다.");
+        MSG_BOX("베르소 기본 몸통 모델 등록에 실패했습니다.");
 #endif
         return E_FAIL;
     }
+
+    pFilePath = "./Bin/Resources/Models/Characters/Verso/Outfits/BikiniB.fbx";
+
+    if (FAILED(CGameInstance::Get().Add_Model(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_BikniB_Model"), pFilePath)))
+    {
+#ifdef _DEBUG
+        MSG_BOX("베르소 비키니 몸통 모델 등록에 실패했습니다.");
+#endif
+        return E_FAIL;
+    }
+
 
 #ifdef _DEBUG
     MSG_BOX("베르소 몸통 모델 등록에 성공했습니다.");
@@ -98,6 +109,16 @@ void CVerso::Update(const f32_t fTimeDelta)
             10000.f));
 #pragma endregion
 
+#pragma region 몸체 변경
+    if (GetKeyState('1') & 0x8000)
+        Change_Body(m_pDefaultBodyModelCom);
+
+    else if (GetKeyState('2') & 0x8000)
+        Change_Body(m_pBikiniBBodyModelCom);
+
+#pragma endregion
+
+
     __super::Update(fTimeDelta);
 }
 
@@ -123,29 +144,43 @@ HRESULT CVerso::Render()
 
 HRESULT CVerso::Ready_Components()
 {
-    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_Model"),
-        TEXT("Com_Verso_Body_Model"), m_pBodyModelCom)))
+    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_Default_Model"),
+        TEXT("Com_Verso_Body_Default_Model"), m_pDefaultBodyModelCom)))
+        return E_FAIL;
+
+    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Body_BikniB_Model"),
+        TEXT("Com_Verso_Body_BikiniB_Model"), m_pBikiniBBodyModelCom)))
         return E_FAIL;
 
     if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Face_Model"),
         TEXT("Com_Verso_Face_Model"), m_pFaceModelCom)))
         return E_FAIL;
 
+    // 첫 몸체 설정
+    if (FAILED(Change_Body(m_pDefaultBodyModelCom)))
+        return E_FAIL;
+
+    return S_OK;
+}
+
+HRESULT CVerso::Change_Body(const shared_ptr<CModel>& pBodyModel)
+{
+    if (nullptr == pBodyModel)
+        return E_FAIL;
+
     // 파츠 이름과 이미 준비한 모델 사본을 연결한다.
     const map<wstring_t, shared_ptr<CModel>> PartModels
     {
-        { TEXT("Body"), m_pBodyModelCom },
+        { TEXT("Body"), pBodyModel },
         { TEXT("Face"), m_pFaceModelCom }
     };
 
     // 몸체에서 기준 노드를 가져오되,
     // 출력할 몸체와 얼굴은 모두 파츠로 전달한다.
     // 생성과 조립 계산은 엔진에서 처리한다.
-    if (FAILED(CGameInstance::Get().Assemble_Model(m_pBodyModelCom, PartModels, m_pAssembleModelCom)))
-    {
+    if (FAILED(CGameInstance::Get().Assemble_Model(pBodyModel, PartModels, m_pAssembleModelCom)))
         return E_FAIL;
-    }
-
+    
     return S_OK;
 }
 

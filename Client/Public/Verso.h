@@ -28,11 +28,13 @@ public:
 
 private:
 	shared_ptr<CModel>	m_pAssembleModelCom = { nullptr };
-	shared_ptr<CModel>	m_pBodyModelCom = { nullptr };
+	shared_ptr<CModel>	m_pDefaultBodyModelCom = { nullptr };
+	shared_ptr<CModel>	m_pBikiniBBodyModelCom = { nullptr };
 	shared_ptr<CModel>	m_pFaceModelCom = { nullptr };
 
 private:
 	HRESULT Ready_Components();
+	HRESULT Change_Body(const shared_ptr<CModel>& pBodyModel);
 
 public:
 	static shared_ptr<CVerso> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
