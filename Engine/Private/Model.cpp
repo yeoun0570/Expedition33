@@ -1,11 +1,13 @@
 #include "Model.h"
+#include <set>
+
 
 CModel::CModel(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
     : CComponent { pDevice, pContext }
 {
 }
 
-HRESULT CModel::Initialize_Prototype(const vector<MESH_DATA>& MeshDatas, const vector<FBX_NODE_DATA>& NodeDatas)
+HRESULT CModel::Initialize_Prototype(const vector<MESH_DATA>& MeshDatas, const vector<FBX_NODE_DATA>& NodeDatas, const map<string, string>& JointMap)
 {
     if (m_pDevice == nullptr || m_pContext == nullptr)
         return E_FAIL;
@@ -32,6 +34,7 @@ HRESULT CModel::Initialize_Prototype(const vector<MESH_DATA>& MeshDatas, const v
 
     m_NodeDatas = NodeDatas;
     m_MeshDatas = MeshDatas;
+    m_JointMap = JointMap;
 
     /* 노드와 클러스터 연결 */
     map<uint64_t, int32_t>  NodeIndicies;
@@ -164,36 +167,119 @@ HRESULT CModel::Assemble(const CModel& SourceModel,const map<wstring_t, shared_p
 
     // 출력할 파츠들만 정점 계산 대상으로 넣는다.
     // 몸체도 PartModels로 전달받는다.
-    vector<CModel*> Models;
-
     for (const auto& pPart : Parts)
-        Models.push_back(pPart.get());
-
-    for (CModel* pModel : Models)
     {
-        // 원본 메시 데이터와 그리기용 메시의 개수가 맞아야 한다.
-        if (pModel->m_MeshDatas.size() != pModel->m_Meshes.size())
+        if (FAILED(pPart->Update_MeshVertices()))
             return E_FAIL;
-
-        for (uint32_t iMesh = 0; iMesh < pModel->m_Meshes.size(); ++iMesh)
-        {
-            if (nullptr == pModel->m_Meshes[iMesh])
-                return E_FAIL;
-
-            // 기본 자세와 바인드 행렬, 기존 가중치로 정점 좌표를 계산한다.
-            vector<VTXCOL> Vertices;
-
-            if (FAILED(pModel->Calculate_MeshVertices(iMesh, Vertices)))
-                return E_FAIL;
-
-            // 계산 결과를 실제 그리기에 사용하는 정점 버퍼에 반영한다.
-            if (FAILED(pModel->m_Meshes[iMesh]->Update_Vertices(Vertices)))
-                return E_FAIL;
-        }
     }
 
     // 계산이 끝나면 이름과 모델을 함께 보관한다.
     m_Parts = PartModels;
+
+    return S_OK;
+}
+
+HRESULT CModel::Set_Animation(const shared_ptr<FBX_ANIM_DATA>& pAnimData)
+{
+    /* 재생할 클립 지정 + 뼈 이름으로 채널↔노드 연결 */
+    if (nullptr == pAnimData || 0 == pAnimData->iFrameCount)
+        return E_FAIL;
+
+    vector<int32_t> ChannelNodeIndices(pAnimData->Channels.size(), -1);
+
+    for (size_t iChannel = 0; iChannel < pAnimData->Channels.size(); ++iChannel)
+    {
+        ChannelNodeIndices[iChannel] = Find_BoneIndex(pAnimData->Channels[iChannel].strBoneName);
+    }
+
+    m_pAnimData = pAnimData;
+    m_ChannelNodeIndices.swap(ChannelNodeIndices);
+
+    // 새 동작은 처음부터 재생
+    m_fAnimTime = 0.0;
+
+#ifdef _DEBUG
+    {
+        // 공통 뼈대에서 애니메이션 채널이 있는 노드 표시
+        vector<bool_t> IsAnimated(m_NodeDatas.size(), false);
+        for (int32_t iNode : m_ChannelNodeIndices)
+        {
+            if (iNode >= 0)
+                IsAnimated[iNode] = true;
+        }
+
+        char_t szLog[256]{};
+
+        for (const auto& [strPartName, pPart] : m_Parts)
+        {
+            set<string> Unmapped;     // ① 공통 뼈대에 연결 안 된 뼈
+            set<string> NotAnimated;  // ② 연결은 됐지만 애니메이션이 없는 뼈
+
+            for (const MESH_DATA& MeshData : pPart->m_MeshDatas)
+            {
+                for (const FBX_SKIN_DATA& SkinData : MeshData.FbxSkins)
+                {
+                    for (const FBX_CLUSTER_DATA& ClusterData : SkinData.FbxClusters)
+                    {
+                        const int32_t iSource = pPart->m_SourceNodeIndices[ClusterData.iNodeIndex];
+
+                        if (iSource < 0)
+                            Unmapped.insert(ClusterData.strBoneName);
+                        else if (!IsAnimated[iSource])
+                            NotAnimated.insert(ClusterData.strBoneName);
+                    }
+                }
+            }
+
+            sprintf_s(szLog, "[Seam] %ls: 연결 안 됨 %zu개, 애니메이션 없음 %zu개\n",
+                strPartName.c_str(), Unmapped.size(), NotAnimated.size());
+            OutputDebugStringA(szLog);
+
+            for (const string& strName : Unmapped)
+            {
+                sprintf_s(szLog, "    [연결 안 됨] %s\n", strName.c_str());
+                OutputDebugStringA(szLog);
+            }
+
+            for (const string& strName : NotAnimated)
+            {
+                sprintf_s(szLog, "    [애니메이션 없음] %s\n", strName.c_str());
+                OutputDebugStringA(szLog);
+            }
+        }
+    }
+#endif
+
+    return S_OK;
+}
+
+HRESULT CModel::Play_Animation(f64_t fTimeDelta)
+{
+    /* 조립 모델: 재생 시간 진행 → 공통 뼈대 자세 계산 → 파츠에 전달 */
+
+    if (nullptr == m_pAnimData || m_pAnimData->fDuration <= 0.0)
+        return E_FAIL;
+
+    // 1. 재생 위치 진행 (끝나면 처음으로 돌아가 반복 재생)
+    m_fAnimTime += fTimeDelta;
+    if (m_fAnimTime >= m_pAnimData->fDuration)
+        m_fAnimTime -= m_pAnimData->fDuration;
+
+    // 2. 지금 시간의 로컬 → 글로벌
+    vector<float4x4_t> LocalMatrices;
+
+    if (FAILED(Sample_LocalMatrices(m_fAnimTime, LocalMatrices)))
+        return E_FAIL;
+
+    if (FAILED(Calculate_GlobalMatrices(LocalMatrices, m_GlobalMatrices)))
+        return E_FAIL;
+
+    // 3. 각 파츠에 자세 전달 + 정점 다시 계산
+    for (const auto& [strPartName, pPart] : m_Parts)
+    {
+        if (FAILED(pPart->Apply_SourcePose(m_GlobalMatrices)))
+            return E_FAIL;
+    }
 
     return S_OK;
 }
@@ -211,7 +297,34 @@ void CModel::Build_BoneMapping(const CModel& SourceModel, vector<int32_t>& Sourc
         if (!NodeData.isBone)
             continue;
 
-        SourceNodeIndices[iNode] = SourceModel.Find_BoneIndex(NodeData.strName);
+        // 매핑 표에 있으면 표가 가리키는 뼈를, 없으면 같은 이름의 뼈를 따라간다
+        auto iter = m_JointMap.find(NodeData.strName);
+        const string& strSourceName = (iter != m_JointMap.end()) ? iter->second : NodeData.strName;
+
+        SourceNodeIndices[iNode] = SourceModel.Find_BoneIndex(strSourceName);
+
+#ifdef _DEBUG
+        // 이름이 다른 쌍(표로 연결된 뼈)만 기준 자세 위치 비교
+        if (iter != m_JointMap.end() && iter->second != NodeData.strName && SourceNodeIndices[iNode] >= 0)
+        {
+            const auto& Mine = NodeData.GlobalMatrix;                                        // 얼굴 FBX의 이 뼈
+            const auto& Src = SourceModel.m_NodeDatas[SourceNodeIndices[iNode]].GlobalMatrix; // 몸체 FBX의 원래 뼈
+
+            f64_t fMaxDiff = 0.0;
+            for (int32_t iRow = 0; iRow < 4; ++iRow)
+            {
+                for (int32_t iCol = 0; iCol < 4; ++iCol)
+                    fMaxDiff = max(fMaxDiff, fabs(Mine[iRow][iCol] - Src[iRow][iCol]));
+            }
+
+            char_t szLog[256]{};
+            sprintf_s(szLog, "[Bind] %s -> %s : 최대 차이 %f, 위치(%.4f %.4f %.4f) vs (%.4f %.4f %.4f)\n",
+                NodeData.strName.c_str(), strSourceName.c_str(), fMaxDiff,
+                Mine[3][0], Mine[3][1], Mine[3][2],
+                Src[3][0], Src[3][1], Src[3][2]);
+            OutputDebugStringA(szLog);
+        }
+#endif
     }
 }
 
@@ -420,6 +533,136 @@ HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vert
     return S_OK;
 }
 
+HRESULT CModel::Calculate_GlobalMatrices(const vector<float4x4_t>& LocalMatrices, vector<float4x4_t>& GlobalMatrices) const
+{
+    /* 로컬 행렬 → 글로벌 행렬 (로컬 * 부모 글로벌) */
+
+    if (LocalMatrices.size() != m_NodeDatas.size())
+        return E_FAIL;
+
+    GlobalMatrices.resize(m_NodeDatas.size());
+
+    for (uint64_t iNode = 0; iNode < m_NodeDatas.size(); ++iNode)
+    {
+        const matrix_t LocalMatrix = XMLoadFloat4x4(&LocalMatrices[iNode]);
+        const int32_t  iParent = m_NodeDatas[iNode].iParentIndex;
+
+        // 루트는 부모가 없으니 로컬이 곧 글로벌
+        if (iParent < 0)
+        {
+            XMStoreFloat4x4(&GlobalMatrices[iNode], LocalMatrix);
+            continue;
+        }
+
+        // 트리구조라서 부모 번호가 자식 번호보다 작아야 한다
+        if (static_cast<uint64_t>(iParent) >= iNode)
+            return E_FAIL;
+
+        const matrix_t ParentGlobalMatrix = XMLoadFloat4x4(&GlobalMatrices[iParent]);
+
+        // 내 글로벌 = 내 로컬 × 부모 글로벌
+        XMStoreFloat4x4(&GlobalMatrices[iNode], XMMatrixMultiply(LocalMatrix, ParentGlobalMatrix));
+    }
+
+    return S_OK;
+}
+
+void CModel::Get_DefaultLocalMatrices(vector<float4x4_t>& LocalMatrices) const
+{
+    /* FBX 기본 자세의 로컬 행렬 목록 */
+    LocalMatrices.resize(m_NodeDatas.size());
+
+    for (uint64_t iNode = 0; iNode < m_NodeDatas.size(); ++iNode)
+    {
+        for (int32_t iRow = 0; iRow < 4; ++iRow)
+        {
+            for (int32_t iCol = 0; iCol < 4; ++iCol)
+            {
+                LocalMatrices[iNode].m[iRow][iCol] = static_cast<f32_t>(m_NodeDatas[iNode].LocalMatrix[iRow][iCol]);
+            }
+        }
+    }
+
+}
+
+HRESULT CModel::Sample_LocalMatrices(f64_t fTime, vector<float4x4_t>& LocalMatrices) const
+{
+    /* t초의 로컬 행렬 목록 (모델 노드 순서) */
+
+    if (nullptr == m_pAnimData || 0 == m_pAnimData->iFrameCount)
+        return E_FAIL;
+
+    // 1. 애니메이션에 없는 노드를 위해 기본 자세로 먼저 채움
+    Get_DefaultLocalMatrices(LocalMatrices);
+
+    // 2. 시간 → 칸 번호 (일단 보간 없이 앞 칸 사용)
+    uint32_t iFrame = static_cast<uint32_t>(fTime * m_pAnimData->fSampleRate);
+    iFrame = min(iFrame, m_pAnimData->iFrameCount - 1);
+
+    // 3. 채널(t초 로컬 행렬) 값을 연결된 노드 자리에 덮어쓰기
+    for (size_t iChannel = 0; iChannel < m_pAnimData->Channels.size(); ++iChannel)
+    {
+        const int32_t iNode = m_ChannelNodeIndices[iChannel];
+        if (iNode < 0)
+            continue;
+
+        LocalMatrices[iNode] = m_pAnimData->Channels[iChannel].LocalMatrices[iFrame];
+    }
+
+    return S_OK;
+}
+
+HRESULT CModel::Apply_SourcePose(const vector<float4x4_t>& SourceGlobalMatrices)
+{
+    /* 파츠: 뼈 매핑표대로 공통 뼈대 자세를 내 뼈 자리에 복사 */
+    
+    if (m_SourceNodeIndices.size() != m_NodeMatrices.size())
+        return E_FAIL;
+
+    for (uint64_t iNode = 0; iNode < m_NodeMatrices.size(); ++iNode)
+    {
+        const int32_t iSourceIndex = m_SourceNodeIndices[iNode];
+
+        // 공통 뼈대에 없는 뼈는 Build_DefaultPose에서 넣은 기본 자세 유지
+        if (iSourceIndex < 0)
+            continue;
+
+        if (static_cast<uint64_t>(iSourceIndex) >= SourceGlobalMatrices.size())
+            return E_FAIL;
+
+        m_NodeMatrices[iNode] = SourceGlobalMatrices[iSourceIndex];
+    }
+
+    if (FAILED(Update_MeshVertices()))
+        return E_FAIL;
+
+    return S_OK;
+}
+
+HRESULT CModel::Update_MeshVertices()
+{
+    /* 현재 m_NodeMatrices 자세로 모든 메시 정점을 다시 계산해 버퍼에 반영 */
+
+    if (m_MeshDatas.size() != m_Meshes.size())
+        return E_FAIL;
+
+    vector<VTXCOL> Vertices;
+
+    for (uint32_t iMesh = 0; iMesh < m_Meshes.size(); ++iMesh)
+    {
+        if (nullptr == m_Meshes[iMesh])
+            return E_FAIL;
+
+        if (FAILED(Calculate_MeshVertices(iMesh, Vertices)))
+            return E_FAIL;
+
+        if (FAILED(m_Meshes[iMesh]->Update_Vertices(Vertices)))
+            return E_FAIL;
+    }
+
+    return S_OK;
+}
+
 int32_t CModel::Find_BoneIndex(const string& strBoneName) const
 {
     auto    iter = m_BoneIndicies.find(strBoneName);
@@ -442,11 +685,11 @@ shared_ptr<CPrototype> CModel::Clone(void* pArg)
     return pInstance;
 }
 
-shared_ptr<CModel> CModel::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, const vector<MESH_DATA>& MeshDatas, const vector<FBX_NODE_DATA>& NodeDatas)
+shared_ptr<CModel> CModel::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, const vector<MESH_DATA>& MeshDatas, const vector<FBX_NODE_DATA>& NodeDatas, const map<string, string>& JointMap)
 {
     auto pInstance = shared_ptr<CModel>(new CModel(pDevice, pContext));
 
-    if (FAILED(pInstance->Initialize_Prototype(MeshDatas, NodeDatas)))
+    if (FAILED(pInstance->Initialize_Prototype(MeshDatas, NodeDatas, JointMap)))
     {
         MSG_BOX("Failed to Created : CModel");
         pInstance.reset();

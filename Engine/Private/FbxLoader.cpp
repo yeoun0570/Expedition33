@@ -57,7 +57,7 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 		return E_FAIL;
 
 	if (pFilePath == nullptr || pFilePath[0] == '\0')
-		return E_INVALIDARG;
+		return E_FAIL;
 
 	FbxImporter* pImporter = FbxImporter::Create(m_pManager, "");
 
@@ -129,6 +129,153 @@ HRESULT CFbxLoader::Load_Model(const char* pFilePath)
 
 		// 정점, 인덱스, 클러스터를 모두 채운 뒤 보관
  		m_MeshDatas.push_back(MeshData);
+	}
+
+	return S_OK;
+}
+
+HRESULT CFbxLoader::Load_Animation(const char* pFilePath)
+{
+	/* 파일 읽을 준비와 저장할 공간 준비 */
+
+	if (nullptr == m_pManager)
+		return E_FAIL;
+
+
+	if (pFilePath == nullptr || pFilePath[0] == '\0')
+		return E_FAIL;
+
+
+	FbxImporter* pImporter = FbxImporter::Create(m_pManager, "");
+
+	if (pImporter == nullptr)
+		return E_FAIL;
+
+	// 파일을 읽을 준비
+	if (!pImporter->Initialize(pFilePath, -1, m_pManager->GetIOSettings()))
+	{
+		pImporter->Destroy();
+		return E_FAIL;
+	}
+
+	// 모델 데이터를 담을 공간 생성
+	FbxScene* pScene = FbxScene::Create(m_pManager, pFilePath);
+	if (pScene == nullptr)
+	{
+		pImporter->Destroy();
+		return E_FAIL;
+	}
+
+	// 파일 내용을 Scene에 실제로 채우기
+	if (!pImporter->Import(pScene))
+	{
+		pImporter->Destroy();
+		pScene->Destroy();
+		return E_FAIL;
+	}
+
+	pImporter->Destroy();
+
+	/* ================================================================================= */
+	
+	/*
+	FbxAnimStack: 애니메이션 클립 하나(예: Idle 하나). 보통 파일 하나에 1개 존재.
+	FbxTimeSpan: 클립의 시작 시간과 끝 시간.
+	TimeMode: 프레임 속도(30fps, 60fps 등).
+	*/
+
+	/* 애니메이션 가져오기 */
+
+	// 1. 애니메이션 클립 개수
+	const int32_t iStackCount = pScene->GetSrcObjectCount<FbxAnimStack>();
+
+	// 2. 뼈대 읽기 
+	if (FAILED(Read_BoneNodes(pScene)))
+		return E_FAIL;
+
+	m_AnimDatas.clear();
+
+	// 3. 클립마다 키프레임 일정한 간격으로 뽑기
+	// 일정한 프레임이여야 특정 시간에 뼈가 무슨 자세인지 알 수 있음
+
+	// 키프레임 간격 설정(30fps : 언리얼에서 자주 사용되는 키프레임)
+	const f64_t fSampleRate = 30.0;
+
+
+	for (int32_t iStack = 0; iStack < iStackCount; ++iStack)
+	{
+		// 클립
+		FbxAnimStack* pAnimStack = pScene->GetSrcObject<FbxAnimStack>(iStack);
+
+		// Fbx로컬 행렬을 이 클립을 기준으로 계산하도록 지정
+		pScene->SetCurrentAnimationStack(pAnimStack);
+
+		// 클립의 시간
+		const FbxTimeSpan Span = pAnimStack->GetLocalTimeSpan();
+		const f64_t fStart = Span.GetStart().GetSecondDouble();
+		const f64_t fDuration = Span.GetDuration().GetSecondDouble(); // 이 클립의 총(끝) 길이
+
+		// 클립 구조체에 저장
+		FBX_ANIM_DATA AnimData{};
+		AnimData.strName = pAnimStack->GetName();
+		AnimData.fDuration = fDuration;
+		AnimData.fSampleRate = fSampleRate;
+		// 0초 프레임 + 끝 프레임까지 포함하려고 +1
+		AnimData.iFrameCount = static_cast<uint32_t>(fDuration * fSampleRate) + 1;
+
+		// 노드에서 해당 시간의 뼈의 로컬 행렬을 뽑기
+
+		// (1) 뼈 노드를 먼저 찾아 두고, 채널 공간을 준비
+		vector<FbxNode*> BoneNodes;
+
+		for (const FBX_NODE_DATA& NodeData : m_NodeDatas)
+		{
+			if (!NodeData.isBone)
+				continue;
+
+			FbxNode* pNode = pScene->FindNodeByName(NodeData.strName.c_str());
+			if (nullptr == pNode)
+				continue;
+
+			BoneNodes.push_back(pNode);
+
+			// 뼈 하나의 시간별 로컬 행렬 구조체
+			FBX_ANIM_CHANNEL Channel{};
+			Channel.strBoneName = NodeData.strName;
+			Channel.LocalMatrices.resize(AnimData.iFrameCount);
+			AnimData.Channels.push_back(Channel);
+		}
+
+		// (2) 시간마다 → 모든 뼈 (같은 시간을 연속으로 물어서 SDK 캐시 활용)
+		for (uint32_t iFrame = 0; iFrame < AnimData.iFrameCount; ++iFrame)
+		{
+			// 프레임당 몇초 걸리는지 구하기
+			FbxTime Time;
+			Time.SetSecondDouble(fStart + static_cast<f64_t>(iFrame) / fSampleRate);
+
+
+			for (uint64_t iBone = 0; iBone < BoneNodes.size(); ++iBone)
+			{
+				const FbxAMatrix LocalMatrix = BoneNodes[iBone]->EvaluateLocalTransform(Time);
+
+				float4x4_t& Dst = AnimData.Channels[iBone].LocalMatrices[iFrame];
+
+				for (int32_t iRow = 0; iRow < 4; ++iRow)
+				{
+					for (int32_t iCol = 0; iCol < 4; ++iCol)
+						Dst.m[iRow][iCol] = static_cast<f32_t>(LocalMatrix.Get(iRow, iCol));
+				}
+			}
+		}
+
+		m_AnimDatas.push_back(AnimData);
+	}
+
+	uint32_t iBoneCount = 0;
+	for (const FBX_NODE_DATA& NodeData : m_NodeDatas)
+	{
+		if (NodeData.isBone)
+			++iBoneCount;
 	}
 
 	return S_OK;

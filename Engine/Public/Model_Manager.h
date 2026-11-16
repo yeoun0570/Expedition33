@@ -17,6 +17,8 @@ public:
 	HRESULT	Add_Model(const wstring_t& strModelTag, const char* pFilePath, uint32_t iModelLevelIndex);
 	HRESULT	Render_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag);
 	HRESULT Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut);
+	HRESULT	Add_Animation(const wstring_t& strAnimTag, const char* pFilePath, uint32_t iLevelIndex);
+	HRESULT	Set_Animation(const shared_ptr<CModel>& pModel, const wstring_t& strAnimTag, uint32_t iLevelIndex);
 	void	Clear(uint32_t iClearLevelIndex);
 
 private:
@@ -27,8 +29,14 @@ private:
 	shared_ptr<map<const wstring_t, shared_ptr<CModel>>[]>		m_pModels;
 	typedef map<const wstring_t, shared_ptr<CModel>>			MODELS;
 
+	shared_ptr<map<const wstring_t, shared_ptr<FBX_ANIM_DATA>>[]>	m_pAnimations;
+	typedef map<const wstring_t, shared_ptr<FBX_ANIM_DATA>>			ANIMATIONS;
+
 private:
-	shared_ptr<CModel> Find_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag);
+	shared_ptr<CModel>			Find_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag);
+	shared_ptr<FBX_ANIM_DATA>	Find_Animation(uint32_t iLevelIndex, const wstring_t& strAnimTag);
+
+	HRESULT Load_JointMap(const char* pFbxFilePath, map<string, string>& JointMap) const;
 
 public:
 	static unique_ptr<CModel_Manager> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, uint32_t iNumLevels);

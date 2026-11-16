@@ -88,6 +88,27 @@ namespace Engine
 		f64_t		GlobalMatrix[4][4]{};	// FBX 파일 기준 월드 행렬(게임에 반영되는 월드 행렬이 아니라 FBX 파일 안의 월드 행렬임)
 	}FBX_NODE_DATA;
 
+
+	/* FBX 애니메이션을 위한 구조체 */
+
+	// 뼈 하나의 시간별 로컬 행렬
+	typedef struct tagFbxAnimChannel
+	{
+		string				strBoneName;	// 뼈 이름 (몸체 뼈와 이름으로 연결)
+		vector<float4x4_t>	LocalMatrices;	// 프레임마다 로컬 행렬 (부모 기준 자세)
+	}FBX_ANIM_CHANNEL;
+
+
+	// 애니메이션 클립 하나
+	typedef struct tagFbxAnimData
+	{
+		string						strName;			// 클립 이름
+		f64_t						fDuration = 0.0;	// 길이(초)
+		f64_t						fSampleRate = 0.0;	// 샘플링 간격(초당 몇 번 찍었는지)
+		uint32_t					iFrameCount = 0;	// 찍은 프레임 수
+		vector<FBX_ANIM_CHANNEL>	Channels;			// 뼈별 데이터
+	}FBX_ANIM_DATA;
+
 }
 
 

@@ -164,6 +164,30 @@ HRESULT CGameInstance::Assemble_Model(const shared_ptr<CModel>& pSourceModel, co
 
     return m_pModel_Manager->Assemble_Model(pSourceModel, PartModels, pOut);
 }
+
+HRESULT CGameInstance::Add_Animation(uint32_t iLevelIndex, const wstring_t& strAnimTag, const char* pFilePath)
+{
+    if (nullptr == m_pModel_Manager)
+        return E_FAIL;
+
+    return m_pModel_Manager->Add_Animation(strAnimTag, pFilePath, iLevelIndex);
+}
+
+HRESULT CGameInstance::Set_Animation(uint32_t iLevelIndex, const shared_ptr<CModel>& pModel, const wstring_t& strAnimTag)
+{
+    if (nullptr == m_pModel_Manager)
+        return E_FAIL;
+
+    return m_pModel_Manager->Set_Animation(pModel, strAnimTag, iLevelIndex);
+}
+
+HRESULT CGameInstance::Play_Animation(const shared_ptr<CModel>& pModel, f64_t fTimeDelta)
+{
+    if (nullptr == pModel)
+        return E_FAIL;
+
+    return pModel->Play_Animation(fTimeDelta);
+}
 #pragma endregion
 
 #pragma region Shader

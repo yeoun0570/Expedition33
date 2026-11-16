@@ -32,6 +32,8 @@ private:
 	shared_ptr<CModel>	m_pBikiniBBodyModelCom = { nullptr };
 	shared_ptr<CModel>	m_pFaceModelCom = { nullptr };
 
+	wstring_t			m_strAnimTag{};
+
 private:
 	HRESULT Ready_Components();
 	HRESULT Change_Body(const shared_ptr<CModel>& pBodyModel);
