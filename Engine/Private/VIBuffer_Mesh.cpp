@@ -29,7 +29,7 @@ HRESULT CVIBuffer_Mesh::Initialize_Prototype(const MESH_DATA& MeshData)
 #pragma region Public
 
     m_iNumVertexBuffers = 1;
-    m_iVertexStride = static_cast<uint32_t>(sizeof(VTXCOL));
+    m_iVertexStride = static_cast<uint32_t>(sizeof(VTXMESH));
     m_iIndexStride = 4;
     m_iNumVertices = static_cast<uint32_t>(MeshData.Verticles.size());
     m_iNumIndices = static_cast<uint32_t>(MeshData.Indices.size());
@@ -112,7 +112,7 @@ HRESULT CVIBuffer_Mesh::Initialize(void* pArg)
 }
 
 HRESULT CVIBuffer_Mesh::Update_Vertices(
-    const vector<VTXCOL>& Vertices)
+    const vector<VTXMESH>& Vertices)
 {
     // 정점 버퍼와 GPU 명령을 전달할 장치 문맥이 필요합니다.
     if (nullptr == m_pVB || nullptr == m_pContext)
@@ -121,7 +121,7 @@ HRESULT CVIBuffer_Mesh::Update_Vertices(
     // 기존 버퍼에 담을 수 있는 정점 개수와 형식인지 확인합니다.
     if (Vertices.empty() ||
         Vertices.size() != m_iNumVertices ||
-        sizeof(VTXCOL) != m_iVertexStride)
+        sizeof(VTXMESH) != m_iVertexStride)
         return E_FAIL;
 
     // 전달받은 정점 배열 전체를 기존 정점 버퍼에 복사합니다.

@@ -48,7 +48,7 @@ private:
 	HRESULT Build_DefaultPose(const CModel& SourceModel, const vector<int32_t>& SourceNodeIndices, vector<float4x4_t>& NodeMatrices) const;
 	HRESULT Bind_Source(const CModel& SourceModel);
 	HRESULT Calculate_ClusterMatrix(const FBX_CLUSTER_DATA& ClusterData, const float4x4_t& NodeMatrix,float4x4_t& SkinMatrix) const;
-	HRESULT Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vertices) const;
+	HRESULT Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXMESH>& Vertices) const;
 
 	HRESULT Calculate_GlobalMatrices(const vector<float4x4_t>& LocalMatrices, vector<float4x4_t>& GlobalMatrices) const;
 	void	Get_DefaultLocalMatrices(vector<float4x4_t>& LocalMatrices) const;

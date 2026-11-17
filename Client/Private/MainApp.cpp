@@ -87,6 +87,23 @@ HRESULT CMainApp::Ready_Statics()
         return E_FAIL;
 
 
+    D3D11_INPUT_ELEMENT_DESC    MeshElements[4] =
+    {
+        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float3 12
+        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float2 8
+        { "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 20, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float3 12
+        { "TANGENT",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 32, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float3 12
+    };
+
+    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_VS_Mesh"),
+        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_Mesh.hlsl"), MeshElements, 4))))
+        return E_FAIL;
+
+    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_PS_Mesh"),
+        CPixelShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/PixelShader/PS_Mesh.hlsl")))))
+        return E_FAIL;
+
+
 
     /* For.Prototype_GameObject_Verso */
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_GameObject_Verso"),
