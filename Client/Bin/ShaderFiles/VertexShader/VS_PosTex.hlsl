@@ -11,7 +11,7 @@ cbuffer Freq_Frame : register(b1)
 
 struct Vertex_In
 {
-    float3 vPosition : POSTION;
+    float3 vPosition : POSITION;
     float2 vTexcoord : TEXCOORD0;
 };
 
@@ -28,10 +28,11 @@ Vertex_Out main(Vertex_In In)
     
     matrix matWV, matWVP;
     
-    matWV = mul(g_WorldMatrix, g_ViewMatrix);
-    matWVP = mul(matWV, g_ProjMatrix);
+    //matWV = mul(g_WorldMatrix, g_ViewMatrix);
+    //matWVP = mul(matWV, g_ProjMatrix);
     
-    Out.vPosition = mul(vector(In.vPosition, 1.f), matWVP);
+    //Out.vPosition = mul(vector(In.vPosition, 1.f), matWVP);
+    Out.vPosition = vector(In.vPosition, 1.f);
     Out.vTexcoord = In.vTexcoord;
     
     return Out;

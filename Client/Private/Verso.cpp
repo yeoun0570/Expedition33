@@ -196,9 +196,6 @@ HRESULT CVerso::Render()
 {
     if (FAILED(__super::Render()))
         return E_FAIL;
-
-    if (FAILED(CGameInstance::Get().Render_Model(m_pAssembleModelCom, m_Transform)))
-        return E_FAIL;
     
 
     return S_OK;
