@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Public/;.\ThirdPartyLib\FBXSDK\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Public/;.\ThirdPartyLib\FBXSDK\include\;.\ThirdPartyLib\JSON\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -136,7 +136,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Public/;.\ThirdPartyLib\FBXSDK\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Public/;.\ThirdPartyLib\FBXSDK\include\;.\ThirdPartyLib\JSON\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>

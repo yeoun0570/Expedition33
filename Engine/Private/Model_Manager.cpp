@@ -1,3 +1,6 @@
+#include <fstream>
+#include <json.hpp>
+
 #include "Model_Manager.h"
 #include "FbxLoader.h"
 
@@ -14,6 +17,7 @@ HRESULT CModel_Manager::Initialize(uint32_t iNumLevels)
 	m_iNumLevels = iNumLevels;
 
 	m_pModels = make_shared<MODELS[]>(iNumLevels);
+	m_pAnimations = make_shared<ANIMATIONS[]>(iNumLevels);
 
 	return S_OK;
 }
@@ -44,8 +48,14 @@ HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFil
 		return E_FAIL;
 	}
 
+	
+	// FBX 옆의 JSON에서 뼈 매핑 표 읽기 (JSON이 없으면 빈 표)
+	map<string, string> JointMap;
+	if (FAILED(Load_JointMap(pFilePath, JointMap)))
+		return E_FAIL;
+
 	// 가져온 Fbx파일 메시 데이터, 노드들을 모델에 연결해서 생성
-	auto pModel = CModel::Create(m_pDevice, m_pContext, pLoader->Get_MeshDatas(), pLoader->Get_NodeDatas());
+	auto pModel = CModel::Create(m_pDevice, m_pContext, pLoader->Get_MeshDatas(), pLoader->Get_NodeDatas(), JointMap);
 	if (nullptr == pModel)
 		return E_FAIL;
 
@@ -56,6 +66,39 @@ HRESULT CModel_Manager::Add_Model(const wstring_t& strModelTag, const char* pFil
 
 	// 해당 모델을 관리하기 위해 map에 저장
 	m_pModels[iModelLevelIndex].emplace(strModelTag, pModel);
+
+
+#ifdef _DEBUG
+	{
+		// [임시] FBX 옆의 같은 이름 JSON 읽기 시험 (예: Faces/Default.fbx → Faces/Default.fbx.json)
+		const string strJsonPath = string(pFilePath) + ".json";
+
+		ifstream File(strJsonPath);
+		if (File.is_open())
+		{
+			const nlohmann::json Json = nlohmann::json::parse(File, nullptr, false);	// false: 문법 오류여도 예외 대신 discarded 값
+
+			if (!Json.is_discarded() && Json.contains("jointMapping"))
+			{
+				const auto& JointMapping = Json["jointMapping"];
+
+				char_t szLog[256]{};
+				sprintf_s(szLog, "[Json] %s : jointMapping %zu개\n", strJsonPath.c_str(), JointMapping.size());
+				OutputDebugStringA(szLog);
+
+				// 처음 3개만 찍어 보기
+				for (size_t i = 0; i < JointMapping.size() && i < 3; ++i)
+				{
+					const string strJoint = JointMapping[i].value("joint", "");
+					const string strFrom = JointMapping[i].value("copyWorldFrom", "");
+
+					sprintf_s(szLog, "    %s -> %s\n", strJoint.c_str(), strFrom.c_str());
+					OutputDebugStringA(szLog);
+				}
+			}
+		}
+	}
+#endif
 
 	return S_OK;
 }
@@ -77,7 +120,8 @@ HRESULT CModel_Manager::Assemble_Model(const shared_ptr<CModel>& pSourceModel, c
 		return E_FAIL;
 
 	// 외형 메시 없이 기준 노드만 복사해 전체 모델을 만든다.
-	auto pModel = CModel::Create(m_pDevice, m_pContext, vector<MESH_DATA>{}, pSourceModel->Get_NodeDatas());
+	// 조립 모델은 공통 뼈대 역할만 하니까 매핑 표가 필요 없다.
+	auto pModel = CModel::Create(m_pDevice, m_pContext, vector<MESH_DATA>{}, pSourceModel->Get_NodeDatas(), map<string, string>{});
 
 	if (nullptr == pModel)
 		return E_FAIL;
@@ -93,6 +137,43 @@ HRESULT CModel_Manager::Assemble_Model(const shared_ptr<CModel>& pSourceModel, c
 	// 모두 성공했을 때만 완성된 모델을 전달한다.
 	pOut = pModel;
 	return S_OK;
+}
+
+HRESULT CModel_Manager::Add_Animation(const wstring_t& strAnimTag, const char* pFilePath, uint32_t iLevelIndex)
+{
+	/* 애니메이션 FBX를 한 번만 읽어서 태그로 보관 */
+
+	if (strAnimTag.empty() || nullptr == pFilePath || pFilePath[0] == '\0')
+		return E_FAIL;
+
+	if (nullptr != Find_Animation(iLevelIndex, strAnimTag))
+		return E_FAIL;
+
+	auto pLoader = CFbxLoader::Create();
+	if (nullptr == pLoader)
+		return E_FAIL;
+
+	if (FAILED(pLoader->Load_Animation(pFilePath)) || pLoader->Get_AnimDatas().empty())
+		return E_FAIL;
+
+	// 파일 하나에 클립 하나라고 보고 첫 번째 클립 보관
+	m_pAnimations[iLevelIndex].emplace(strAnimTag, make_shared<FBX_ANIM_DATA>(pLoader->Get_AnimDatas()[0]));
+
+	return S_OK;
+}
+
+HRESULT CModel_Manager::Set_Animation(const shared_ptr<CModel>& pModel, const wstring_t& strAnimTag, uint32_t iLevelIndex)
+{
+	/* 보관해 둔 애니메이션을 모델에 연결 */
+
+	if (nullptr == pModel)
+		return E_FAIL;
+
+	auto pAnimData = Find_Animation(iLevelIndex, strAnimTag);
+	if (nullptr == pAnimData)
+		return E_FAIL;
+
+	return pModel->Set_Animation(pAnimData);
 }
 
 void CModel_Manager::Clear(uint32_t iClearLevelIndex)
@@ -112,6 +193,47 @@ shared_ptr<CModel> CModel_Manager::Find_Model(uint32_t iModelLevelIndex, const w
 		return nullptr;
 
 	return iter->second;
+}
+
+shared_ptr<FBX_ANIM_DATA> CModel_Manager::Find_Animation(uint32_t iLevelIndex, const wstring_t& strAnimTag)
+{
+	auto iter = m_pAnimations[iLevelIndex].find(strAnimTag);
+	if (iter == m_pAnimations[iLevelIndex].end())
+		return nullptr;
+
+	return iter->second;
+}
+
+HRESULT CModel_Manager::Load_JointMap(const char* pFbxFilePath, map<string, string>& JointMap) const
+{
+	/* "모델.fbx" 옆의 "모델.fbx.json"에서 jointMapping(joint → copyWorldFrom) 읽기 */
+	JointMap.clear();
+
+	ifstream File(string(pFbxFilePath) + ".json");
+
+	// JSON이 없는 모델도 있으니 실패가 아니라 빈 표로 처리
+	if (!File.is_open())
+		return S_OK;
+
+	const nlohmann::json Json = nlohmann::json::parse(File, nullptr, false);
+	if (Json.is_discarded())
+		return E_FAIL;		// 파일은 있는데 형식이 깨진 경우
+
+	if (!Json.contains("jointMapping"))
+		return S_OK;
+
+	for (const auto& Mapping : Json["jointMapping"])
+	{
+		const string strJoint = Mapping.value("joint", "");
+		const string strFrom = Mapping.value("copyWorldFrom", "");
+
+		if (strJoint.empty() || strFrom.empty())
+			continue;
+
+		JointMap.emplace(strJoint, strFrom);
+	}
+
+	return S_OK;
 }
 
 unique_ptr<CModel_Manager> CModel_Manager::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, uint32_t iNumLevels)

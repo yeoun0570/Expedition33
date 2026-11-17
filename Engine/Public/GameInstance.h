@@ -52,6 +52,9 @@ public:
 	HRESULT	Add_Model(uint32_t iModelLevelIndex, const wstring_t& strModelTag, const char* pFilePath);
 	HRESULT Render_Model(const shared_ptr<CModel>& pModel, const TRANSFORM& Transform);
 	HRESULT Assemble_Model(const shared_ptr<CModel>& pSourceModel, const map<wstring_t, shared_ptr<CModel>>& PartModels, shared_ptr<CModel>& pOut);
+	HRESULT Add_Animation(uint32_t iLevelIndex, const wstring_t& strAnimTag, const char* pFilePath);
+	HRESULT Set_Animation(uint32_t iLevelIndex, const shared_ptr<CModel>& pModel, const wstring_t& strAnimTag);
+	HRESULT Play_Animation(const shared_ptr<CModel>& pModel, f64_t fTimeDelta);
 #pragma endregion
 
 #pragma region Shader

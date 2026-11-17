@@ -56,6 +56,30 @@ HRESULT CVerso::Initialize_Prototype()
 
 #pragma endregion
 
+#pragma region 애니메이션 등록
+
+    pFilePath = "./Bin/Resources/Models/Characters/Verso/Animations/Verso_Idle_Base.fbx";
+
+    if (FAILED(CGameInstance::Get().Add_Animation(ETOUI(LEVEL::STATIC), TEXT("Verso_Idle_Base"), pFilePath)))
+    {
+#ifdef _DEBUG
+        MSG_BOX("베르소 Idle 애니메이션 등록에 실패했습니다.");
+#endif
+        return E_FAIL;
+    }
+
+    pFilePath = "./Bin/Resources/Models/Characters/Verso/Animations/Verso_Skill_Decimate.fbx";
+
+    if (FAILED(CGameInstance::Get().Add_Animation(ETOUI(LEVEL::STATIC), TEXT("Verso_Skill_Decimate"), pFilePath)))
+    {
+#ifdef _DEBUG
+        MSG_BOX("베르소 Skill_Decimate 애니메이션 등록에 실패했습니다.");
+#endif
+        return E_FAIL;
+    }
+
+#pragma endregion
+
 
     if (FAILED(__super::Initialize_Prototype()))
         return E_FAIL;
@@ -81,6 +105,25 @@ void CVerso::Priority_Update(const f32_t fTimeDelta)
 
 void CVerso::Update(const f32_t fTimeDelta)
 {
+    #ifdef _DEBUG
+    static f32_t	fAccTime = 0.f;
+    static uint32_t	iFrameCount = 0;
+
+    fAccTime += fTimeDelta;
+    ++iFrameCount;
+
+    if (fAccTime >= 1.f)
+    {
+        char_t szLog[64]{};
+        sprintf_s(szLog, "[FPS] %u\n", iFrameCount);
+        OutputDebugStringA(szLog);
+
+        fAccTime = 0.f;
+        iFrameCount = 0;
+    }
+#endif
+
+
 #pragma region 모델 테스트(월드, 뷰, 투영 행렬 적용)
     // 1. 월드 행렬: 원본 크기와 위치 유지
     // XMMatrixIdentity : 단위 행렬 만들기
@@ -116,6 +159,25 @@ void CVerso::Update(const f32_t fTimeDelta)
     else if (GetKeyState('2') & 0x8000)
         Change_Body(m_pBikiniBBodyModelCom);
 
+#pragma endregion
+
+#pragma region 애니메이션
+    wstring_t strNextAnimTag = m_strAnimTag;
+
+    if (GetKeyState(VK_F1) & 0x8000)
+        strNextAnimTag = TEXT("Verso_Idle_Base");
+
+    else if (GetKeyState(VK_F2) & 0x8000)
+        strNextAnimTag = TEXT("Verso_Skill_Decimate");
+
+    // 동작이 실제로 바뀔 때만 한 번 연결 (키를 누르고 있는 동안 매 프레임 다시 걸지 않도록)
+    if (strNextAnimTag != m_strAnimTag)
+    {
+        if (SUCCEEDED(CGameInstance::Get().Set_Animation(ETOUI(LEVEL::STATIC), m_pAssembleModelCom, strNextAnimTag)))
+            m_strAnimTag = strNextAnimTag;
+    }
+
+    CGameInstance::Get().Play_Animation(m_pAssembleModelCom, fTimeDelta);
 #pragma endregion
 
 
@@ -156,7 +218,9 @@ HRESULT CVerso::Ready_Components()
         TEXT("Com_Verso_Face_Model"), m_pFaceModelCom)))
         return E_FAIL;
 
-    // 첫 몸체 설정
+    // 첫 몸체 및 애니메이션 설정
+    m_strAnimTag = TEXT("Verso_Idle_Base");
+
     if (FAILED(Change_Body(m_pDefaultBodyModelCom)))
         return E_FAIL;
 
@@ -180,6 +244,11 @@ HRESULT CVerso::Change_Body(const shared_ptr<CModel>& pBodyModel)
     // 생성과 조립 계산은 엔진에서 처리한다.
     if (FAILED(CGameInstance::Get().Assemble_Model(pBodyModel, PartModels, m_pAssembleModelCom)))
         return E_FAIL;
+
+    // 새로 조립된 모델에 보관해 둔 애니메이션 연결
+    if (FAILED(CGameInstance::Get().Set_Animation(ETOUI(LEVEL::STATIC), m_pAssembleModelCom, m_strAnimTag)))
+        return E_FAIL;
+    
     
     return S_OK;
 }
