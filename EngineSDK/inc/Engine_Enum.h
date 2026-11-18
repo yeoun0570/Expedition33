@@ -9,6 +9,8 @@ namespace Engine
 
 	enum class STATE { RIGHT, UP, LOOK, POSITION, END };
 
+	enum class D3DTS { VIEW, PROJ, END };
+
 	//enum INFO {	INFO_RIGHT, INFO_UP, INFO_LOOK, INFO_POS, INFO_END };
 
 	//enum ROTATION { ROT_X, ROT_Y, ROT_Z, ROT_END };

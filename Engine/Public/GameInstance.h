@@ -16,6 +16,8 @@
 #include "VIBuffer_Rect.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
+#include "ConstantBuffer.h"
+#include "Pipeline.h"
 
 NS_BEGIN(Engine)
 
@@ -71,6 +73,16 @@ public:
 #pragma region Renderer
 	HRESULT Add_RenderGroup(RENDERGROUP eGroup, shared_ptr<class CGameObject> pRenderObject);
 #pragma endregion
+#pragma region Pipeline
+	const float4x4_t* Get_Transform(D3DTS eTransformState) const;
+	const float4x4_t* Get_OrthoTransform(D3DTS eTransformState) const;
+	const float4x4_t* Get_Transform_Inverse(D3DTS eTransformState) const;
+	const float4x4_t* Get_OrthoTransform_Inverse(D3DTS eTransformState) const;
+	const float4_t* Get_CamPosition() const;
+	void Set_Transform(D3DTS eTransformState, fmatrix_t TransformMatrix);
+	void Set_OrthoTransform(D3DTS eTransformState, fmatrix_t TransformMatrix);
+#pragma endregion
+
 
 
 private:
@@ -81,6 +93,7 @@ private:
 	unique_ptr<CPrototype_Manager>			m_pPrototype_Manager = { nullptr };
 	unique_ptr<CObject_Manager>				m_pObject_Manager = { nullptr };
 	unique_ptr<CRenderer>					m_pRenderer = { nullptr };
+	unique_ptr<CPipeline>					m_pPipeline = { nullptr };
 
 	unique_ptr<CModel_Manager>				m_pModel_Manager = { nullptr };
 

@@ -43,13 +43,14 @@ namespace Engine
 		float4_t		vBlendWeights;		// 뼈별 가중치
 	}VTXANIMMESH;
 
-	typedef struct tagTransform
+	typedef struct tagPipelineDesc
 	{
-		// float4x4_t : 4x4 행렬 자료형
-		float4x4_t	matWorld;
-		float4x4_t	matView;
-		float4x4_t	matProj;
-	}TRANSFORM;
+		float4x4_t	OrthoTransformMatrix[ETOUI(D3DTS::END)];			// 직교 뷰/투영 행렬
+		float4x4_t	OrthoTransformMatrix_Inverse[ETOUI(D3DTS::END)];	// 직교 뷰/투영 역행렬
+		float4x4_t	TransformMatrix[ETOUI(D3DTS::END)];					// 원근 뷰/투영 행렬
+		float4x4_t	TransformMatrix_Inverse[ETOUI(D3DTS::END)];			// 원근 뷰/투영 역행렬
+		float4_t	vCamPostion;										// 카메라 위치
+	}PIPELINE_DESC;
 
 
 

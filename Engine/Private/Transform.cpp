@@ -1,5 +1,7 @@
 #include "Transform.h"
 
+#include "ConstantBuffer.h"
+
 CTransform::CTransform(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
 	: CComponent { pDevice, pContext }
 {
@@ -12,8 +14,6 @@ HRESULT CTransform::Initialize_Prototype()
 
 HRESULT CTransform::Initialize(void* pArg)
 {
-	XMStoreFloat4x4(&m_WorldMatrix, XMMatrixIdentity());
-
 	if (nullptr == pArg)
 		return E_FAIL;
 
@@ -21,6 +21,12 @@ HRESULT CTransform::Initialize(void* pArg)
 
 	m_fSpeedPerSec = pDesc->fSpeedPerSec;
 	m_fRotationPerSec = XMConvertToRadians(pDesc->fRotationDegreePerSec);
+	XMStoreFloat4x4(&m_WorldMatrix, XMMatrixIdentity());
+
+	m_pCB = CConstantBuffer::Create(m_pDevice, m_pContext, &m_WorldMatrix, sizeof m_WorldMatrix);
+
+	if (nullptr == m_pCB)
+		return E_FAIL;
 
 	return S_OK;
 }
@@ -162,6 +168,19 @@ void CTransform::Chase(fvector_t vTarget, const f32_t fTimeDelta, f32_t fLimitDi
 	vPosition += XMVector3Normalize(vMoveDir) * m_fSpeedPerSec * fTimeDelta;
 
 	Set_State(STATE::POSITION, vPosition);
+}
+
+HRESULT CTransform::Bind_VertexShader(uint32_t iSlot)
+{
+	if (nullptr == m_pCB)
+		return E_FAIL;
+
+	if (FAILED(m_pCB->Update(&m_WorldMatrix, sizeof m_WorldMatrix)))
+		return E_FAIL;
+
+	m_pCB->Bind_VertexShader(iSlot);
+
+	return S_OK;
 }
 
 shared_ptr<CTransform> CTransform::Create(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
