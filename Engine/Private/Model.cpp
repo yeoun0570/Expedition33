@@ -422,9 +422,9 @@ HRESULT CModel::Calculate_ClusterMatrix(const FBX_CLUSTER_DATA& ClusterData, con
     return S_OK;
 }
 
-HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vertices) const
+HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXMESH>& Vertices) const
 {
-    /* 정점들의 가중치 가져와서 반영하기 */
+    /* 컨트롤 포인트를 뼈로 움직이고 정점에 반영 */
 
     // 요청한 메시 번호가 실제로 있는지 확인합니다.
     if (iMeshIndex >= m_MeshDatas.size())
@@ -432,12 +432,12 @@ HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vert
 
     // 계산에 사용할 원본 메시를 가져옵니다.
     const MESH_DATA& MeshData = m_MeshDatas[iMeshIndex];
-    const size_t iPointCount = MeshData.Verticles.size();
+    const uint64_t iPointCount = MeshData.Points.size(); // 컨트롤 포인트 수
 
-    // 각 정점의 위치 계산 결과를 더해둘 공간입니다.
+    // 각 정점의 컨트롤 포인트 계산 결과를 더해둘 공간입니다.
     vector<FbxVector4> PositionSums(iPointCount, FbxVector4(0.0, 0.0, 0.0, 0.0));
 
-    // 각 정점에 사용한 가중치를 더해둘 공간입니다.
+    // 각 컨트롤 포인트에 사용한 가중치를 더해둘 공간입니다.
     vector<f64_t> WeightSums(iPointCount, 0.0);
 
     
@@ -456,7 +456,7 @@ HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vert
         const int32_t iNode = ClusterData.iNodeIndex;
 
         // 해당 뼈의 자세가 준비되어 있는지 확인합니다.
-        if (iNode < 0 || static_cast<size_t>(iNode) >= m_NodeMatrices.size())
+        if (iNode < 0 || static_cast<uint64_t>(iNode) >= m_NodeMatrices.size())
             return E_FAIL;
 
         // 바인드 기준과 현재 뼈 자세로 정점 변환 행렬을 만듭니다.
@@ -482,17 +482,17 @@ HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vert
         /* ============================================================================================ = */
 
 
-        // 현재 클러스터에 연결된 정점 번호와 가중치를 하나씩 읽습니다.
+        // 현재 클러스터에 연결된 컨트롤 포인트 번호와 가중치를 하나씩 읽습니다.
         for (const FBX_POINT_WEIGHT& PointWeight : ClusterData.FbxPointWeights)
         {
             const int32_t iPoint = PointWeight.iPointIndex;
 
-            // 원본 정점 배열에 접근할 수 있는 번호인지 검사합니다.
-            if (iPoint < 0 || static_cast<size_t>(iPoint) >= iPointCount)
+            // 원본 컨트롤 포인트 배열에 접근할 수 있는 번호인지 검사합니다.
+            if (iPoint < 0 || static_cast<uint64_t>(iPoint) >= iPointCount)
                 return E_FAIL;
 
             // 매번 원본 위치에서 계산합니다.
-            const float3_t& Original = MeshData.Verticles[iPoint].vPosition;
+            const float3_t& Original = MeshData.Points[iPoint];
 
             // 이 뼈를 100% 따라갔을 때의 위치를 계산합니다.
             const FbxVector4 Position = SkinMatrix.MultNormalize(FbxVector4(Original.x, Original.y, Original.z, 1.0));
@@ -507,24 +507,33 @@ HRESULT CModel::Calculate_MeshVertices(uint32_t iMeshIndex, vector<VTXCOL>& Vert
 
     /* ============================================================================================ = */
 
-    // 색상 등 기존 정점 정보는 복사하고, 위치만 교체합니다.
-    vector<VTXCOL> Results = MeshData.Verticles;
+    // 컨트롤 포인트별 최종 위치 계산
+    vector<float3_t> SkinnedPoints(iPointCount);
 
-    for (size_t iPoint = 0; iPoint < iPointCount; ++iPoint)
+    for (uint64_t iPoint = 0; iPoint < iPointCount; ++iPoint)
     {
-        // 이번 구현은 모든 정점에 유효한 가중치가 있어야 합니다.
+        // 가중치가 있어야 함
         if (WeightSums[iPoint] <= 0.0)
             return E_FAIL;
 
-        // 누적한 위치를 가중치 합으로 나눕니다.
+        // 누적한 위치를 가중치 합으로 나누어 가중 평균 구하기
         const FbxVector4 Position = PositionSums[iPoint] / WeightSums[iPoint];
 
-        Results[iPoint].vPosition =
+        SkinnedPoints[iPoint] =
         {
             static_cast<f32_t>(Position[0]),
             static_cast<f32_t>(Position[1]),
-            static_cast<f32_t>(Position[2])
+            static_cast<f32_t>(Position[2]),
         };
+    }
+
+    // 정점마다 원래 컨트롤 포인트의 결과를 가져감 (UV·법선은 그대로)
+    vector<VTXMESH> Results = MeshData.Verticles;
+
+    // 컨트롤 포인트 위치를, 그 점을 쓰는 정점들에 나눠주기
+    for (uint64_t iVertex = 0; iVertex < MeshData.Verticles.size(); ++iVertex)
+    {
+        Results[iVertex].vPosition = SkinnedPoints[MeshData.PointIndices[iVertex]];
     }
 
     // 모든 정점 계산이 성공한 경우에만 출력 목록을 교체합니다.
@@ -646,7 +655,7 @@ HRESULT CModel::Update_MeshVertices()
     if (m_MeshDatas.size() != m_Meshes.size())
         return E_FAIL;
 
-    vector<VTXCOL> Vertices;
+    vector<VTXMESH> Vertices;
 
     for (uint32_t iMesh = 0; iMesh < m_Meshes.size(); ++iMesh)
     {

@@ -1,43 +1,30 @@
 #pragma once
 
-#include "Engine_Defines.h"
+#include "Component.h"
 
 NS_BEGIN(Engine)
 
-class CShader final
+class ENGINE_DLL CShader abstract : public CComponent
 {
-private:
-	CShader(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext);
-
-	CShader(const CShader&) = delete;
-	CShader& operator=(const CShader&) = delete;
+protected:
+	CShader(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext);
 
 public:
-	~CShader() = default;
+	virtual ~CShader() = default;
 
 public:
-	HRESULT		Initialize_Shader(const wstring_t& strFilePath);
-	void		Bind_Shader();
-	HRESULT		Update_Transform(const TRANSFORM& Transform);
-
-private:
-	ComPtr<ID3D11Device> m_pDevice = { nullptr };
-	ComPtr<ID3D11DeviceContext> m_pContext = { nullptr };
-
-	// ID3D11VertexShader : 정점 셰이더
-	ComPtr<ID3D11VertexShader> m_pVertexShader = { nullptr };
-
-	// ID3D11PixelShader : 픽셀 셰이더
-	ComPtr<ID3D11PixelShader> m_pPixelShader = { nullptr };
-
-	// ID3D11InputLayout : 정점 버퍼의 위치/색상을 HLSL 입력에 연결하는 설명서
-	ComPtr<ID3D11InputLayout> m_pInputLayout = { nullptr };
-
-	// 상수 버퍼(월드/뷰/투영 행렬 변환) 버퍼
-	ComPtr<ID3D11Buffer> m_pTransformBuffer = { nullptr };
+	virtual HRESULT Initialize_Prototype(const wchar_t* pShaderFilePath, const char_t* pEntryPoint, const char_t* pVersion);
+	virtual HRESULT Initialize(void* pArg) override;
 
 public:
-	static unique_ptr<CShader> Create(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext, const wstring_t& strFilePath);
+	virtual HRESULT Begin() = 0;
+	virtual HRESULT End() = 0;
+
+protected:
+	ComPtr<ID3DBlob>		m_pShaderByteCode = { nullptr };
+
+public:
+	virtual shared_ptr<CPrototype> Clone(void* pArg) = 0;
 };
 
 NS_END

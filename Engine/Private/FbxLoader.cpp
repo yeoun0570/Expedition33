@@ -356,56 +356,55 @@ HRESULT CFbxLoader::Read_BoneNodes(FbxScene* pScene)
 
 HRESULT CFbxLoader::Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData)
 {
-	/* 정점 정보 저장 */
-
-	// FBX에 저장된 점 개수와 좌표 배열
+	/* 컨트롤 포인트(위치) 저장 */
 	const int32_t iPointCount = pMesh->GetControlPointsCount();
 	const FbxVector4* pPoints = pMesh->GetControlPoints();
 
-	if (iPointCount <= 0 || pPoints == nullptr)
+	if (iPointCount <= 0 || nullptr == pPoints)
 		return E_FAIL;
 
-	// 점 개수만큼 정점 공간 확보
-	MeshData.Verticles.resize(static_cast<size_t>(iPointCount));
+	MeshData.Points.resize(static_cast<uint64_t>(iPointCount));
 
 	for (int32_t iPoint = 0; iPoint < iPointCount; ++iPoint)
 	{
-		const FbxVector4& Position = pPoints[iPoint];
-
-		MeshData.Verticles[iPoint].vPosition =
+		MeshData.Points[iPoint] =
 		{
-			static_cast<f32_t>(Position[0]),
-			static_cast<f32_t>(Position[1]),
-			static_cast<f32_t>(Position[2])
+			static_cast<f32_t>(pPoints[iPoint][0]),
+			static_cast<f32_t>(pPoints[iPoint][1]),
+			static_cast<f32_t>(pPoints[iPoint][2])
 		};
-
-		// 첫 표시는 텍스처 없이 초록색으로 확인
-		MeshData.Verticles[iPoint].vColor =
-		{
-			0.f, 1.f, 0.f, 1.f
-		};
-		
 	}
 
-	// ===============================================================================//
+	/* ======================================================================== */
 
-	/* 인덱스 정보 저장 */
+	/* 폴리곤 꼭짓점 저장 */
+
+	// 첫 번째 UV 세트 이름 (UV를 읽을 때 필요)
+	FbxStringList UVSetNames;
+	pMesh->GetUVSetNames(UVSetNames);
+	const char_t* pUVSetName = (UVSetNames.GetCount() > 0) ? UVSetNames[0].Buffer() : nullptr;
 
 	const int32_t iPolygonCount = pMesh->GetPolygonCount();
 
-	// 삼각형 하나당 인덱스 3개
-	MeshData.Indices.reserve(static_cast<size_t>(iPolygonCount) * 3);
+	// 삼각형(폴리곤) 하나당 정점이 3개니까 * 3
+	MeshData.Verticles.reserve(static_cast<uint64_t>(iPolygonCount) * 3);
+	MeshData.PointIndices.reserve(static_cast<uint64_t>(iPolygonCount) * 3);
+	MeshData.Indices.reserve(static_cast<uint64_t>(iPolygonCount) * 3);
 
+
+	// 삼각형 꼭짓점 하나 = GPU 정점 하나
 	for (int32_t iPolygon = 0; iPolygon < iPolygonCount; ++iPolygon)
 	{
 		if (pMesh->GetPolygonSize(iPolygon) != 3)
 		{
-			MSG_BOX("삼각형이 아닌 면이 있습니다.");
+			MSG_BOX("삼각형이 아닌 면이 존재합니다.");
 			return E_FAIL;
 		}
 
+		// Corner == 꼭짓점
 		for (int32_t iCorner = 0; iCorner < 3; ++iCorner)
 		{
+			// 이 꼭짓점이 사용하는 컨트롤 포인트 번호
 			const int32_t iPointIndex = pMesh->GetPolygonVertex(iPolygon, iCorner);
 
 			if (iPointIndex < 0 || iPointIndex >= iPointCount)
@@ -414,7 +413,41 @@ HRESULT CFbxLoader::Read_MeshVertexIndex(FbxMesh* pMesh, MESH_DATA& MeshData)
 				return E_FAIL;
 			}
 
-			MeshData.Indices.push_back(static_cast<uint32_t>(iPointIndex));
+			VTXMESH Vertex{};
+			// 위치 : 컨트롤 포인트가 위치니까 구조체의 vPosition에 삼각형 정점의 컨트롤 포인트 대입
+			Vertex.vPosition = MeshData.Points[iPointIndex]; 
+
+			// 법선 : 이 삼각형의 꼭짓점 기준
+			FbxVector4 Normal;
+			if (pMesh->GetPolygonVertexNormal(iPolygon, iCorner, Normal))
+			{
+				Vertex.vNormal = 
+				{ 
+					static_cast<f32_t>(Normal[0]), 
+					static_cast<f32_t>(Normal[1]),
+					static_cast<f32_t>(Normal[2]),
+				};
+			}
+
+			// UV : 이 삼각형의 꼭짓점 기준
+			FbxVector2 UV;
+			bool_t Unmapped = false;
+
+			if (nullptr != pUVSetName && pMesh->GetPolygonVertexUV(iPolygon, iCorner, pUVSetName, UV, Unmapped))
+			{
+				Vertex.vTexCoord =
+				{
+					static_cast<f32_t>(UV[0]),
+					1.f - static_cast<f32_t>(UV[1]), // DX에서는 y가 반대(V가 아래로 갈수록 커짐)
+				};
+			}
+
+			// 새 정점 번호 == 지금까지 쌓인 정점 수
+			MeshData.Indices.push_back(static_cast<uint32_t>(MeshData.Verticles.size()));
+			// 구조체에 넣어놓은 삼각형 정보(위치, 법선, UV) 저장
+			MeshData.Verticles.push_back(Vertex);
+			// 정점의 위치 번호 정보 저장
+			MeshData.PointIndices.push_back(static_cast<uint32_t>(iPointIndex));
 		}
 	}
 

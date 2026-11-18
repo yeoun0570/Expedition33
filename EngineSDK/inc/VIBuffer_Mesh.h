@@ -14,7 +14,7 @@ public:
 public:
 	virtual HRESULT Initialize_Prototype(const MESH_DATA& MeshData);
 	virtual HRESULT Initialize(void* pArg) override;
-	HRESULT Update_Vertices(const vector<VTXCOL>& Vertices);
+	HRESULT Update_Vertices(const vector<VTXMESH>& Vertices);
 
 
 public:

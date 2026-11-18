@@ -11,6 +11,7 @@ namespace Client
 	static constexpr unsigned int		g_iWinSizeY = { 720 };
 
 	enum class LEVEL { STATIC, LOADING, LOGO, GAMEPLAY, END };
+	enum class SHADER { VERTEX, PIXEL, END };
 }
 
 using namespace Client;

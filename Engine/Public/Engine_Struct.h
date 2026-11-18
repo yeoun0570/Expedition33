@@ -21,9 +21,27 @@ namespace Engine
 
 	typedef struct tagVertexPositionTexcoord
 	{
-		XMFLOAT3			vPosition;
-		XMFLOAT2			vTexcoord;
+		float3_t			vPosition;
+		float2_t			vTexcoord;
 	}VTXPOSTEX;
+
+	typedef struct tagVertexMesh
+	{
+		float3_t		vPosition;		// 위치
+		float2_t		vTexCoord;		// UV
+		float3_t		vNormal;		// 면이 바라보는 방향
+		float3_t		vTangent;		// 노멀맵
+	}VTXMESH;
+	
+	typedef struct tagVertexAnimationMesh
+	{
+		float3_t		vPosition;			// 위치
+		float2_t		vTexCoord;			// UV
+		float3_t		vNormal;			// 면이 바라보는 방향
+		float3_t		vTangent;			// 노멀맵
+		uint32_t		vBlendIndices[4];	// 이 정점을 움직이는 뼈 번호(최대 4개)
+		float4_t		vBlendWeights;		// 뼈별 가중치
+	}VTXANIMMESH;
 
 	typedef struct tagTransform
 	{
@@ -71,9 +89,11 @@ namespace Engine
 	// 정점 + 인덱스 + 클러스터합친 Fbx데이터
 	typedef struct tagMeshData
 	{
-		vector<VTXCOL>				Verticles;
+		vector<VTXMESH>				Verticles;
 		vector<uint32_t>			Indices;
 		vector<FBX_SKIN_DATA>		FbxSkins;
+		vector<float3_t>			Points;			// 컨트롤 포인트 원래 위치 (스키닝 계산용)
+		vector<uint32_t>			PointIndices;	// 정점 i → 원래 컨트롤 포인트(위치) 번호
 	}MESH_DATA;
 
 

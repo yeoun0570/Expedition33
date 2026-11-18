@@ -137,5 +137,11 @@
     <FxCompile Include="Bin\ShaderFiles\PixelShader\PS_PosTex.hlsl">
       <Filter>97. ShaderFiles\Pixel</Filter>
     </FxCompile>
+    <FxCompile Include="Bin\ShaderFiles\VertexShader\VS_Mesh.hlsl">
+      <Filter>97. ShaderFiles\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="Bin\ShaderFiles\PixelShader\PS_Mesh.hlsl">
+      <Filter>97. ShaderFiles\Pixel</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
