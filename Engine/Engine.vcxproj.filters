@@ -103,6 +103,12 @@
     <Filter Include="01.Utility\03. Component\Shader\Pixel">
       <UniqueIdentifier>{b936c9ca-381d-4701-a794-80fc75083f56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Utility\06. ConstantBuffer">
+      <UniqueIdentifier>{f32411cd-9e00-4d57-a0fa-2e3977dc23a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\07. Pipeline">
+      <UniqueIdentifier>{efcf197e-561f-4bb4-8a58-251db2e1d610}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -201,6 +207,12 @@
     <ClInclude Include="Public\PixelShader.h">
       <Filter>01.Utility\03. Component\Shader\Pixel</Filter>
     </ClInclude>
+    <ClInclude Include="public\ConstantBuffer.h">
+      <Filter>01.Utility\06. ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Pipeline.h">
+      <Filter>01.Utility\07. Pipeline</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -277,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="Private\PixelShader.cpp">
       <Filter>01.Utility\03. Component\Shader\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="private\ConstantBuffer.cpp">
+      <Filter>01.Utility\06. ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Pipeline.cpp">
+      <Filter>01.Utility\07. Pipeline</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

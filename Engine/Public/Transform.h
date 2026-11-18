@@ -56,10 +56,14 @@ public:
 	void LookAt(fvector_t vAt);
 	void Chase(fvector_t vTarget, const f32_t fTimeDelta, f32_t fLimitDistance);
 
+	HRESULT Bind_VertexShader(uint32_t iSlot);
+
 private:
 	float4x4_t		m_WorldMatrix = {};
 	f32_t			m_fSpeedPerSec = {};
 	f32_t			m_fRotationPerSec = {};
+
+	shared_ptr<class CConstantBuffer>	m_pCB = { nullptr };
 
 
 public:

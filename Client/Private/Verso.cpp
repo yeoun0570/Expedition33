@@ -125,31 +125,31 @@ void CVerso::Update(const f32_t fTimeDelta)
 
 
 #pragma region 모델 테스트(월드, 뷰, 투영 행렬 적용)
-    // 1. 월드 행렬: 원본 크기와 위치 유지
-    // XMMatrixIdentity : 단위 행렬 만들기
-    XMStoreFloat4x4(
-        &m_Transform.matWorld,
-        XMMatrixIdentity());
-
-    // 2. 뷰 행렬: 카메라에서 모델 바라보기
-    // XMMatrixLookAtLH : 뷰 행렬 만들기
-    XMStoreFloat4x4(
-        &m_Transform.matView,
-        XMMatrixLookAtLH(
-            XMVectorSet(0.f, -3.f, 1.f, 1.f),   // 카메라 Eye
-            XMVectorSet(0.f, 0.f, 1.f, 1.f),    // 카메라 At
-            XMVectorSet(0.f, 0.f, 1.f, 0.f)));  // 카메라 Up: +Z
-
-    // 3. 투영 행렬: 원근감 적용
-    // XMMatrixPerspectiveFovLH : 투영 행렬 만들기
-    XMStoreFloat4x4(
-        &m_Transform.matProj,
-        XMMatrixPerspectiveFovLH(
-            XMConvertToRadians(60.f),
-            static_cast<f32_t>(g_iWinSizeX) /
-            static_cast<f32_t>(g_iWinSizeY),
-            0.1f,
-            10000.f));
+    //// 1. 월드 행렬: 원본 크기와 위치 유지
+    //// XMMatrixIdentity : 단위 행렬 만들기
+    //XMStoreFloat4x4(
+    //    &m_Transform.matWorld,
+    //    XMMatrixIdentity());
+    //
+    //// 2. 뷰 행렬: 카메라에서 모델 바라보기
+    //// XMMatrixLookAtLH : 뷰 행렬 만들기
+    //XMStoreFloat4x4(
+    //    &m_Transform.matView,
+    //    XMMatrixLookAtLH(
+    //        XMVectorSet(0.f, -3.f, 1.f, 1.f),   // 카메라 Eye
+    //        XMVectorSet(0.f, 0.f, 1.f, 1.f),    // 카메라 At
+    //        XMVectorSet(0.f, 0.f, 1.f, 0.f)));  // 카메라 Up: +Z
+    //
+    //// 3. 투영 행렬: 원근감 적용
+    //// XMMatrixPerspectiveFovLH : 투영 행렬 만들기
+    //XMStoreFloat4x4(
+    //    &m_Transform.matProj,
+    //    XMMatrixPerspectiveFovLH(
+    //        XMConvertToRadians(60.f),
+    //        static_cast<f32_t>(g_iWinSizeX) /
+    //        static_cast<f32_t>(g_iWinSizeY),
+    //        0.1f,
+    //        10000.f));
 #pragma endregion
 
 #pragma region 몸체 변경

@@ -95,6 +95,8 @@ HRESULT CBackGround::Bind_Shader_Resources()
 	for (auto& pShaderCom : m_pShaderCom)
 		pShaderCom->Begin();
 
+	if (FAILED(m_pTransformCom->Bind_VertexShader(0)))
+		return E_FAIL;
 
 	if (FAILED(m_pVIBufferCom->Begin()))
 		return E_FAIL;

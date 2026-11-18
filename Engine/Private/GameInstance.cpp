@@ -34,6 +34,9 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     if (m_pRenderer == nullptr)
         return E_FAIL;
 
+    m_pPipeline = CPipeline::Create(pDevice, pContext);
+    if (m_pPipeline == nullptr)
+        return E_FAIL;
     return S_OK;
 }
 
@@ -196,6 +199,44 @@ HRESULT CGameInstance::Add_RenderGroup(RENDERGROUP eGroup, shared_ptr<class CGam
 }
 #pragma endregion
 
+#pragma region PIPELINE
+const float4x4_t* CGameInstance::Get_Transform(D3DTS eTransformState) const
+{
+    return m_pPipeline->Get_Transform(eTransformState);
+}
+
+const float4x4_t* CGameInstance::Get_OrthoTransform(D3DTS eTransformState) const
+{
+    return m_pPipeline->Get_OrthoTransform(eTransformState);
+}
+
+const float4x4_t* CGameInstance::Get_Transform_Inverse(D3DTS eTransformState) const
+{
+    return m_pPipeline->Get_Transform_Inverse(eTransformState);
+}
+
+const float4x4_t* CGameInstance::Get_OrthoTransform_Inverse(D3DTS eTransformState) const
+{
+    return m_pPipeline->Get_OrthoTransform_Inverse(eTransformState);
+}
+
+const float4_t* CGameInstance::Get_CamPosition() const
+{
+    return m_pPipeline->Get_CamPosition();
+}
+
+void CGameInstance::Set_Transform(D3DTS eTransformState, fmatrix_t TransformMatrix)
+{
+    m_pPipeline->Set_Transform(eTransformState, TransformMatrix);
+}
+
+void CGameInstance::Set_OrthoTransform(D3DTS eTransformState, fmatrix_t TransformMatrix)
+{
+    m_pPipeline->Set_OrthoTransform(eTransformState, TransformMatrix);
+}
+
+#pragma endregion
+
 void CGameInstance::Release_Engine()
 {
     m_pTimer_Manager.reset();
@@ -204,6 +245,7 @@ void CGameInstance::Release_Engine()
     m_pPrototype_Manager.reset();
     m_pObject_Manager.reset();
     m_pRenderer.reset();
+    m_pPipeline.reset();
 
     m_pGraphic_Device.reset();
 }

@@ -26,9 +26,6 @@ public:
 	virtual void Late_Update(const f32_t fTimeDelta) override;
 	virtual HRESULT Render() override;
 
-protected:
-	TRANSFORM m_Transform{};
-
 public:
 	virtual shared_ptr<CPrototype> Clone(void* pArg) = 0;
 };
