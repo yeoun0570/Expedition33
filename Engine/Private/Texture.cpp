@@ -48,6 +48,38 @@ HRESULT CTexture::Initialize(void* pArg)
 	return S_OK;
 }
 
+HRESULT CTexture::Bind_PixelShader(uint32_t iSlot, uint32_t iIndex)
+{
+	if (iIndex >= m_iNumSRVs)
+		return E_FAIL;
+
+	ID3D11ShaderResourceView* pSRVs[1] =
+	{
+		m_SRVs[iIndex].Get(),
+	};
+
+	m_pContext->PSSetShaderResources(iSlot, 1, pSRVs);
+
+	return S_OK;
+}
+
+HRESULT CTexture::Bind_PixelShader(uint32_t iSlot)
+{
+	if (m_iNumSRVs >= D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT)
+		return E_FAIL;
+
+	ID3D11ShaderResourceView* pSRVs[D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT] = {nullptr};
+
+	for (uint32_t i = 0; i < m_iNumSRVs; ++i)
+	{
+		pSRVs[i] = m_SRVs[i].Get();
+	}
+
+	m_pContext->PSSetShaderResources(iSlot, m_iNumSRVs, pSRVs);
+
+	return S_OK;
+}
+
 shared_ptr<CTexture> CTexture::Create(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext, const wchar_t* pTextureFilePath, uint32_t iNumTextures)
 {
 	auto    pInstance = shared_ptr<CTexture>(new CTexture(pDevice, pContext));

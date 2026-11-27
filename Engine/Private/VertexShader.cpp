@@ -1,11 +1,11 @@
 #include "VertexShader.h"
 
-CVertexShader::CVertexShader(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext)
+CVertexShader::CVertexShader(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
     : CShader { pDevice, pContext }
 {
 }
 
-HRESULT CVertexShader::Initialize_Prototype(const wchar_t* pShaderFilePath, D3D11_INPUT_ELEMENT_DESC* pElements, uint32_t iNumElement, const char_t* pEntryPoint, const char_t* pVersion)
+HRESULT CVertexShader::Initialize_Prototype(const wchar_t* pShaderFilePath, const D3D11_INPUT_ELEMENT_DESC* pElements, uint32_t iNumElement, const char_t* pEntryPoint, const char_t* pVersion)
 {
     if (FAILED(__super::Initialize_Prototype(pShaderFilePath, pEntryPoint, pVersion)))
         return E_FAIL;
@@ -39,7 +39,7 @@ HRESULT CVertexShader::End()
     return S_OK;
 }
 
-shared_ptr<CVertexShader> CVertexShader::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext, const wchar_t* pShaderFilePath, D3D11_INPUT_ELEMENT_DESC* pElements, uint32_t iNumElement, const char_t* pEntryPoint, const char_t* pVersion)
+shared_ptr<CVertexShader> CVertexShader::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext, const wchar_t* pShaderFilePath, const D3D11_INPUT_ELEMENT_DESC* pElements, uint32_t iNumElement, const char_t* pEntryPoint, const char_t* pVersion)
 {
     auto    pInstance = shared_ptr<CVertexShader>(new CVertexShader(pDevice, pContext));
 

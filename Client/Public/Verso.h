@@ -32,11 +32,16 @@ private:
 	shared_ptr<CModel>	m_pBikiniBBodyModelCom = { nullptr };
 	shared_ptr<CModel>	m_pFaceModelCom = { nullptr };
 
+	shared_ptr<CShader> m_pShaderCom[ETOUI(SHADER::END)] = { nullptr };
+
 	wstring_t			m_strAnimTag{};
 
 private:
 	HRESULT Ready_Components();
 	HRESULT Change_Body(const shared_ptr<CModel>& pBodyModel);
+
+	HRESULT Bind_Shader_Resources();
+	HRESULT Release_Shader_Resources();
 
 public:
 	static shared_ptr<CVerso> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);

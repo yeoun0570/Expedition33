@@ -46,6 +46,12 @@
     <Filter Include="97. ShaderFiles\Pixel">
       <UniqueIdentifier>{00fee06b-580f-4062-8182-2e0715bf4c66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. GameObjects\Camera">
+      <UniqueIdentifier>{e5309040-e6d5-4d70-ba3c-e7280287a48a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObjects\Camera\Free">
+      <UniqueIdentifier>{dcc0560c-c8fa-4670-9921-9dab4bc34a72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\MainApp.h">
@@ -87,6 +93,9 @@
     <ClInclude Include="public\Character.h">
       <Filter>02. GameObjects\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="public\Camera_Free.h">
+      <Filter>02. GameObjects\Camera\Free</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\MainApp.cpp">
@@ -115,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="private\Character.cpp">
       <Filter>02. GameObjects\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Camera_Free.cpp">
+      <Filter>02. GameObjects\Camera\Free</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

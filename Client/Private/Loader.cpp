@@ -3,6 +3,7 @@
 #include "GameInstance.h"
 #include "BackGround.h"
 #include "Verso.h"
+#include "Camera_Free.h"
 
 CLoader::CLoader(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
 	: m_pDevice { pDevice },
@@ -82,7 +83,7 @@ HRESULT CLoader::Loading_For_LogoLV()
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::LOGO), TEXT("Prototype_Component_Texture_BackGround"),
                                                 CTexture::Create(m_pDevice, 
                                                                 m_pContext, 
-                                                                TEXT("Bin/Resources/Textures/Default%d.jpg"), 
+                                                                TEXT("Bin/Resources/Textures/Default%d.dds"), 
                                                  2))))
         return E_FAIL;
 
@@ -99,6 +100,10 @@ HRESULT CLoader::Loading_For_LogoLV()
 
 HRESULT CLoader::Loading_For_GamePlayLV()
 {
+    if(FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::GAMEPLAY), TEXT("Prototype_GameObject_Camera_Free"), 
+        CCamera_Free::Create(m_pDevice, m_pContext))))
+        return E_FAIL;
+
     m_isFinished = true;
 
     return S_OK;

@@ -109,6 +109,24 @@
     <Filter Include="01.Utility\07. Pipeline">
       <UniqueIdentifier>{efcf197e-561f-4bb4-8a58-251db2e1d610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98. ShaderFiles">
+      <UniqueIdentifier>{307d05c7-8788-4515-8600-55aa9cf45df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. ShaderFiles\Vertex">
+      <UniqueIdentifier>{ccadf694-7a2b-4b17-a386-d3bf1b5fbc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. ShaderFiles\Pixel">
+      <UniqueIdentifier>{d2103bd9-fd45-466d-8dc4-482129228b1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\08. Sampler">
+      <UniqueIdentifier>{2a1a9d39-4b69-4473-b5da-cbe1795cdd68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\08. Sampler\Manager">
+      <UniqueIdentifier>{ce2d3292-6923-4500-8792-17005047e21b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\04. GameObject\Camera">
+      <UniqueIdentifier>{2f5250d0-2a61-49ba-b34b-6ab898c7733d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine_Defines.h">
@@ -213,6 +231,18 @@
     <ClInclude Include="public\Pipeline.h">
       <Filter>01.Utility\07. Pipeline</Filter>
     </ClInclude>
+    <ClInclude Include="public\SamplerState.h">
+      <Filter>01.Utility\08. Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Sampler_Manager.h">
+      <Filter>01.Utility\08. Sampler\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Input_Device.h">
+      <Filter>00.System\01. Device\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Camera.h">
+      <Filter>01.Utility\04. GameObject\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Timer_Manager.cpp">
@@ -296,5 +326,25 @@
     <ClCompile Include="private\Pipeline.cpp">
       <Filter>01.Utility\07. Pipeline</Filter>
     </ClCompile>
+    <ClCompile Include="private\SamplerState.cpp">
+      <Filter>01.Utility\08. Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Sampler_Manager.cpp">
+      <Filter>01.Utility\08. Sampler\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Input_Device.cpp">
+      <Filter>00.System\01. Device\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Camera.cpp">
+      <Filter>01.Utility\04. GameObject\Camera</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bin\ShaderFiles\Engine_PixelShader_Defines.hlsli">
+      <Filter>98. ShaderFiles\Pixel</Filter>
+    </None>
+    <None Include="Bin\ShaderFiles\Engine_VertexShader_Defines.hlsli">
+      <Filter>98. ShaderFiles\Vertex</Filter>
+    </None>
   </ItemGroup>
 </Project>

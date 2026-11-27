@@ -15,8 +15,9 @@ CMainApp::~CMainApp()
 
 HRESULT CMainApp::Initialize()
 {
-    ENGINE_DESC     EngineDesc 
+    ENGINE_DESC     EngineDesc
     {
+        .hInstance = g_hInstance,
         .hWnd = g_hWnd, 
         .eWinMode = WINMODE::WIN, 
         .iWinSizeX = g_iWinSizeX, 
@@ -71,34 +72,32 @@ HRESULT CMainApp::Ready_Statics()
         CVIBuffer_Rect::Create(m_pDevice, m_pContext))))
         return E_FAIL;
 
-    D3D11_INPUT_ELEMENT_DESC    Elements[2] =
-    {
-        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-    };
-
-
+    /* Prototype_Component_VS_PosTex */
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_VS_PosTex"),
-        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_PosTex.hlsl"), Elements, 2))))
+        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_PosTex.hlsl"), VTXPOSTEX::Elements, VTXPOSTEX::iNumElements))))
         return E_FAIL;
 
+    /* Prototype_Component_VS_PosTex_Ortho */
+    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_VS_PosTex_Ortho"),
+        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_PosTex.hlsl"), VTXPOSTEX::Elements, VTXPOSTEX::iNumElements, "main_ortho"))))
+        return E_FAIL;
+
+    /* Prototype_Component_PS_PosTex */
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_PS_PosTex"),
         CPixelShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/PixelShader/PS_PosTex.hlsl")))))
         return E_FAIL;
 
-
-    D3D11_INPUT_ELEMENT_DESC    MeshElements[4] =
-    {
-        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float3 12
-        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float2 8
-        { "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 20, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float3 12
-        { "TANGENT",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 32, D3D11_INPUT_PER_VERTEX_DATA, 0 },	// float3 12
-    };
-
+    /* Prototype_Component_VS_Mesh */
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_VS_Mesh"),
-        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_Mesh.hlsl"), MeshElements, 4))))
+        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_Mesh.hlsl"), VTXMESH::Elements, VTXMESH::iNumElements))))
         return E_FAIL;
 
+    /* Prototype_Component_VS_Mesh_Ortho */
+    if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_VS_Mesh_Ortho"),
+        CVertexShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/VertexShader/VS_Mesh.hlsl"), VTXMESH::Elements, VTXMESH::iNumElements, "main_ortho"))))
+        return E_FAIL;
+
+    /* Prototype_Component_PS_Mesh */
     if (FAILED(CGameInstance::Get().Add_Prototype(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_PS_Mesh"),
         CPixelShader::Create(m_pDevice, m_pContext, TEXT("Bin/ShaderFiles/PixelShader/PS_Mesh.hlsl")))))
         return E_FAIL;

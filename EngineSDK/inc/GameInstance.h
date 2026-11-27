@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Graphic_Device.h"
+#include "Input_Device.h"
 
 #include "Texture.h"
 #include "Transform.h"
@@ -10,10 +11,12 @@
 #include "Model_Manager.h"
 #include "Prototype_Manager.h"
 #include "Object_Manager.h"
+#include "Sampler_Manager.h"
 
 
 #include "Renderer.h"
 #include "VIBuffer_Rect.h"
+#include "VIBuffer_Mesh.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
 #include "ConstantBuffer.h"
@@ -39,6 +42,11 @@ public:
 	HRESULT Draw(const float4_t* pClearColor);
 	HRESULT Draw_End();
 
+	float2_t Get_ViewPortSize() const
+	{
+		return m_vViewPortSize;
+	};
+
 	HRESULT Clear_Resources(uint32_t iClearLevelIndex);
 
 public:
@@ -63,11 +71,11 @@ public:
 
 #pragma region Prototype_Manager
 	HRESULT Add_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, shared_ptr<class CPrototype> pPrototype);
-	shared_ptr<CPrototype> Clone_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, void* pArg);
+	shared_ptr<CPrototype> Clone_Prototype(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, void* pArg = nullptr);
 #pragma endregion
 
 #pragma region Obejct_Manager
-	HRESULT Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg);
+	HRESULT Add_GameObject(uint32_t iPrototypeLevelIndex, const wstring_t& strPrototypeTag, uint32_t iLayerLevelIndex, const wstring_t& strLayerTag, void* pArg = nullptr);
 #pragma endregion
 
 #pragma region Renderer
@@ -82,11 +90,24 @@ public:
 	void Set_Transform(D3DTS eTransformState, fmatrix_t TransformMatrix);
 	void Set_OrthoTransform(D3DTS eTransformState, fmatrix_t TransformMatrix);
 #pragma endregion
+#pragma region Sampler_Manager
+	HRESULT Add_SamplerState(const wstring_t& strSamplerTag, const D3D11_SAMPLER_DESC& SamplerDesc);
+	HRESULT Bind_PixelShader_Sampler(const wstring_t& strSamplerStateTag, uint32_t iSlot);
+#pragma endregion
 
+#pragma region INPUT_DEVICE
+	int8_t	Get_DIKeyState(uint8_t byKeyID);
+	int8_t	Get_DIMouseState(DIMK eMouse);
+	int32_t Get_DIMouseMove(DIMM eMouseState);
+#pragma endregion
 
 
 private:
+	float2_t			m_vViewPortSize;
+
+private:
 	unique_ptr<CGraphic_Device>				m_pGraphic_Device = { nullptr };
+	unique_ptr<CInput_Device>				m_pInput_Device = { nullptr };
 
 	unique_ptr<CTimer_Manager>				m_pTimer_Manager = { nullptr };
 	unique_ptr<CLevel_Manager>				m_pLevel_Manager = { nullptr };
@@ -96,6 +117,8 @@ private:
 	unique_ptr<CPipeline>					m_pPipeline = { nullptr };
 
 	unique_ptr<CModel_Manager>				m_pModel_Manager = { nullptr };
+
+	unique_ptr<CSamplerState_Manager>		m_pSamplerState_Manager = { nullptr };
 
 public:
 	void Release_Engine();

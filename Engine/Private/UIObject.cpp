@@ -29,6 +29,8 @@ HRESULT CUIObject::Initialize(void* pArg)
     if (FAILED(__super::Initialize(pArg)))
         return E_FAIL;
 
+    Update_Transform();
+
     return S_OK;
 }
 
@@ -53,4 +55,14 @@ HRESULT CUIObject::Render()
         return E_FAIL;
 
     return S_OK;
+}
+
+void CUIObject::Update_Transform()
+{
+    m_pTransformCom->SetUp_Scale(m_fSizeX, m_fSizeY, 0.f);
+    m_pTransformCom->Set_State(STATE::POSITION,
+        XMVectorSet(m_fX - CGameInstance::Get().Get_ViewPortSize().x * 0.5f, 
+            -m_fY + CGameInstance::Get().Get_ViewPortSize().y * 0.5f, 
+            0.f, 
+            1.f));
 }

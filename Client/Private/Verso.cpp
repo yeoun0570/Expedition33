@@ -124,32 +124,18 @@ void CVerso::Update(const f32_t fTimeDelta)
 #endif
 
 
-#pragma region 모델 테스트(월드, 뷰, 투영 행렬 적용)
-    //// 1. 월드 행렬: 원본 크기와 위치 유지
-    //// XMMatrixIdentity : 단위 행렬 만들기
-    //XMStoreFloat4x4(
-    //    &m_Transform.matWorld,
-    //    XMMatrixIdentity());
-    //
-    //// 2. 뷰 행렬: 카메라에서 모델 바라보기
-    //// XMMatrixLookAtLH : 뷰 행렬 만들기
-    //XMStoreFloat4x4(
-    //    &m_Transform.matView,
-    //    XMMatrixLookAtLH(
-    //        XMVectorSet(0.f, -3.f, 1.f, 1.f),   // 카메라 Eye
-    //        XMVectorSet(0.f, 0.f, 1.f, 1.f),    // 카메라 At
-    //        XMVectorSet(0.f, 0.f, 1.f, 0.f)));  // 카메라 Up: +Z
-    //
-    //// 3. 투영 행렬: 원근감 적용
-    //// XMMatrixPerspectiveFovLH : 투영 행렬 만들기
-    //XMStoreFloat4x4(
-    //    &m_Transform.matProj,
-    //    XMMatrixPerspectiveFovLH(
-    //        XMConvertToRadians(60.f),
-    //        static_cast<f32_t>(g_iWinSizeX) /
-    //        static_cast<f32_t>(g_iWinSizeY),
-    //        0.1f,
-    //        10000.f));
+#pragma region 임시 카메라(뷰, 투영 행렬 설정)
+    // 카메라 클래스가 생기기 전까지 임시로 사용
+    // 월드는 CTransform이 맡으므로 뷰·투영만 파이프라인에 넣는다.
+    CGameInstance::Get().Set_Transform(D3DTS::VIEW, XMMatrixLookAtLH(
+        XMVectorSet(0.f, -3.f, 1.f, 1.f),   // 카메라 위치
+        XMVectorSet(0.f, 0.f, 1.f, 1.f),    // 바라보는 곳
+        XMVectorSet(0.f, 0.f, 1.f, 0.f)));  // 위쪽 방향: +Z
+
+    CGameInstance::Get().Set_Transform(D3DTS::PROJ, XMMatrixPerspectiveFovLH(
+        XMConvertToRadians(60.f),
+        static_cast<f32_t>(g_iWinSizeX) / static_cast<f32_t>(g_iWinSizeY),
+        0.1f, 10000.f));
 #pragma endregion
 
 #pragma region 몸체 변경
@@ -197,6 +183,11 @@ HRESULT CVerso::Render()
     if (FAILED(__super::Render()))
         return E_FAIL;
     
+    if (FAILED(Bind_Shader_Resources()))
+        return E_FAIL;
+
+    if (FAILED(Release_Shader_Resources()))
+        return E_FAIL;
 
     return S_OK;
 }
@@ -214,6 +205,15 @@ HRESULT CVerso::Ready_Components()
     if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Verso_Face_Model"),
         TEXT("Com_Verso_Face_Model"), m_pFaceModelCom)))
         return E_FAIL;
+
+    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_VS_Mesh"),
+        TEXT("Com_VS"), m_pShaderCom[ETOUI(SHADER::VERTEX)])))
+        return E_FAIL;
+
+    if (FAILED(__super::Add_Component(ETOUI(LEVEL::STATIC), TEXT("Prototype_Component_PS_Mesh"),
+        TEXT("Com_PS"), m_pShaderCom[ETOUI(SHADER::PIXEL)])))
+        return E_FAIL;
+
 
     // 첫 몸체 및 애니메이션 설정
     m_strAnimTag = TEXT("Verso_Idle_Base");
@@ -247,6 +247,25 @@ HRESULT CVerso::Change_Body(const shared_ptr<CModel>& pBodyModel)
         return E_FAIL;
     
     
+    return S_OK;
+}
+
+HRESULT CVerso::Bind_Shader_Resources()
+{
+    for (auto& pShaderCom : m_pShaderCom)
+        pShaderCom->Begin();
+
+    if (FAILED(m_pTransformCom->Bind_VertexShader(0)))
+        return E_FAIL;
+
+    return S_OK;
+}
+
+HRESULT CVerso::Release_Shader_Resources()
+{
+    for (auto& pShaderCom : m_pShaderCom)
+        pShaderCom->End();
+
     return S_OK;
 }
 

@@ -14,7 +14,7 @@ public:
 	}TRANSFORM_DESC;
 
 private:
-	CTransform(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext);
+	CTransform(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 
 public:
 	virtual ~CTransform() = default;
@@ -24,19 +24,27 @@ public:
 	virtual HRESULT Initialize(void* pArg) override;
 
 public:
-	vector_t Get_State(STATE eState) {
+	vector_t Get_State(STATE eState) 
+	{
 		return XMLoadFloat4x4(&m_WorldMatrix).r[ETOUI(eState)];
 	}
 
-	void Set_State(STATE eState, fvector_t vState) {
+	void Set_State(STATE eState, fvector_t vState) 
+	{
 		XMStoreFloat4(reinterpret_cast<float4_t*>(m_WorldMatrix.m[ETOUI(eState)]), vState);
 	}
 
-	float3_t Get_Scale() {
+	float3_t Get_Scale() 
+	{
 		return float3_t(
 			XMVectorGetX(XMVector3Length(Get_State(STATE::RIGHT))),
 			XMVectorGetX(XMVector3Length(Get_State(STATE::UP))),
 			XMVectorGetX(XMVector3Length(Get_State(STATE::LOOK))));
+	}
+
+	const float4x4_t* Get_WorldMatrixPtr() const
+	{
+		return &m_WorldMatrix;
 	}
 
 public:

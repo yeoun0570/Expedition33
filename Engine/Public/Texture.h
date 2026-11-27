@@ -15,10 +15,12 @@ public:
 public:
 	HRESULT Initialize_Prototype(const wchar_t* pTextureFilePath, uint32_t iNumTextures);
 	HRESULT Initialize(void* pArg) override;
+	HRESULT Bind_PixelShader(uint32_t iSlot, uint32_t iIndex);
+	HRESULT Bind_PixelShader(uint32_t iSlot);
 
 private:
 	uint32_t										m_iNumSRVs = {};
-	vector<ComPtr<ID3D11ShaderResourceView>>		m_SRVs = { nullptr };
+	vector<ComPtr<ID3D11ShaderResourceView>>		m_SRVs;
 
 
 public:

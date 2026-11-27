@@ -6,8 +6,14 @@ CGameInstance::CGameInstance()
 
 HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ ComPtr<ID3D11Device>& pDevice, _Out_ ComPtr<ID3D11DeviceContext>& pContext, const wstring_t& strFilePath)
 {
+    m_vViewPortSize = float2_t(EngineDesc.iWinSizeX, EngineDesc.iWinSizeY);
+
     m_pGraphic_Device = CGraphic_Device::Create(EngineDesc.hWnd, EngineDesc.eWinMode, EngineDesc.iWinSizeX, EngineDesc.iWinSizeY, pDevice, pContext);
     if (nullptr == m_pGraphic_Device)
+        return E_FAIL;
+
+    m_pInput_Device = CInput_Device::Create(EngineDesc.hInstance, EngineDesc.hWnd);
+    if (nullptr == m_pInput_Device)
         return E_FAIL;
 
     m_pTimer_Manager = CTimer_Manager::Create();
@@ -37,11 +43,18 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ Co
     m_pPipeline = CPipeline::Create(pDevice, pContext);
     if (m_pPipeline == nullptr)
         return E_FAIL;
+
+    m_pSamplerState_Manager = CSamplerState_Manager::Create(pDevice, pContext);
+    if (m_pSamplerState_Manager == nullptr)
+        return E_FAIL;
+
     return S_OK;
 }
 
 void CGameInstance::Update_Engine(f32_t fTimeDelta)
 {
+    m_pInput_Device->Update();
+
     m_pObject_Manager->Priority_Update(fTimeDelta);
     m_pObject_Manager->Update(fTimeDelta);
     m_pObject_Manager->Late_Update(fTimeDelta);
@@ -69,12 +82,20 @@ HRESULT CGameInstance::Draw_Begin(const float4_t* pClearColor)
     if (FAILED(m_pGraphic_Device->Clear_DepthStencil_View()))
         return E_FAIL;
 
+    if (FAILED(m_pPipeline->Bind_VertexShader(ETOUI(V_SLOT::FRAME))))
+        return E_FAIL;
+
+    if (FAILED(m_pSamplerState_Manager->Bind_PixelShader(g_strLinearSamplerTag, ETOUI(P_SLOT::LINEAR_SAMPLER))))
+        return E_FAIL;
+
+    if (FAILED(m_pSamplerState_Manager->Bind_PixelShader(g_strPointSamplerTag, ETOUI(P_SLOT::POINT_SAMPLER))))
+        return E_FAIL;
+
     return S_OK;
 }
 
 HRESULT CGameInstance::Draw(const float4_t* pClearColor)
 {
-    // 1. 화면 지우기
     if (FAILED(Draw_Begin(pClearColor)))
         return E_FAIL;
 
@@ -237,8 +258,41 @@ void CGameInstance::Set_OrthoTransform(D3DTS eTransformState, fmatrix_t Transfor
 
 #pragma endregion
 
+#pragma region SAMPLER_MANAGER
+
+HRESULT CGameInstance::Add_SamplerState(const wstring_t& strSamplerTag, const D3D11_SAMPLER_DESC& SamplerDesc)
+{
+    return m_pSamplerState_Manager->Add_SamplerState(strSamplerTag, SamplerDesc);
+}
+
+HRESULT CGameInstance::Bind_PixelShader_Sampler(const wstring_t& strSamplerTag, uint32_t iSlot)
+{
+    return m_pSamplerState_Manager->Bind_PixelShader(strSamplerTag, iSlot);
+}
+#pragma endregion
+
+#pragma region INPUT_DEVICE
+
+int8_t CGameInstance::Get_DIKeyState(uint8_t byKeyID)
+{
+    return m_pInput_Device->Get_DIKeyState(byKeyID);
+}
+
+int8_t CGameInstance::Get_DIMouseState(DIMK eMouse)
+{
+    return m_pInput_Device->Get_DIMouseState(eMouse);
+}
+
+int32_t CGameInstance::Get_DIMouseMove(DIMM eMouseState)
+{
+    return m_pInput_Device->Get_DIMouseMove(eMouseState);
+}
+
+#pragma endregion
+
 void CGameInstance::Release_Engine()
 {
+    m_pSamplerState_Manager.reset();
     m_pTimer_Manager.reset();
     m_pLevel_Manager.reset();
     m_pModel_Manager.reset();
@@ -248,4 +302,5 @@ void CGameInstance::Release_Engine()
     m_pPipeline.reset();
 
     m_pGraphic_Device.reset();
+    m_pInput_Device.reset();
 }

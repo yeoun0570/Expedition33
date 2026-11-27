@@ -1,8 +1,9 @@
 #include "Pipeline.h"
 
+#include "GameInstance.h"
 #include "ConstantBuffer.h"
 
-CPipeline::CPipeline(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext)
+CPipeline::CPipeline(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
 	:m_pDevice { pDevice },
 	m_pContext { pContext }
 {
@@ -17,6 +18,9 @@ HRESULT CPipeline::Initialize()
 		XMStoreFloat4x4(&m_PipelineDesc.OrthoTransformMatrix[i], XMMatrixIdentity());
 		XMStoreFloat4x4(&m_PipelineDesc.OrthoTransformMatrix_Inverse[i], XMMatrixIdentity());
 	}
+
+	XMStoreFloat4x4(&m_PipelineDesc.OrthoTransformMatrix[ETOUI(D3DTS::PROJ)],
+		XMMatrixOrthographicLH(CGameInstance::Get().Get_ViewPortSize().x, CGameInstance::Get().Get_ViewPortSize().y, 0.f, 1.f));
 
 	m_PipelineDesc.vCamPostion = float4_t(0.f, 0.f, 0.f, 1.f);
 
@@ -62,7 +66,7 @@ HRESULT CPipeline::Bind_PixelShader(uint32_t iSlot)
 	return S_OK;
 }
 
-unique_ptr<CPipeline> CPipeline::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext)
+unique_ptr<CPipeline> CPipeline::Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
 {
 	auto    pInstance = unique_ptr<CPipeline>(new CPipeline(pDevice, pContext));
 

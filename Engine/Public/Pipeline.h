@@ -7,7 +7,7 @@ NS_BEGIN(Engine)
 class ENGINE_DLL CPipeline final
 {
 private:
-	CPipeline(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext);
+	CPipeline(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 
 public:
 	virtual ~CPipeline() = default;
@@ -63,7 +63,7 @@ private:
 	shared_ptr<class CConstantBuffer>	m_pCB = { nullptr };
 
 public:
-	static unique_ptr<CPipeline> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext> pContext);
+	static unique_ptr<CPipeline> Create(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext);
 };
 
 NS_END

@@ -2,7 +2,7 @@
 
 #include "ConstantBuffer.h"
 
-CTransform::CTransform(ComPtr<ID3D11Device>& pDevice, ComPtr<ID3D11DeviceContext>& pContext)
+CTransform::CTransform(const ComPtr<ID3D11Device>& pDevice, const ComPtr<ID3D11DeviceContext>& pContext)
 	: CComponent { pDevice, pContext }
 {
 }
@@ -14,19 +14,20 @@ HRESULT CTransform::Initialize_Prototype()
 
 HRESULT CTransform::Initialize(void* pArg)
 {
-	if (nullptr == pArg)
-		return E_FAIL;
-
-	auto	pDesc = static_cast<TRANSFORM_DESC*>(pArg);
-
-	m_fSpeedPerSec = pDesc->fSpeedPerSec;
-	m_fRotationPerSec = XMConvertToRadians(pDesc->fRotationDegreePerSec);
 	XMStoreFloat4x4(&m_WorldMatrix, XMMatrixIdentity());
 
 	m_pCB = CConstantBuffer::Create(m_pDevice, m_pContext, &m_WorldMatrix, sizeof m_WorldMatrix);
 
 	if (nullptr == m_pCB)
 		return E_FAIL;
+
+	if (nullptr == pArg)
+		return S_OK;
+
+	auto	pDesc = static_cast<TRANSFORM_DESC*>(pArg);
+
+	m_fSpeedPerSec = pDesc->fSpeedPerSec;
+	m_fRotationPerSec = XMConvertToRadians(pDesc->fRotationDegreePerSec);
 
 	return S_OK;
 }

@@ -120,7 +120,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>d3d11.lib;dxguid.lib;d3dcompiler.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;bcrypt.lib;DirectXTKd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;dxguid.lib;d3dcompiler.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;bcrypt.lib;dinput8.lib;DirectXTKd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>ThirdPartyLib\DirectXTK\;ThirdPartyLib\FBXSDK\lib\x64\debug\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -147,7 +147,7 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>ThirdPartyLib\DirectXTK\;ThirdPartyLib\FBXSDK\lib\x64\release\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;dxguid.lib;d3dcompiler.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;bcrypt.lib;DirectXTK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;dxguid.lib;d3dcompiler.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;bcrypt.lib;dinput8.lib;DirectXTK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>cd /d "$(SolutionDir)"
@@ -155,8 +155,10 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="public\Camera.h" />
     <ClInclude Include="public\ConstantBuffer.h" />
     <ClInclude Include="Public\Engine_Global.h" />
+    <ClInclude Include="Public\Input_Device.h" />
     <ClInclude Include="Public\Object_Manager.h" />
     <ClInclude Include="public\Component.h" />
     <ClInclude Include="Public\Engine_Defines.h" />
@@ -174,6 +176,8 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="public\Level_Manager.h" />
     <ClInclude Include="public\Pipeline.h" />
     <ClInclude Include="Public\PixelShader.h" />
+    <ClInclude Include="public\SamplerState.h" />
+    <ClInclude Include="public\Sampler_Manager.h" />
     <ClInclude Include="public\Shader.h" />
     <ClInclude Include="public\VertexShader.h" />
     <ClInclude Include="public\VIBuffer_Mesh.h" />
@@ -191,17 +195,21 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClInclude Include="Public\VIBuffer_Rect.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="private\Camera.cpp" />
     <ClCompile Include="private\Component.cpp" />
     <ClCompile Include="private\ConstantBuffer.cpp" />
     <ClCompile Include="Private\FbxLoader.cpp" />
     <ClCompile Include="Private\GameInstance.cpp" />
     <ClCompile Include="private\GameObject.cpp" />
     <ClCompile Include="Private\Graphic_Device.cpp" />
+    <ClCompile Include="Private\Input_Device.cpp" />
     <ClCompile Include="private\Layer.cpp" />
     <ClCompile Include="private\Level.cpp" />
     <ClCompile Include="private\Level_Manager.cpp" />
     <ClCompile Include="private\Pipeline.cpp" />
     <ClCompile Include="Private\PixelShader.cpp" />
+    <ClCompile Include="private\SamplerState.cpp" />
+    <ClCompile Include="private\Sampler_Manager.cpp" />
     <ClCompile Include="private\Shader.cpp" />
     <ClCompile Include="private\VertexShader.cpp" />
     <ClCompile Include="private\VIBuffer_Mesh.cpp" />
@@ -218,6 +226,10 @@ call "$(SolutionDir)UpdateLib.bat"</Command>
     <ClCompile Include="private\UIObject.cpp" />
     <ClCompile Include="private\VIBuffer.cpp" />
     <ClCompile Include="Private\VIBuffer_Rect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bin\ShaderFiles\Engine_PixelShader_Defines.hlsli" />
+    <None Include="Bin\ShaderFiles\Engine_VertexShader_Defines.hlsli" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

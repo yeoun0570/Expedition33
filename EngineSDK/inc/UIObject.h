@@ -26,6 +26,9 @@ public:
 	virtual void Late_Update(const f32_t fTimeDelta) override;
 	virtual HRESULT Render() override;
 
+public:
+	void Update_Transform();
+
 protected:
 	f32_t			m_fX{}, m_fY{}, m_fSizeX{}, m_fSizeY{};
 
